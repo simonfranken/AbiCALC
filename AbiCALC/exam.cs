@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbiCALC
 {
-    class semester
+    class exam
     {
-        Dictionary<subjectTypes, subject> dict = new Dictionary<subjectTypes, subject>();
-
-
     }
 }
