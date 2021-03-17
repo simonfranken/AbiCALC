@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace AbiCALC
 {
-    class semester
+    enum examType
     {
-        Dictionary<subjectTypes, subject> dict = new Dictionary<subjectTypes, subject>();
+        Klausur,
+        Kurzarbeit,
+        KasL,
+        Stegreifaufgabe,
+        Rechenschaftsablage,
+        Mitarbeit
     }
 }
