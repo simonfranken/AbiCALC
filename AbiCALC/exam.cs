@@ -8,8 +8,8 @@ namespace AbiCALC
 {
     class exam
     {
-        bool isBig;
-        examType type;
-        int grade;
+        public bool isBig;
+        public examType type;
+        public int grade;
     }
 }

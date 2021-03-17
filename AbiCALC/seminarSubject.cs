@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace AbiCALC
 {
-    abstract class subject
+    class seminarSubject : subject
     {
-        subjectTypes type;
-        public abstract int? getAverageGrade();
+        public override int? getAverageGrade()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

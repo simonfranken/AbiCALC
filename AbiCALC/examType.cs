@@ -13,6 +13,7 @@ namespace AbiCALC
         KasL,
         Stegreifaufgabe,
         Rechenschaftsablage,
-        Mitarbeit
+        Mitarbeit,
+        Referat
     }
 }
