@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbiCALC
 {
-    class database
+    class semester
     {
-        semester semester_11_1;
-        semester semester_11_2;
-        semester semester_12_1;
-        semester semester_12_2;
     }
 }
