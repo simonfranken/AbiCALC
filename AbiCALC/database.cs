@@ -8,15 +8,7 @@ namespace AbiCALC
 {
     class database
     {
-        semester[] semesters = new semester[4];
-
-        public database()
-        {
-            for (int i = 0; i < semesters.Length; i++)
-            {
-                semesters[i] = new semester();
-            }
-        }
+        data d;
 
     }
 }
