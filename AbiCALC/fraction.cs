@@ -6,124 +6,107 @@ using System.Threading.Tasks;
 
 namespace AbiCALC
 {
-    class fraction
+    public class fraction
     {
         private int numerator;
-        private int denuminator;
+        private int denominator;
 
 
 
         //constructors
-        public fraction()
+        public fraction(fraction f)
         {
-            numerator = 0;
-            denuminator = 1;
+            set(f);
+            shorten();
+        }
+
+        private void set(fraction f) 
+        {
+            numerator = f.numerator;
+            denominator = f.denominator;
+            shorten();
         }
 
         public fraction(int integer)
         {
             numerator = integer;
-            denuminator = 1;
+            denominator = 1;
+            shorten();
         }
 
-        public fraction(int numerator, int denuminator)
+        public fraction(int numerator, int denominator)
         {
             this.numerator = numerator;
-            this.denuminator = denuminator;
+            this.denominator = denominator;
+            shorten();
         }
 
-        public fraction(int integer, int numerator, int denuminator)
+        public fraction(int integer, int numerator, int denominator)
         {
-            this.denuminator = denuminator;
-            this.numerator = (integer * denuminator) + numerator;
+            this.denominator = denominator;
+            this.numerator = (integer * denominator) + numerator;
+            shorten();
         }
 
-
-
-        //get-methods
-        public string getString()
+        private void shorten()
         {
-            return numerator + " / " + denuminator;
+            int ggd = getGGD(numerator, denominator);
+
+            numerator /= ggd;
+            denominator /= ggd;
         }
 
+        public fraction getInverse() => fraction.getInverse(this);
 
-
-        //public methods
-        public void add(fraction summand)
+        //overrides
+        public override string ToString() => $"{numerator} / {denominator}";
+        public override bool Equals(object obj)
         {
-            fraction result = addFractions(this, summand);
-            this.numerator = result.numerator;
-            this.denuminator = result.denuminator;
-        }
-
-        public void subtract(fraction subtractor)
-        {
-            fraction result = subtractFractions(this, subtractor);
-            this.numerator = result.numerator;
-            this.denuminator = result.denuminator;
-        }
-
-        public void multiply(fraction factor)
-        {
-            fraction result = multiplyFractions(this, factor);
-            this.numerator = result.numerator;
-            this.denuminator = result.denuminator;
-        }
-
-        public void divide(fraction divisor)
-        {
-            fraction result = divideFractions(this, divisor);
-            this.numerator = result.numerator;
-            this.denuminator = result.denuminator;
+            if (obj.GetType() == this.GetType()) 
+            {
+                fraction f = (fraction)obj;
+                shorten();
+                f.shorten();
+                return numerator == f.numerator && denominator == f.denominator;
+            }
+            return false;
         }
 
 
+
+        //operators
+        public static fraction operator +(fraction a) => a;
+        public static fraction operator -(fraction a) => new fraction(-a.numerator, a.denominator);
+
+        public static fraction operator +(fraction a, fraction b)
+            => new fraction(a.numerator * b.denominator + b.numerator * a.denominator, a.denominator * b.denominator);
+
+        public static fraction operator -(fraction a, fraction b)
+            => a + (-b);
+
+        public static fraction operator *(fraction a, fraction b)
+            => new fraction(a.numerator * b.numerator, a.denominator * b.denominator);
+
+        public static fraction operator /(fraction a, fraction b)
+            => a * b.getInverse();
 
         //public static methods
-        static public fraction addFractions(fraction summand1, fraction summand2)
+
+        public static fraction getInverse(fraction f) 
         {
-            summand1.denuminator *= summand2.denuminator;
-            summand1.numerator = (summand1.numerator * summand2.denuminator) + (summand2.numerator * summand1.denuminator);
-            return shorten(summand1);
-
+            return new fraction(f.denominator, f.numerator);
         }
-
-        static public fraction subtractFractions(fraction subtrahend, fraction subtractor)
-        {
-            subtrahend.denuminator *= subtractor.denuminator;
-            subtrahend.numerator = (subtrahend.numerator * subtractor.denuminator) - (subtractor.numerator * subtrahend.denuminator);
-            return shorten(subtrahend);
-        }
-
-        static public fraction multiplyFractions(fraction factor1, fraction factor2)
-        {
-            factor1.numerator *= factor2.numerator;
-            factor1.denuminator *= factor2.denuminator;
-            return shorten(factor1);
-        }
-
-        static public fraction divideFractions(fraction divident, fraction divisor)
-        {
-            divident.numerator /= divisor.denuminator;
-            divident.denuminator /= divisor.numerator;
-            return shorten(divident);
-        }
-
-
 
         //private static methods
-        static private fraction shorten(fraction f)
-        {
-            int ggd = getGGD(f.numerator, f.denuminator);
-
-            f.numerator /= ggd;
-            f.denuminator /= ggd;
-
-            return f;
-        }
 
         static private int getGGD(int a, int b)
         {
+            if(a == 0 || b == 0) 
+            {
+                if (a == 0) return b;               
+                else return a;
+            }
+
             if (a == b)
             {
                 return a;
