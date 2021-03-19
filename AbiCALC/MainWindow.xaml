@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AbiCALC"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize">
     <Grid>
+        <Grid Background="#1a1a1a">
+            <Grid
+                x:Name="nav_panel"
+                Background="#0d0d0d"
+                HorizontalAlignment="Left"
+                Width="50">
 
+                <StackPanel>
+                    <Grid
+                        Height="50">
+                        
+                        <ToggleButton 
+                            x:Name="tgl_button"
+                            VerticalAlignment="Center"
+                            Height="30"
+                            Width="30" Click="tgl_button_clicked">
+                            <ToggleButton.Background>
+                                <ImageBrush/>
+                            </ToggleButton.Background>
+
+                        </ToggleButton>
+                    </Grid>
+
+                </StackPanel>
+
+
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

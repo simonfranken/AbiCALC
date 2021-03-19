@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Controls.Primitives;
 
 namespace AbiCALC
 {
@@ -23,6 +24,14 @@ namespace AbiCALC
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void tgl_button_clicked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        async private void nav_pnl_expand()
+        {
         }
     }
 }
