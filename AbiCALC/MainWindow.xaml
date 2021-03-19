@@ -19,22 +19,18 @@
                 <StackPanel>
                     <Grid
                         Height="50">
-                        
                         <ToggleButton 
                             x:Name="tgl_button"
                             VerticalAlignment="Center"
                             Height="30"
-                            Width="30" Click="tgl_button_clicked">
+                            Width="30"
+                            Click="tgl_button_clicked">
                             <ToggleButton.Background>
                                 <ImageBrush/>
                             </ToggleButton.Background>
-
                         </ToggleButton>
                     </Grid>
-
                 </StackPanel>
-
-
             </Grid>
         </Grid>
     </Grid>
