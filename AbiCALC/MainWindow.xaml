@@ -5,33 +5,137 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AbiCALC"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="600" Width="1000"
         WindowStyle="SingleBorderWindow"
         >
-    <Grid>
-        <Grid Background="#1a1a1a">
-            <Grid
-                x:Name="nav_panel"
-                Background="#0d0d0d"
-                HorizontalAlignment="Left"
-                Width="50">
+    <Window.Resources>
 
-                <StackPanel>
-                    <Grid
-                        Height="50">
-                        <ToggleButton 
-                            x:Name="tgl_button"
-                            VerticalAlignment="Center"
-                            Height="30"
-                            Width="30"
-                            Click="tgl_button_clicked">
-                            <ToggleButton.Background>
-                                <ImageBrush/>
-                            </ToggleButton.Background>
-                        </ToggleButton>
-                    </Grid>
-                </StackPanel>
-            </Grid>
+        <!--Style: Navigationpanel-Icon-->
+        <Style x:Key="navicon_style" TargetType="Image">
+            
+            <Setter Property="Margin" Value="15"/>
+            
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Image.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation
+                                    Storyboard.TargetProperty="Margin"
+                                    To="9"
+                                    Duration="0:0:0.040"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Image.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation
+                                    Storyboard.TargetProperty="Margin"
+                                    To="15"
+                                    Duration="0:0:0.040"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+            
+        </Style>
+       
+        <!--Style: Windows-->
+        <Style x:Key="window_style" TargetType="Grid">
+            <Setter Property="DockPanel.Dock" Value="Right"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Visibility" Value="Hidden"/>
+        </Style>
+        <Style x:Key="homewindow_style" TargetType="Grid">
+            <Setter Property="DockPanel.Dock" Value="Right"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Visibility" Value="Visible"/>
+        </Style>
+
+        <!--Style: Textbox-->
+        <Style x:Key="headline_style" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="FontFamily" Value="Franklin Gothic Medium Cond"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <!--Style: Border-->
+        <Style x:Key="border_style" TargetType="Border">
+            <Setter Property="Background" Value="#1a1a1a"/>
+        </Style>
+
+    </Window.Resources>
+    
+    <DockPanel Background="#333333">
+        
+        <!--Naviagtionpanel-->
+        <Grid x:Name="nav_pnl"  DockPanel.Dock="Left" Width="60" Background="Transparent" HorizontalAlignment="Left">
+            
+            <!--Rowdefinitions-->
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!--Animationtrigger-->
+            <Grid.Triggers>
+                <EventTrigger RoutedEvent="Grid.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="nav_pnl"
+                                Storyboard.TargetProperty="Width"
+                                To="125"
+                                Duration="0:0:0.100"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Grid.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="nav_pnl"
+                                Storyboard.TargetProperty="Width"
+                                To="60"
+                                Duration="0:0:0.100"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Grid.Triggers>
+
+            <!--Box-->
+            <Border Style="{StaticResource border_style}" Grid.RowSpan="9" CornerRadius="0, 15, 15, 0"/>
+
+            <!--Icons-->
+            <Image x:Name="home_icon" Style="{ StaticResource navicon_style}" Source="/home_logo.png" Grid.Row="4"/>
+            
+            <!--Effect-->
+            
         </Grid>
-    </Grid>
+        
+        <!--Windows-->
+        <Grid x:Name="home_window" Style="{ StaticResource homewindow_style}">
+            
+            <!--Rowdefinitions-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!--Headline-->
+            <Border Style="{StaticResource border_style}" Margin="15, 0,15,10" CornerRadius="0, 0, 10, 10"/>
+            <TextBlock Style="{ StaticResource headline_style}" Grid.Row="0" Text="H O M E"/>
+
+        </Grid>
+        
+    </DockPanel>
 </Window>

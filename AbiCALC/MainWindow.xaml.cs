@@ -21,6 +21,9 @@ namespace AbiCALC
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Grid> windows = new List<Grid>();
+
+        /*
         private int navMin = 50, navMax = 150;
         
         private bool navPanelMovementFinished = true;
@@ -28,13 +31,23 @@ namespace AbiCALC
 
         private object navPanelMovementFinishedLock = new object();
         private object navPanelMovementAimLock = new object();
-
+        */
         public MainWindow()
         {
             InitializeComponent();
+            windows.Add(home_window);
         }
 
-        private void tgl_button_clicked(object sender, RoutedEventArgs e)
+        private void home_icon_clicked(object sender, MouseButtonEventArgs e)
+        {
+            foreach (Grid grid in windows)
+            {
+                grid.Visibility = Visibility.Hidden;
+            }
+            home_window.Visibility = Visibility.Visible;
+        }
+
+        /*private void tgl_button_clicked(object sender, RoutedEventArgs e)
         {
             lock (navPanelMovementAimLock) 
             {               
@@ -45,12 +58,13 @@ namespace AbiCALC
                 if(navPanelMovementFinished) 
                 {
                     navPanelMovementFinished = false;
-                    nav_pnl_expand(30, new TimeSpan(0, 0, 2));                  
+                    nav_pnl_expand(60, new TimeSpan(0, 0, 0, 0, 200));                  
                 }             
             }
-            
-        }
+            */
 
+
+        /*
         private async void nav_pnl_expand(int fps, TimeSpan duration)
         {
             float pos = 0f;
@@ -107,11 +121,13 @@ namespace AbiCALC
             return (float)(Math.Exp(input));
         }
 
+
         private float map(float f, Func<float, float> func) 
         {
             float deltaY = -func(0f);
             float scaleY = 1 / (deltaY + func(1f));
             return scaleY * (deltaY + func(f));
         }
+        */
     }
 }
