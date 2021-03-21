@@ -55,10 +55,11 @@
         <!--Style: Textbox-->
         <Style x:Key="headline_style" TargetType="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="FontSize" Value="25"/>
-            <Setter Property="FontFamily" Value="Franklin Gothic Medium Cond"/>
+            <Setter Property="FontFamily" Value="Segoe UI Black"/>
             <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="40,0,0,10"/>
         </Style>
 
         <!--Style: Border-->
@@ -117,7 +118,7 @@
 
             <!--Icons-->
             <Image x:Name="home_icon" Style="{ StaticResource navicon_style}" Source="/home_logo.png" Grid.Row="4"/>
-            
+
             <!--Effect-->
             
         </Grid>
@@ -133,7 +134,7 @@
 
             <!--Headline-->
             <Border Style="{StaticResource border_style}" Margin="15, 0,15,10" CornerRadius="0, 0, 10, 10"/>
-            <TextBlock Style="{ StaticResource headline_style}" Grid.Row="0" Text="H O M E"/>
+            <TextBlock Style="{ StaticResource headline_style}" Grid.Row="0" Text="HOME"/>
 
         </Grid>
         
