@@ -7,11 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="fonts\leaguespartan-bold.ttf" />
     <None Remove="home_logo.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="home_logo.png" />
+    <Resource Include="fonts\leaguespartan-bold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="resources\home_logo.png" />
   </ItemGroup>
 
 </Project>
