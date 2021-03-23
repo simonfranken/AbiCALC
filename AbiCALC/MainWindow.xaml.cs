@@ -36,16 +36,32 @@ namespace AbiCALC
         {
             InitializeComponent();
             windows.Add(home_window);
+            windows.Add(profile_window);
         }
 
-        private void home_icon_clicked(object sender, MouseButtonEventArgs e)
+        private void hide_all_windows()
         {
             foreach (Grid grid in windows)
             {
                 grid.Visibility = Visibility.Hidden;
             }
+        }
+
+        private void home_icon_clicked(object sender, MouseButtonEventArgs e)
+        {
+            hide_all_windows();
+
             home_window.Visibility = Visibility.Visible;
         }
+
+        private void profile_icon_clicked(object sender, MouseButtonEventArgs e)
+        {
+            hide_all_windows();
+
+            profile_window.Visibility = Visibility.Visible;
+        }
+
+
 
         /*private void tgl_button_clicked(object sender, RoutedEventArgs e)
         {

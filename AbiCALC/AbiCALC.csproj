@@ -9,6 +9,7 @@
   <ItemGroup>
     <None Remove="fonts\leaguespartan-bold.ttf" />
     <None Remove="home_logo.png" />
+    <None Remove="resources\profile_logo.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +18,7 @@
 
   <ItemGroup>
     <Resource Include="resources\home_logo.png" />
+    <Resource Include="resources\profile_logo.png" />
   </ItemGroup>
 
 </Project>
