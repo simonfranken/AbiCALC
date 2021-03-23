@@ -17,7 +17,7 @@
         <!--Style: Navigationpanel-Icon-->
         <Style x:Key="navicon_style" TargetType="Image">
 
-            <Setter Property="Margin" Value="15"/>
+            <Setter Property="Margin" Value="10"/>
             <Setter Property="Cursor" Value="Hand"/>
 
             <Style.Triggers>
@@ -26,8 +26,8 @@
                         <Storyboard>
                             <ThicknessAnimation
                                     Storyboard.TargetProperty="Margin"
-                                    To="9"
-                                    Duration="0:0:0.075"/>
+                                    To="8"
+                                    Duration="0:0:0.100"/>
 
                         </Storyboard>
                     </BeginStoryboard>
@@ -37,8 +37,8 @@
                         <Storyboard>
                             <ThicknessAnimation
                                     Storyboard.TargetProperty="Margin"
-                                    To="15"
-                                    Duration="0:0:0.075"/>
+                                    To="10"
+                                    Duration="0:0:0.100"/>
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
@@ -116,33 +116,6 @@
             <Setter Property="CornerRadius" Value="0, 15, 15, 0"/>
         </Style>
 
-        <!--Style: Grid-->
-        <Style x:Key="grid_style" TargetType="Grid">
-            <Setter Property="Margin" Value="15"/>
-            <Style.Triggers>
-                <EventTrigger RoutedEvent="Border.MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ThicknessAnimation
-                                Storyboard.TargetProperty="Margin"
-                                To="12"
-                                Duration="0:0:0.200"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="Border.MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ThicknessAnimation
-                                Storyboard.TargetProperty="Margin"
-                                To="15"
-                                Duration="0:0:0.200"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Style.Triggers>
-        </Style>
-
     </Window.Resources>
 
     <DockPanel Background="#333333" >
@@ -153,8 +126,9 @@
             <!--Rowdefinitions-->
             <Grid.RowDefinitions>
                 <RowDefinition/>
-                <RowDefinition Height="75"/>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
@@ -186,11 +160,11 @@
             </Grid.Triggers>
 
             <!--Box-->
-            <Border Style="{StaticResource navborder_style}" Grid.RowSpan="4"/>
+            <Border Style="{StaticResource navborder_style}" Grid.RowSpan="5"/>
 
             <!--Icons-->
-            <Image x:Name="home_icon" Style="{ StaticResource navicon_style}" Source="/resources/home_logo.png" Grid.Row="1" MouseLeftButtonUp="home_icon_clicked"/>
-            <Image x:Name="profile_icon" Style="{StaticResource navicon_style}" Source="/resources/profile_logo.png" Grid.Row="2" MouseLeftButtonUp="profile_icon_clicked"/>
+            <Image x:Name="home_icon" Style="{ StaticResource navicon_style}" Source="/resources/home_logo.png" Grid.Row="2" MouseLeftButtonUp="home_icon_clicked"/>
+            <Image x:Name="profile_icon" Style="{StaticResource navicon_style}" Source="/resources/profile_logo.png" Grid.Row="1" MouseLeftButtonUp="profile_icon_clicked"/>
 
         </Grid>
 
@@ -198,7 +172,7 @@
         <Grid x:Name="window_grid" DockPanel.Dock="Right">
             
             <!--Homewindow-->
-            <Grid x:Name="home_window" Style="{ StaticResource homewindow_style}" Visibility="Hidden">
+            <Grid x:Name="home_window" Style="{ StaticResource homewindow_style}">
 
                 <!--Rowdefinitions-->
                 <Grid.RowDefinitions>
@@ -239,7 +213,7 @@
             </Grid>
             
             <!--Profilewindow-->
-            <Grid x:Name="profile_window" Style="{StaticResource window_style}" Visibility="Visible">
+            <Grid x:Name="profile_window" Style="{StaticResource window_style}">
                 
                 <!--Rowdefinitions-->
                 <Grid.RowDefinitions>
