@@ -12,38 +12,39 @@ namespace AbiCALC
 
         public override int? getAverageGrade()
         {
-            int smallSumm = 0, smallCount = 0, bigSumm = 0, bigCount = 0;
+            int smallSumm = 0, bigSumm = 0;
+            fraction smallCount = (fraction)(0), bigCount = (fraction)(0);
             foreach (exam e in exams)
             {
                 if(e.isBig) 
                 {
                     bigSumm += e.grade;
-                    bigCount++;
+                    bigCount += e.weight;
                 }
                 else 
                 {
                     smallSumm += e.grade;
-                    smallCount++;
+                    smallCount += e.weight;
                 }
             }
-            float smallAvg = smallCount != 0 ? smallSumm / smallCount : float.NaN;
-            float bigAvg = bigCount != 0 ? bigSumm / bigCount : float.NaN;
-            float r;
-            if(smallCount != float.NaN && bigAvg != float.NaN) 
+            fraction smallAvg = (fraction)smallSumm / smallCount;
+            fraction bigAvg = (fraction)bigSumm / bigCount;
+            fraction r;
+            if(!smallAvg.isDivZeroError() && !bigAvg.isDivZeroError()) 
             {
-                r = (smallAvg + bigAvg) / 2f;
+                r = (smallAvg + bigAvg) / (fraction)2;
             }
-            else if(bigAvg != float.NaN && smallAvg == float.NaN) 
+            else if(!smallAvg.isDivZeroError() && bigAvg.isDivZeroError()) 
             {
                 r = bigAvg;
             }
-            else if(bigAvg == float.NaN && smallAvg != float.NaN) 
+            else if(smallAvg.isDivZeroError() && !bigAvg.isDivZeroError()) 
             {
                 r = smallAvg;
             }
             else 
             {
-                r = float.NaN;
+                r = null;
             }
             return r != float.NaN ? (int)r : null;
         }

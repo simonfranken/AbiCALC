@@ -11,5 +11,6 @@ namespace AbiCALC
         public bool isBig;
         public examType type;
         public int grade;
+        public fraction weight = new fraction(1);
     }
 }
