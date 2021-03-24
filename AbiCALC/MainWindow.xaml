@@ -197,7 +197,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition Height="50"/>
-                    <RowDefinition Height="65"/>
+                    <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
@@ -242,7 +242,7 @@
             <Grid x:Name="window_grid" DockPanel.Dock="Right">
 
                 <!--Homewindow-->
-                <Grid x:Name="home_window" Style="{ StaticResource homewindow_style}">
+                <Grid x:Name="home_window" Style="{ StaticResource homewindow_style}" Visibility="Hidden">
 
                     <!--Rowdefinitions-->
                     <Grid.RowDefinitions>
@@ -359,7 +359,27 @@
                         </Grid>
                     </Border>
                 </Grid>
+                
+                <!--Addwindow-->
+                <Grid>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Style="{StaticResource headlineborder_style}" Grid.ColumnSpan="3" Margin="15,0,15,10" CornerRadius="0, 0, 10, 10">
+                        <TextBlock Style="{StaticResource headline1_style}" Text="Note hinzufügen"/>
+                    </Border>
+                </Grid>
             </Grid>
+
         </DockPanel>
     </Grid>
 </Window>
