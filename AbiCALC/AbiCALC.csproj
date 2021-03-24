@@ -11,6 +11,7 @@
     <None Remove="home_logo.png" />
     <None Remove="resources\add_logo.png" />
     <None Remove="resources\add_logo_hover.png" />
+    <None Remove="resources\close_logo.png" />
     <None Remove="resources\profile_logo.png" />
   </ItemGroup>
 
@@ -18,6 +19,7 @@
     <Resource Include="fonts\leaguespartan-bold.ttf" />
     <Resource Include="resources\add_logo.png" />
     <Resource Include="resources\add_logo_hover.png" />
+    <Resource Include="resources\close_logo.png" />
   </ItemGroup>
 
   <ItemGroup>

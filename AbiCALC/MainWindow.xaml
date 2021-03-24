@@ -127,7 +127,7 @@
     <Grid>
         <!--Rowdefinitions-->
         <Grid.RowDefinitions>
-            <RowDefinition Height="15"/>
+            <RowDefinition Height="18"/>
             <RowDefinition Height="2"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -136,7 +136,24 @@
         <!--Windowchrome-->
         <Grid Background="#1a1a1a">
             <Grid WindowChrome.IsHitTestVisibleInChrome="True">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                </Grid.ColumnDefinitions>
                 
+                <Border Grid.Column="1">
+                    <Image x:Name="close_button" Cursor="Hand" HorizontalAlignment="Right" Source="resources/close_logo.png" Margin="5,0,5,0" MouseLeftButtonUp="close_clicked"/>
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#ff7f00"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                </Border>
             </Grid>
         </Grid>
 
