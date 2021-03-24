@@ -25,6 +25,24 @@ namespace Tests
             if (temp != null) temp2 = (int)temp;
             else Assert.Fail("is null");
             Assert.AreEqual(expected,temp2);
-        } 
+        }
+
+        [Test]
+        [TestCase(new int[] { 11, 12 }, 14, 13)]
+        [TestCase(new int[] { 11, 12, 11 }, 10, 11)]
+        public void roundingTest2(int[] i, int j, int expected)
+        {
+            normalSubject s = new normalSubject();
+            foreach (int x in i)
+            {
+                s.add(new exam(false, x));
+            }
+            s.add(new exam(true, j));
+            int? temp = s.getAverageGrade();
+            int temp2 = -1;
+            if (temp != null) temp2 = (int)temp;
+            else Assert.Fail("is null");
+            Assert.AreEqual(expected, temp2);
+        }
     }
 }

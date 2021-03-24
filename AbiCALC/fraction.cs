@@ -90,12 +90,12 @@ namespace AbiCALC
 
         public static explicit operator fraction(int i) => new fraction(i);
 
-        public static implicit operator int?(fraction f) => f.round();
+        public static implicit operator int?(fraction f) => f.rounded();
 
 
         //methods
 
-        public int? round()
+        public int? rounded()
         {
             if (isDivZeroError()) return null;
             int r = numerator / denominator;
@@ -105,6 +105,13 @@ namespace AbiCALC
                 r++;
             }
             return r;
+        }
+
+        public void round() 
+        {
+            int? i = rounded();
+            if (i != null) set((int)i, 1);
+            else set(0, 0);
         }
 
         //public static methods

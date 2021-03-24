@@ -19,7 +19,7 @@ namespace Tests
         {
             fraction f = new fraction(i1, i2);
             fraction expected = new fraction(i3, i4);
-            Assert.AreEqual(f, expected);
+            Assert.AreEqual(expected, f);
         }
 
         [Test]
