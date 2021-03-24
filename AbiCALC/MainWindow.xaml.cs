@@ -66,5 +66,14 @@ namespace AbiCALC
             Close();
         }
 
+        private void max_clicked(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Maximized;
+        }
+
+        private void min_clicked(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
     }
 }

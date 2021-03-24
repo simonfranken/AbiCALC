@@ -140,10 +140,36 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
                 </Grid.ColumnDefinitions>
                 
-                <Border Grid.Column="1">
+                <Border Grid.Column="3">
                     <Image x:Name="close_button" Cursor="Hand" HorizontalAlignment="Right" Source="resources/close_logo.png" Margin="5,0,5,0" MouseLeftButtonUp="close_clicked"/>
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#ff7f00"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                </Border>
+                <Border Grid.Column="2">
+                    <Image x:Name="max_button" Cursor="Hand" HorizontalAlignment="Right" Source="resources/max_logo.png" Margin="5,0,5,0" MouseLeftButtonUp="max_clicked"/>
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#ff7f00"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                </Border>
+                <Border Grid.Column="1">
+                    <Image x:Name="min_button" Cursor="Hand" HorizontalAlignment="Right" Source="resources/min_logo.png" Margin="5,0,5,0" MouseLeftButtonUp="min_clicked"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Style.Triggers>
@@ -286,7 +312,7 @@
 
                             <TextBlock Style="{StaticResource normalText_style}"
                                    Grid.Row="1"
-                                   Text="Add Entry"
+                                   Text="Note hinzufügen"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
                         </Grid>

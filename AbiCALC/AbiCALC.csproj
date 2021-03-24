@@ -12,6 +12,8 @@
     <None Remove="resources\add_logo.png" />
     <None Remove="resources\add_logo_hover.png" />
     <None Remove="resources\close_logo.png" />
+    <None Remove="resources\max_logo.png" />
+    <None Remove="resources\min_logo.png" />
     <None Remove="resources\profile_logo.png" />
   </ItemGroup>
 
@@ -24,6 +26,8 @@
 
   <ItemGroup>
     <Resource Include="resources\home_logo.png" />
+    <Resource Include="resources\max_logo.png" />
+    <Resource Include="resources\min_logo.png" />
     <Resource Include="resources\profile_logo.png" />
   </ItemGroup>
 
