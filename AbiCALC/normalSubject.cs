@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace AbiCALC
 {
-    class normalSubject : subject
+    public class normalSubject : subject
     {
         List<exam> exams = new List<exam>();
+
+        public void add(exam e) => exams.Add(e);
 
         public override int? getAverageGrade()
         {
@@ -36,17 +38,17 @@ namespace AbiCALC
             }
             else if(!smallAvg.isDivZeroError() && bigAvg.isDivZeroError()) 
             {
-                r = bigAvg;
+                r = smallAvg;
             }
             else if(smallAvg.isDivZeroError() && !bigAvg.isDivZeroError()) 
             {
-                r = smallAvg;
+                r = bigAvg;
             }
             else 
             {
                 r = null;
             }
-            return r != float.NaN ? (int)r : null;
+            return r;
         }
     }
 }

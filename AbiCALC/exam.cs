@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace AbiCALC
 {
-    class exam
+    public class exam
     {
         public bool isBig;
-        public examType type;
+        public examType? type;
         public int grade;
         public fraction weight = new fraction(1);
+
+        public exam(bool b, int i) 
+        {
+            isBig = b;
+            grade = i;
+        }
     }
 }

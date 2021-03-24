@@ -90,16 +90,17 @@ namespace AbiCALC
 
         public static explicit operator fraction(int i) => new fraction(i);
 
-        public static implicit operator int(fraction f) => f.round();
+        public static implicit operator int?(fraction f) => f.round();
 
 
         //methods
 
-        public int round()
+        public int? round()
         {
+            if (isDivZeroError()) return null;
             int r = numerator / denominator;
             int rest = numerator % denominator;
-            if(2*rest > denominator) 
+            if(2*rest >= denominator) 
             {
                 r++;
             }
@@ -119,8 +120,7 @@ namespace AbiCALC
         {
             if(a == 0 || b == 0) 
             {
-                if (a == 0) return b;               
-                else return a;
+                return 1;
             }
 
             if (a == b)

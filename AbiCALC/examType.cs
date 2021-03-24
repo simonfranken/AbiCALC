@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbiCALC
 {
-    enum examType
+    public enum examType
     {
         Klausur,
         Kurzarbeit,
