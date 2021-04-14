@@ -16,8 +16,8 @@ namespace AbiCALC
             int i = 900;
             upperBounds.Add(i);
             i -= 78;
-            upperBounds.Add(i);
-            for (int x = 0; x < 28; x++)
+            upperBounds.Add(i); 
+            for (int x = 0; x < 29; x++)
             {
                 i -= 18;
                 upperBounds.Add(i);
@@ -26,12 +26,19 @@ namespace AbiCALC
 
         private int _getAbi(int i) 
         {
-            throw new NotImplementedException();
+            if (i < 300) return -1;
+            int p = 9;
+            foreach (int max in upperBounds)
+            {
+                if (i <= max) p++;
+                else break;
+            }
+            return p;
         }
 
         public static int getAbi(int points) => (singleton ??= new lookUpTable())._getAbi(points);
 
-        public static string getAbiGrade(int abi) => $"{abi / 10},{abi % 10}";
+        public static string getAbiGrade(int abi) => abi != -1 ? $"{abi / 10},{abi % 10}" : "nicht bestanden";
         
     }
 }
