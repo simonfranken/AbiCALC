@@ -8,7 +8,18 @@ namespace AbiCALC
 {
     class database
     {
-        data d;
+        data d = new data();
+        static database singleton { get { return (_singleton ??= new database()); } }
+        static database _singleton;
 
+        public static void save() 
+        {
+
+        }
+
+        public static data loadLast()
+        {
+            return singleton.d;
+        }
     }
 }

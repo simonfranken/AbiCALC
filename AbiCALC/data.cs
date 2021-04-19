@@ -9,6 +9,17 @@ namespace AbiCALC
     class data
     {
         semester[] semesters = new semester[4];
+        private string _name = string.Empty;
+
+        public int getPoints() 
+        {
+            throw new NotImplementedException();
+        }
+
+        public string name 
+        {
+            get => _name;
+        }
 
         public data()
         {

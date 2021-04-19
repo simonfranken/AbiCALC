@@ -272,7 +272,7 @@
                             </Grid.RowDefinitions>
 
                             <TextBlock Text="Aktuelle Notenprognose" Style="{StaticResource headline2_style}" VerticalAlignment="Top" />
-                            <TextBlock Text="1.0"
+                            <TextBlock Text="{Binding getGrade}"
                            Style="{StaticResource normalText_style}"
                            Grid.Row="1" FontSize="35"
                            HorizontalAlignment="Right"
@@ -351,7 +351,7 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock Style="{StaticResource normalText_style}" Text="Hallo Simon!"
+                            <TextBlock Style="{StaticResource normalText_style}" Text="{Binding getNameString}"
                                    FontSize="20"
                                    Margin="25, 0, 25, 0"
                                    VerticalAlignment="Center"/>

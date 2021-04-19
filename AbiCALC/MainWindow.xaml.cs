@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
+using System.ComponentModel;
 
 namespace AbiCALC
 {
@@ -22,21 +23,30 @@ namespace AbiCALC
     public partial class MainWindow : Window
     {
         List<Grid> windows = new List<Grid>();
+        data d = new data();
 
-        /*
-        private int navMin = 50, navMax = 150;
-        
-        private bool navPanelMovementFinished = true;
-        private bool navPanelMovementAim = true;
+        public string getNameString 
+        {
+            get => $"Hallo {name}!";
+        }
 
-        private object navPanelMovementFinishedLock = new object();
-        private object navPanelMovementAimLock = new object();
-        */
+        public string getGrade 
+        {
+            get => lookUpTable.getAbiGrade(d.getPoints());
+        }
+
+        public string name 
+        {
+            get => d.name;           
+        }
+
         public MainWindow()
         {
             InitializeComponent();
             windows.Add(home_window);
             windows.Add(profile_window);
+            this.DataContext = this;
+            d = database.loadLast();
         }
 
         private void hide_all_windows()
@@ -74,6 +84,11 @@ namespace AbiCALC
         private void min_clicked(object sender, MouseButtonEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        protected override void OnClosing(CancelEventArgs e) 
+        {
+            database.save();
         }
     }
 }
