@@ -11,43 +11,28 @@ namespace AbiCALC
         private int numerator;
         private int denominator;
 
+        //set
+        
 
+        private void set(fraction f) => set(f.numerator, f.denominator);
+        private void set(int num, int den) 
+        {
+            numerator = num;
+            denominator = den;
+            shorten();
+        }
 
         //constructors
-        public fraction(fraction f)
-        {
-            set(f);
-            shorten();
-        }
 
-        private void set(fraction f) 
-        {
-            numerator = f.numerator;
-            denominator = f.denominator;
-            shorten();
-        }
+        public fraction(int integer) => set(integer, 1);
 
-        public fraction(int integer)
-        {
-            numerator = integer;
-            denominator = 1;
-            shorten();
-        }
+        public fraction(int n, int d) => set(n, d);
 
-        public fraction(int numerator, int denominator)
-        {
-            this.numerator = numerator;
-            this.denominator = denominator;
-            shorten();
-        }
+        public fraction(int integer, int numerator, int denominator) => set((integer * denominator) + numerator, denominator);
 
-        public fraction(int integer, int numerator, int denominator)
-        {
-            this.denominator = denominator;
-            this.numerator = (integer * denominator) + numerator;
-            shorten();
-        }
+        public fraction(fraction f) => set(f);
 
+        //shorten
         private void shorten()
         {
             int ggd = getGGD(numerator, denominator);
@@ -55,6 +40,8 @@ namespace AbiCALC
             numerator /= ggd;
             denominator /= ggd;
         }
+
+        public bool isDivZeroError() => denominator == 0;
 
         public fraction getInverse() => fraction.getInverse(this);
 
@@ -74,7 +61,7 @@ namespace AbiCALC
 
 
 
-        //operators
+        //operators arithmetic
         public static fraction operator +(fraction a) => a;
         public static fraction operator -(fraction a) => new fraction(-a.numerator, a.denominator);
 
@@ -90,6 +77,43 @@ namespace AbiCALC
         public static fraction operator /(fraction a, fraction b)
             => a * b.getInverse();
 
+
+
+        //operators comparison
+        public static bool operator ==(fraction a, fraction b) => a.Equals(b);
+
+        public static bool operator !=(fraction a, fraction b) => !(a == b);
+
+
+
+        //operators cast
+
+        public static explicit operator fraction(int i) => new fraction(i);
+
+        public static implicit operator int?(fraction f) => f.rounded();
+
+
+        //methods
+
+        public int? rounded()
+        {
+            if (isDivZeroError()) return null;
+            int r = numerator / denominator;
+            int rest = numerator % denominator;
+            if(2*rest >= denominator) 
+            {
+                r++;
+            }
+            return r;
+        }
+
+        public void round() 
+        {
+            int? i = rounded();
+            if (i != null) set((int)i, 1);
+            else set(0, 0);
+        }
+
         //public static methods
 
         public static fraction getInverse(fraction f) 
@@ -103,8 +127,7 @@ namespace AbiCALC
         {
             if(a == 0 || b == 0) 
             {
-                if (a == 0) return b;               
-                else return a;
+                return 1;
             }
 
             if (a == b)

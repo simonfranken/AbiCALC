@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbiCALC
 {
-    abstract class subject
+    public abstract class subject
     {
         subjectTypes type;
         public abstract int? getAverageGrade();
