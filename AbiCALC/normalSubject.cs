@@ -12,35 +12,42 @@ namespace AbiCALC
 
         public void add(exam e) => exams.Add(e);
 
-        public override int? getAverageGrade()
+        public bool isValid() 
         {
-            int smallSumm = 0, bigSumm = 0;
-            fraction smallCount = (fraction)(0), bigCount = (fraction)(0);
+            int i = 0;
             foreach (exam e in exams)
             {
-                if(e.isBig) 
-                {
-                    bigSumm += e.grade;
-                    bigCount += e.weight;
-                }
-                else 
+                if (e.isBig) i++;
+            }
+            return i <= 1;
+        }
+
+        public override int? getAverageGrade()
+        {
+            int smallSumm = 0;
+            fraction smallCount = (fraction)(0);
+            foreach (exam e in exams)
+            {
+                if (!e.isBig)
                 {
                     smallSumm += e.grade;
                     smallCount += e.weight;
                 }
             }
             fraction smallAvg = (fraction)smallSumm / smallCount;
-            fraction bigAvg = (fraction)bigSumm / bigCount;
+            exam b = getBig();
+            fraction bigAvg = b != null ? (fraction)b.grade : null;
             fraction r;
-            if(!smallAvg.isDivZeroError() && !bigAvg.isDivZeroError()) 
+
+            if(!smallAvg.isDivZeroError() && bigAvg != null) 
             {
-                r = (smallAvg + bigAvg) / (fraction)2;
+                r = (smallAvg.round2Decimals() + bigAvg) / (fraction)2;
             }
-            else if(!smallAvg.isDivZeroError() && bigAvg.isDivZeroError()) 
+            else if(!smallAvg.isDivZeroError() && bigAvg == null) 
             {
-                r = smallAvg;
+                r = smallAvg.round2Decimals();
             }
-            else if(smallAvg.isDivZeroError() && !bigAvg.isDivZeroError()) 
+            else if(smallAvg.isDivZeroError() && bigAvg != null) 
             {
                 r = bigAvg;
             }
@@ -48,7 +55,16 @@ namespace AbiCALC
             {
                 r = null;
             }
-            return r;
+            return r.round2Decimals().rounded();
+        }
+
+        private exam getBig()
+        {
+            foreach (exam e in exams)
+            {
+                if (e.isBig) return e;
+            }
+            return null;
         }
     }
 }

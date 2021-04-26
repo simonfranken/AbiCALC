@@ -114,6 +114,17 @@ namespace AbiCALC
             else set(0, 0);
         }
 
+        public float getValue() 
+        {
+            return ((float)numerator) / ((float)denominator);
+        }
+
+        public fraction round2Decimals() 
+        {
+            int i = (int)Math.Floor((getValue() * 100));
+            return new fraction(i, 100);
+        }
+
         //public static methods
 
         public static fraction getInverse(fraction f) 
