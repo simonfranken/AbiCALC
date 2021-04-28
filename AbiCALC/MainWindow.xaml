@@ -242,7 +242,7 @@
             <Grid x:Name="window_grid" DockPanel.Dock="Right">
 
                 <!--Homewindow-->
-                <Grid x:Name="home_window" Style="{ StaticResource homewindow_style}">
+                <Grid x:Name="home_window" Style="{ StaticResource homewindow_style}" Visibility="Hidden">
 
                     <!--Rowdefinitions-->
                     <Grid.RowDefinitions>
@@ -361,7 +361,7 @@
                 </Grid>
                 
                 <!--Addwindow-->
-                <Grid Style="{StaticResource window_style}">
+                <Grid Style="{StaticResource window_style}" Visibility="Visible">
                     
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100"/>
