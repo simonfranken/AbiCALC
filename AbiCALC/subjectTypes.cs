@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbiCALC
 {
-    enum subjectTypes
+    public enum subjectTypes
     {
         //Pflicht
         Deutsch,

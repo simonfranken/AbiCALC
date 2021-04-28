@@ -10,5 +10,12 @@ namespace AbiCALC
     {
         subjectTypes type;
         public abstract int? getAverageGrade();
+
+        public abstract bool isValid();
+
+        public bool isOK() 
+        {
+            return isValid() && getAverageGrade() != null;
+        }
     }
 }
