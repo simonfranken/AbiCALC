@@ -8,6 +8,6 @@ namespace AbiCALC
 {
     public class mins
     {
-
+        public Dictionary<subjectTypes, int> m = new Dictionary<subjectTypes, int>();
     }
 }

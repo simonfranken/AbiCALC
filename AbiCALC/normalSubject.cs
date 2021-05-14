@@ -22,7 +22,7 @@ namespace AbiCALC
             return i <= 1;
         }
 
-        public override int? getAverageGrade()
+        protected override int? getAverageGradeFromExams()
         {
             int smallSumm = 0;
             fraction smallCount = (fraction)(0);

@@ -8,6 +8,6 @@ namespace AbiCALC
 {
     class semester
     {
-        Dictionary<subjectTypes, subject> dict = new Dictionary<subjectTypes, subject>();
+        public Dictionary<subjectTypes, subject> dict = new Dictionary<subjectTypes, subject>();
     }
 }

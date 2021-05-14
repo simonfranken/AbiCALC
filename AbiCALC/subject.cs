@@ -8,14 +8,34 @@ namespace AbiCALC
 {
     public abstract class subject
     {
-        subjectTypes type;
-        public abstract int? getAverageGrade();
+        public subjectTypes type;
+        public int? getAverageGrade() 
+        {
+            return isOverride ? overridePoints : getAverageGradeFromExams();
+        }
+
+        protected abstract int? getAverageGradeFromExams();
 
         public abstract bool isValid();
 
         public bool isOK() 
         {
-            return isValid() && getAverageGrade() != null;
+            return isValid() && examsValid();
         }
+
+        public bool examsValid() => getAverageGradeFromExams() != null;
+
+
+        private bool isOverride = false;
+        public int overridePoints 
+        {
+            get => _overridePoints;
+            set 
+            {
+                _overridePoints = value;
+                isOverride = true;
+            }
+        }
+        private int _overridePoints;
     }
 }

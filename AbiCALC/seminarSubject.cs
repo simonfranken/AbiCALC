@@ -8,7 +8,7 @@ namespace AbiCALC
 {
     class seminarSubject : subject
     {
-        public override int? getAverageGrade()
+        protected override int? getAverageGradeFromExams()
         {
             throw new NotImplementedException();
         }
