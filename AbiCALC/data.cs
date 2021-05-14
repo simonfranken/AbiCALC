@@ -29,5 +29,10 @@ namespace AbiCALC
                 semesters[i] = new semester();
             }
         }
+
+        public int getMaxPoints(List<semester> sems, mins m) 
+        {
+            throw new NotImplementedException();
+        }
     }
 }

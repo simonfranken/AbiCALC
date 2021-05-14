@@ -12,5 +12,10 @@ namespace AbiCALC
         {
             throw new NotImplementedException();
         }
+
+        public override bool isValid()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace AbiCALC
 
         public void add(exam e) => exams.Add(e);
 
-        public bool isValid() 
+        public override bool isValid() 
         {
             int i = 0;
             foreach (exam e in exams)
