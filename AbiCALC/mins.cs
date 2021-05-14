@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbiCALC
 {
+    [Serializable]
     public class mins
     {
         public Dictionary<subjectTypes, int> m = new Dictionary<subjectTypes, int>();

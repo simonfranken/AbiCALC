@@ -59,7 +59,10 @@ namespace AbiCALC
             return false;
         }
 
-
+        public override int GetHashCode()
+        {
+            return Tuple.Create(numerator, denominator).GetHashCode();
+        }
 
         //operators arithmetic
         public static fraction operator +(fraction a) => a;

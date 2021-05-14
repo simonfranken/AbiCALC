@@ -6,65 +6,49 @@ using System.Threading.Tasks;
 
 namespace AbiCALC
 {
+    [Serializable]
     public class normalSubject : subject
     {
-        List<exam> exams = new List<exam>();
+        List<exam> examsSmall = new List<exam>();
+        exam klausur = null;
 
-        public void add(exam e) => exams.Add(e);
-
-        public override bool isValid() 
-        {
-            int i = 0;
-            foreach (exam e in exams)
-            {
-                if (e.isBig) i++;
-            }
-            return i <= 1;
-        }
+        //public void add(exam e) => examsSmall.Add(e);
 
         protected override int? getAverageGradeFromExams()
         {
+            //init
             int smallSumm = 0;
             fraction smallCount = (fraction)(0);
-            foreach (exam e in exams)
+            //summ up
+            foreach (exam e in examsSmall)
             {
-                if (!e.isBig)
-                {
                     smallSumm += e.grade;
-                    smallCount += e.weight;
-                }
+                    smallCount += e.weight;               
             }
+            //calc big
             fraction smallAvg = (fraction)smallSumm / smallCount;
-            exam b = getBig();
-            fraction bigAvg = b != null ? (fraction)b.grade : null;
+            fraction bigAvg = klausur != null ? (fraction)klausur.grade : null;
             fraction r;
-
-            if(!smallAvg.isDivZeroError() && bigAvg != null) 
+            switch((!smallAvg.isDivZeroError(), bigAvg != null)) 
             {
-                r = (smallAvg.round2Decimals() + bigAvg) / (fraction)2;
+                //both
+                case (true, true):
+                    r = (smallAvg.round2Decimals() + bigAvg) / (fraction)2;
+                    break;
+                //none
+                case (false, false):
+                    r = null;
+                    break;
+                //only big
+                case (false, true):
+                    r = bigAvg;
+                    break;
+                //only small
+                case (true, false):
+                    r = smallAvg.round2Decimals();
+                    break;
             }
-            else if(!smallAvg.isDivZeroError() && bigAvg == null) 
-            {
-                r = smallAvg.round2Decimals();
-            }
-            else if(smallAvg.isDivZeroError() && bigAvg != null) 
-            {
-                r = bigAvg;
-            }
-            else 
-            {
-                r = null;
-            }
-            return r.round2Decimals().rounded();
-        }
-
-        private exam getBig()
-        {
-            foreach (exam e in exams)
-            {
-                if (e.isBig) return e;
-            }
-            return null;
+            return r != null ? r.round2Decimals().rounded() : null;
         }
     }
 }

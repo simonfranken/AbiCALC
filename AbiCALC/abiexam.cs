@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace AbiCALC
 {
-    public class abiexam
+    public class abiexam : subject
     {
-        public int grade 
+        int? grade = null;
+        protected override int? getAverageGradeFromExams()
         {
-            get 
-            {
-                throw new NotImplementedException();
-            }
+            if (grade != null) return 4 * grade;
+            else return null;
         }
     }
 }

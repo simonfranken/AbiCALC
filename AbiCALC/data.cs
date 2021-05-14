@@ -17,7 +17,7 @@ namespace AbiCALC
 
         public int getPoints() 
         {
-            return getMaxPoints(predict(new List<semester>(semesters)), min, new List<abiexam>(abiexams));
+            return getMaxPoints(predict(new List<semester>(semesters)), min, predict(new List<abiexam>(abiexams), new List<semester>(semesters)));
         }
 
         public string name 
@@ -52,27 +52,34 @@ namespace AbiCALC
                     all.Add(su);
                 }
             }
+            //init vars
             int count = 0;
             int pointsSumm = 0;
+            all = new List<subject>(all.Distinct());
             all.OrderBy(x => (int)x.getAverageGrade());
             all.Reverse();
+
+            //summ up min per subject
             foreach(subjectTypes st in d.Keys) 
             {
                 pointsSumm += summ(max(d[st], m.m[st], used));
                 count++;
             }
+            //remove used
             foreach(subject s in used) 
             {
                 all.Remove(s);
             }
+            //add rest
             pointsSumm += summ(max(all, (required - count), new List<subject>()));
+            //add abi
             foreach(abiexam a in abi) 
             {
-                pointsSumm += a.grade;
+                pointsSumm += (int)a.getAverageGrade();
             }
             return pointsSumm;
         }
-
+        //gets the highst i items in l, adds them to used
         private static List<subject> max(List<subject> l, int i, List<subject> used) 
         {
             l.OrderBy(x => (int)x.getAverageGrade());
@@ -85,14 +92,14 @@ namespace AbiCALC
             }
             return ret;
         }
-
+        //summs all grades up
         private static int summ(List<subject> l) 
         {
             int i = 0;
             foreach (subject x in l) i += (int)x.getAverageGrade();
             return i;
         }
-
+        //predict empty subjects by avg 1
         public static List<semester> predict(List<semester> origin) 
         {
             Dictionary<subjectTypes, List<subject>> d = new Dictionary<subjectTypes, List<subject>>();
@@ -122,29 +129,64 @@ namespace AbiCALC
             }
             return ret;
         }
-
+        //predict empty subjects by avg 2
         public static List<subject> predict(List<subject> subjects) 
         {
             fraction summ = new fraction(0), count = new fraction(0);
             Dictionary<bool, List<subject>> d = new Dictionary<bool, List<subject>>();
             List<subject> ret = new List<subject>();
+            //split in 2 lists
             foreach(subject s in subjects) 
             {
                 (d[s.examsValid()] ??= new List<subject>()).Add(s);
             }
+            //calc avg based on "true"-list
             foreach(subject s in d[true]) 
             {
+                s.noOverride();
                 count++;
                 summ += (fraction)s.getAverageGrade();
                 ret.Add(s);
             }
-            int avg = summ == 0 ? 15 / 2 : (int)(((fraction)(summ)) / ((fraction)(count)));
+            int avg = summ == 0 ? (15 / 2) * subject.getPredictionFactor(subjects[0]) : (int)(((fraction)(summ)) / ((fraction)(count)));
+            //set override of "false"-list to avg
             foreach(subject s in d[false]) 
             {
                 s.overridePoints = avg;
                 ret.Add(s);
             }
             return ret;
+        }
+        //predict abi by avg 1
+        public static List<abiexam> predict(List<abiexam> abis, List<semester> sems) 
+        {
+            List<abiexam> ret = new List<abiexam>();
+            foreach(abiexam a in abis) 
+            {
+                ret.Add(predict(a, sems));
+            }
+            return ret;
+        }
+        //predict abi by avg 2
+        public static abiexam predict(abiexam abi, List<semester> sems) 
+        {
+            if (!abi.examsValid())
+            {
+                subjectTypes t = abi.type;
+                sems = predict(sems);
+                int count = 0;
+                int summ = 0;
+                foreach (semester s in sems)
+                    foreach (subject su in s.dict.Values)
+                        if (su.type == t)
+                        {
+                            count++;
+                            summ += (int)su.getAverageGrade();
+                        }
+                abi.overridePoints = summ / count;
+            }
+            else abi.noOverride();
+            return abi;
         }
     }
 }

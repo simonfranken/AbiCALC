@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace AbiCALC
 {
+    [Serializable]
     class seminarSubject : subject
     {
         protected override int? getAverageGradeFromExams()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool isValid()
         {
             throw new NotImplementedException();
         }

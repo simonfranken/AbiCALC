@@ -6,36 +6,46 @@ using System.Threading.Tasks;
 
 namespace AbiCALC
 {
+    [Serializable]
     public abstract class subject
     {
         public subjectTypes type;
-        public int? getAverageGrade() 
+
+
+        [NonSerialized]
+        private bool isOverride = false;
+        [NonSerialized]
+        private int _overridePoints;
+
+        public bool examsValid() => getAverageGradeFromExams() != null;
+        public int? getAverageGrade()
         {
             return isOverride ? overridePoints : getAverageGradeFromExams();
         }
 
         protected abstract int? getAverageGradeFromExams();
 
-        public abstract bool isValid();
-
-        public bool isOK() 
-        {
-            return isValid() && examsValid();
-        }
-
-        public bool examsValid() => getAverageGradeFromExams() != null;
-
-
-        private bool isOverride = false;
-        public int overridePoints 
+        public int overridePoints
         {
             get => _overridePoints;
-            set 
+            set
             {
                 _overridePoints = value;
                 isOverride = true;
             }
         }
-        private int _overridePoints;
+
+
+        public void noOverride()
+        {
+            isOverride = false;
+        }
+
+
+
+        public static int getPredictionFactor(subject type)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
