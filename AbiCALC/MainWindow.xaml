@@ -17,13 +17,13 @@
     <WindowChrome.WindowChrome>
         <WindowChrome/>
     </WindowChrome.WindowChrome>
-    
+
     <Window.Resources>
 
         <!--Style: Navigationpanel-Icon-->
-        <Style x:Key="navicon_style" TargetType="Image">
-
-            <Setter Property="Margin" Value="10"/>
+        <Style x:Key="style_icon" TargetType="Image">
+            <Setter Property="Margin" Value="15"/>
+            <Setter Property="MaxWidth" Value="35"/>
             <Setter Property="Cursor" Value="Hand"/>
 
             <Style.Triggers>
@@ -34,7 +34,6 @@
                                     Storyboard.TargetProperty="Margin"
                                     To="8"
                                     Duration="0:0:0.100"/>
-
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
@@ -120,28 +119,59 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-
         <Style x:Key="style_navigation_border" TargetType="Border">
             <Setter Property="Background" Value="#1a1a1a"/>
             <Setter Property="CornerRadius" Value="5"/>
             <Setter Property="Margin" Value="7.5, 10.5, 0, 10.5"/>
         </Style>
-        
-        
-        
-        
-        
-        <Style x:Key="borderlist_style" TargetType="Border">
-            <Setter Property="Background" Value="#1a1a1a"/>
-            <Setter Property="CornerRadius" Value="7"/>
-            <Setter Property="Margin" Value="15"/>
+        <Style x:Key="style_listbox_border" TargetType="Border">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation
+                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                    Duration="0:0:0.15"
+                                    To="#ff7f00">
+                                    <ColorAnimation.EasingFunction>
+                                        <ExponentialEase EasingMode="EaseInOut"/>
+                                    </ColorAnimation.EasingFunction>
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation
+                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                    Duration="0:0:0.15"
+                                    To="Transparent">
+                                    <ColorAnimation.EasingFunction>
+                                        <ExponentialEase EasingMode="EaseInOut"/>
+                                    </ColorAnimation.EasingFunction>
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
-        
-        <!--Data Templates-->
-        
+
+        <!--Style: Listbox-->
+        <Style x:Key="style_default_listbox" TargetType="ListView">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
 
     </Window.Resources>
-    
+
     <Grid>
         <!--Rowdefinitions-->
         <Grid.RowDefinitions>
@@ -149,8 +179,8 @@
             <RowDefinition Height="2"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
-        
+
+
         <!--Windowchrome-->
         <Grid Background="#1a1a1a">
             <Grid WindowChrome.IsHitTestVisibleInChrome="True">
@@ -161,9 +191,9 @@
                     <ColumnDefinition Width="25"/>
                     <ColumnDefinition Width="25"/>
                 </Grid.ColumnDefinitions>
-                
-                <Border Grid.Column="3">
-                    <Image x:Name="close_button" Cursor="Hand" HorizontalAlignment="Right" Source="resources/close_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="close_clicked"/>
+
+                <Border Grid.Column="3" Cursor="Hand">
+                    <Image x:Name="close_button" HorizontalAlignment="Right" Source="resources/close_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="close_clicked"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Style.Triggers>
@@ -174,8 +204,8 @@
                         </Style>
                     </Border.Style>
                 </Border>
-                <Border Grid.Column="2">
-                    <Image x:Name="max_button" Cursor="Hand" HorizontalAlignment="Right" Source="resources/max_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="max_clicked"/>
+                <Border Grid.Column="2" Cursor="Hand">
+                    <Image x:Name="max_button" HorizontalAlignment="Right" Source="resources/max_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="max_clicked"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Style.Triggers>
@@ -186,8 +216,8 @@
                         </Style>
                     </Border.Style>
                 </Border>
-                <Border Grid.Column="1">
-                    <Image x:Name="min_button" Cursor="Hand" HorizontalAlignment="Right" Source="resources/min_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="min_clicked"/>
+                <Border Grid.Column="1" Cursor="Hand">
+                    <Image x:Name="min_button" HorizontalAlignment="Right" Source="resources/min_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="min_clicked"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Style.Triggers>
@@ -202,9 +232,9 @@
         </Grid>
 
         <Grid Background="#ff7f00" Grid.Row="1">
-            
+
         </Grid>
-        
+
         <!--Window-->
         <DockPanel Background="#333333" Grid.Row="2">
 
@@ -250,19 +280,21 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <Image x:Name="home_icon" Style="{ StaticResource navicon_style}" Source="/resources/home_logo.png" Grid.Row="2" MouseLeftButtonUp="home_icon_clicked"/>
-                        <Image x:Name="profile_icon" Style="{StaticResource navicon_style}" Source="/resources/profile_logo.png" Grid.Row="1" MouseLeftButtonUp="profile_icon_clicked"/>
+                        <Image x:Name="home_icon" Style="{ StaticResource style_icon}" Source="/resources/home_logo.png" Grid.Row="2" MouseLeftButtonUp="home_icon_clicked"/>
+                        <Image x:Name="profile_icon" Style="{StaticResource style_icon}" Source="/resources/profile_logo.png" Grid.Row="1" MouseLeftButtonUp="profile_icon_clicked"/>
+                        <Image x:Name="add_icon" Style="{StaticResource style_icon}" Source="/resources/add_logo_nav.png" Grid.Row="3" MouseLeftButtonUp="add_icon_clicked"/>
 
                     </Grid>
                 </Border>
 
                 <!--Icons-->
-                
+
 
             </Grid>
 
@@ -270,7 +302,7 @@
             <Grid x:Name="window_grid" DockPanel.Dock="Right">
 
                 <!--Homewindow-->
-                <Grid x:Name="home_window" Style="{ StaticResource style_default_window}" Visibility="Visible">
+                <Grid x:Name="home_window" Style="{ StaticResource style_default_window}" Visibility="Hidden">
 
                     <!--Rowdefinitions-->
                     <Grid.RowDefinitions>
@@ -323,7 +355,7 @@
                                 <RowDefinition Height="30"/>
                             </Grid.RowDefinitions>
 
-                            <Image x:Name="shortcut_add" Margin="15,15,15,0" Cursor="Hand">
+                            <Image x:Name="shortcut_add" Margin="15,15,15,0" Cursor="Hand" MouseLeftButtonUp="add_icon_clicked">
                                 <Image.Style>
                                     <Style TargetType="Image">
 
@@ -389,7 +421,7 @@
                 </Grid>
 
                 <!--Addwindow-->
-                <Grid Style="{StaticResource style_default_window}">
+                <Grid Style="{StaticResource style_default_window}" x:Name="add_window" Visibility="Visible">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100"/>
@@ -402,21 +434,23 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <Border Style="{StaticResource style_default_border}" Grid.ColumnSpan="3" Margin="15,0,15,10" CornerRadius="0, 0, 10, 10">
+                    <Border Style="{StaticResource style_default_border}" Grid.ColumnSpan="3" >
                         <TextBlock Style="{StaticResource headline1_style}" Text="Note hinzufügen"/>
                     </Border>
 
-                    <ListBox Grid.Row="1" Background="Transparent" BorderBrush="#00ABADB3" HorizontalContentAlignment="Stretch">
-                        <ListBoxItem>
-                            <Border Style="{StaticResource borderlist_style}" HorizontalAlignment="Stretch">
-                                <TextBlock Style="{StaticResource normalText_style}" Margin="7" HorizontalAlignment="Center">
-                                    Informatik
-                                </TextBlock>
-                            </Border>
-                        </ListBoxItem>
-                    </ListBox>
+                    <Border Style="{StaticResource style_default_border}" Grid.Row="1">
+                        <ListView Style="{StaticResource style_default_listbox}" Grid.Row="1" HorizontalContentAlignment="Stretch">
+                            <ListViewItem Padding="5" Height="40">
+                                <Border Style="{StaticResource style_listbox_border}">
+                                    <TextBlock Padding="6" Style="{StaticResource normalText_style}" Text="Deutsch" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ListViewItem>
+
+                        </ListView>
+                    </Border>
+
                 </Grid>
-                
+
             </Grid>
         </DockPanel>
     </Grid>

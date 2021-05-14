@@ -37,6 +37,7 @@ namespace AbiCALC
             InitializeComponent();
             windows.Add(home_window);
             windows.Add(profile_window);
+            windows.Add(add_window);
         }
 
         private void hide_all_windows()
@@ -61,6 +62,8 @@ namespace AbiCALC
             profile_window.Visibility = Visibility.Visible;
         }
 
+        
+
         private void close_clicked(object sender, MouseButtonEventArgs e)
         {
             Close();
@@ -74,6 +77,13 @@ namespace AbiCALC
         private void min_clicked(object sender, MouseButtonEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void add_icon_clicked(object sender, MouseButtonEventArgs e)
+        {
+            hide_all_windows();
+            add_window.Visibility = Visibility.Visible;
+            
         }
     }
 }
