@@ -45,6 +45,7 @@ namespace AbiCALC
             InitializeComponent();
             windows.Add(home_window);
             windows.Add(profile_window);
+            windows.Add(add_window);
             this.DataContext = this;
             d = database.loadLast();
         }
@@ -84,6 +85,17 @@ namespace AbiCALC
         private void min_clicked(object sender, MouseButtonEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void add_icon_clicked(object sender, MouseButtonEventArgs e)
+        {
+            hide_all_windows();
+            add_window.Visibility = Visibility.Visible;
+            
+        }
+
+        private void subjecttype_selected(object sender, MouseButtonEventArgs e)
+        {
         }
 
         protected override void OnClosing(CancelEventArgs e) 

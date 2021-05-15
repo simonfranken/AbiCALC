@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:AbiCALC"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800"
@@ -17,13 +18,13 @@
     <WindowChrome.WindowChrome>
         <WindowChrome/>
     </WindowChrome.WindowChrome>
-    
+
     <Window.Resources>
 
         <!--Style: Navigationpanel-Icon-->
-        <Style x:Key="navicon_style" TargetType="Image">
-
-            <Setter Property="Margin" Value="10"/>
+        <Style x:Key="style_icon" TargetType="Image">
+            <Setter Property="Margin" Value="15"/>
+            <Setter Property="MaxWidth" Value="35"/>
             <Setter Property="Cursor" Value="Hand"/>
 
             <Style.Triggers>
@@ -34,7 +35,6 @@
                                     Storyboard.TargetProperty="Margin"
                                     To="8"
                                     Duration="0:0:0.100"/>
-
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
@@ -53,18 +53,18 @@
         </Style>
 
         <!--Style: Windows-->
-        <Style x:Key="window_style" TargetType="Grid">
+        <Style x:Key="style_default_window" TargetType="Grid">
             <Setter Property="DockPanel.Dock" Value="Right"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Visibility" Value="Hidden"/>
-        </Style>
-        <Style x:Key="homewindow_style" TargetType="Grid">
-            <Setter Property="DockPanel.Dock" Value="Right"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Visibility" Value="Visible"/>
+            <Setter Property="Margin" Value="7.5, 3, 7.5, 3"/>
         </Style>
 
         <!--Style: Text-->
+        <Style x:Key="style_default_text" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="fonts/#League Spartan"/>
+            <Setter Property="Foreground" Value="#FFCCCCCC"/>
+        </Style>
         <Style x:Key="headline1_style" TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -86,44 +86,72 @@
             <Setter Property="FontFamily" Value="fonts/#League Spartan"/>
         </Style>
 
+        <Style x:Key="style_stacklist_text" TargetType="TextBlock" BasedOn="{StaticResource style_default_text}">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        
         <!--Style: Border-->
-        <Style x:Key="border_style" TargetType="Border">
+        <Style x:Key="style_default_border" TargetType="Border">
             <Setter Property="Background" Value="#1a1a1a"/>
-            <Setter Property="CornerRadius" Value="15"/>
-            <Setter Property="Margin" Value="15"/>
+            <Setter Property="Margin" Value="7.5"/>
+            <Setter Property="CornerRadius" Value="5"/>
+        </Style>
+        <Style x:Key="style_animated_border" TargetType="Border">
+            <Setter Property="Background" Value="#1a1a1a"/>
+            <Setter Property="Margin" Value="7.5"/>
+            <Setter Property="CornerRadius" Value="5"/>
             <Style.Triggers>
-                <EventTrigger RoutedEvent="MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ThicknessAnimation
-                                Storyboard.TargetProperty="Margin"
-                                To="13"
-                                Duration="0:0:0.100"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ThicknessAnimation
-                                Storyboard.TargetProperty="Margin"
-                                To="15"
-                                Duration="0:0:0.100"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ThicknessAnimation
+                                    Storyboard.TargetProperty="Margin"
+                                    To="5"
+                                    Duration="0:0:0.200">
+                                    <ThicknessAnimation.EasingFunction>
+                                        <ExponentialEase EasingMode="EaseInOut"/>
+                                    </ThicknessAnimation.EasingFunction>
+                                </ThicknessAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ThicknessAnimation
+                                    Storyboard.TargetProperty="Margin"
+                                    To="7.5"
+                                    Duration="0:0:0.200">
+                                    <ThicknessAnimation.EasingFunction>
+                                        <ExponentialEase EasingMode="EaseInOut"/>
+                                    </ThicknessAnimation.EasingFunction>
+                                </ThicknessAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
             </Style.Triggers>
         </Style>
-        <Style x:Key="headlineborder_style" TargetType="Border">
+        <Style x:Key="style_navigation_border" TargetType="Border">
             <Setter Property="Background" Value="#1a1a1a"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Margin" Value="7.5, 10.5, 0, 10.5"/>
         </Style>
-        <Style x:Key="navborder_style" TargetType="Border">
-            <Setter Property="Background" Value="#1a1a1a"/>
-            <Setter Property="CornerRadius" Value="0, 15, 15, 0"/>
+        <Style x:Key="style_stacklist_border" TargetType="Border" BasedOn="{StaticResource style_default_border}">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <!--Style: Stackpanel-->
+        <Style x:Key="style_stacklist" TargetType="StackPanel">
+            <Setter Property="Margin" Value="2.5"/>
         </Style>
 
     </Window.Resources>
-    
+
     <Grid>
         <!--Rowdefinitions-->
         <Grid.RowDefinitions>
@@ -131,8 +159,8 @@
             <RowDefinition Height="2"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
-        
+
+
         <!--Windowchrome-->
         <Grid Background="#1a1a1a">
             <Grid WindowChrome.IsHitTestVisibleInChrome="True">
@@ -143,9 +171,9 @@
                     <ColumnDefinition Width="25"/>
                     <ColumnDefinition Width="25"/>
                 </Grid.ColumnDefinitions>
-                
-                <Border Grid.Column="3">
-                    <Image x:Name="close_button" Cursor="Hand" HorizontalAlignment="Right" Source="resources/close_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="close_clicked"/>
+
+                <Border Grid.Column="3" Cursor="Hand">
+                    <Image x:Name="close_button" HorizontalAlignment="Right" Source="resources/close_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="close_clicked"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Style.Triggers>
@@ -156,8 +184,8 @@
                         </Style>
                     </Border.Style>
                 </Border>
-                <Border Grid.Column="2">
-                    <Image x:Name="max_button" Cursor="Hand" HorizontalAlignment="Right" Source="resources/max_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="max_clicked"/>
+                <Border Grid.Column="2" Cursor="Hand">
+                    <Image x:Name="max_button" HorizontalAlignment="Right" Source="resources/max_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="max_clicked"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Style.Triggers>
@@ -168,8 +196,8 @@
                         </Style>
                     </Border.Style>
                 </Border>
-                <Border Grid.Column="1">
-                    <Image x:Name="min_button" Cursor="Hand" HorizontalAlignment="Right" Source="resources/min_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="min_clicked"/>
+                <Border Grid.Column="1" Cursor="Hand">
+                    <Image x:Name="min_button" HorizontalAlignment="Right" Source="resources/min_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="min_clicked"/>
                     <Border.Style>
                         <Style TargetType="Border">
                             <Style.Triggers>
@@ -184,23 +212,14 @@
         </Grid>
 
         <Grid Background="#ff7f00" Grid.Row="1">
-            
+
         </Grid>
-        
+
         <!--Window-->
         <DockPanel Background="#333333" Grid.Row="2">
 
             <!--Naviagtionpanel-->
-            <Grid x:Name="nav_pnl"  DockPanel.Dock="Left" Width="60" Background="Transparent" HorizontalAlignment="Left">
-
-                <!--Rowdefinitions-->
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+            <Grid x:Name="nav_pnl"  DockPanel.Dock="Left" Width="70" Background="Transparent" HorizontalAlignment="Left">
 
                 <!--Animationtrigger-->
                 <Grid.Triggers>
@@ -211,8 +230,11 @@
                                 Storyboard.TargetName="nav_pnl"
                                 Storyboard.TargetProperty="Width"
                                 To="100"
-                                Duration="0:0:0.100"
-                                />
+                                Duration="0:0:0.200">
+                                    <DoubleAnimation.EasingFunction>
+                                        <ExponentialEase EasingMode="EaseInOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
@@ -222,19 +244,37 @@
                                 <DoubleAnimation
                                 Storyboard.TargetName="nav_pnl"
                                 Storyboard.TargetProperty="Width"
-                                To="60"
-                                Duration="0:0:0.100"/>
+                                To="70"
+                                Duration="0:0:0.200">
+                                    <DoubleAnimation.EasingFunction>
+                                        <ExponentialEase EasingMode="EaseInOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
                 </Grid.Triggers>
 
                 <!--Box-->
-                <Border Style="{StaticResource navborder_style}" Grid.RowSpan="5"/>
+                <Border Style="{StaticResource style_navigation_border}" Grid.RowSpan="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Image x:Name="home_icon" Style="{ StaticResource style_icon}" Source="/resources/home_logo.png" Grid.Row="2" MouseLeftButtonUp="home_icon_clicked"/>
+                        <Image x:Name="profile_icon" Style="{StaticResource style_icon}" Source="/resources/profile_logo.png" Grid.Row="1" MouseLeftButtonUp="profile_icon_clicked"/>
+                        <Image x:Name="add_icon" Style="{StaticResource style_icon}" Source="/resources/add_logo_nav.png" Grid.Row="3" MouseLeftButtonUp="add_icon_clicked"/>
+
+                    </Grid>
+                </Border>
 
                 <!--Icons-->
-                <Image x:Name="home_icon" Style="{ StaticResource navicon_style}" Source="/resources/home_logo.png" Grid.Row="2" MouseLeftButtonUp="home_icon_clicked"/>
-                <Image x:Name="profile_icon" Style="{StaticResource navicon_style}" Source="/resources/profile_logo.png" Grid.Row="1" MouseLeftButtonUp="profile_icon_clicked"/>
+
 
             </Grid>
 
@@ -242,7 +282,7 @@
             <Grid x:Name="window_grid" DockPanel.Dock="Right">
 
                 <!--Homewindow-->
-                <Grid x:Name="home_window" Style="{ StaticResource homewindow_style}">
+                <Grid x:Name="home_window" Style="{ StaticResource style_default_window}" Visibility="Hidden">
 
                     <!--Rowdefinitions-->
                     <Grid.RowDefinitions>
@@ -258,12 +298,12 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Headline-->
-                    <Border Style="{StaticResource headlineborder_style}" Margin="15,0,15,10" CornerRadius="0, 0, 10, 10" Grid.ColumnSpan="2">
+                    <Border Style="{StaticResource style_default_border}" Grid.ColumnSpan="2">
                         <TextBlock Style="{ StaticResource headline1_style}" Text="HOME"/>
                     </Border>
 
                     <!--Notenprognose-->
-                    <Border Style="{StaticResource border_style}" Grid.Row="1">
+                    <Border Style="{StaticResource style_default_border}" Grid.Row="1">
                         <Grid>
 
                             <Grid.RowDefinitions>
@@ -282,7 +322,7 @@
                     </Border>
 
                     <!--Quick-Action-->
-                    <Border Style="{StaticResource border_style}" Grid.Row="1" Grid.Column="1">
+                    <Border Style="{StaticResource style_default_border}" Grid.Row="1" Grid.Column="1">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -295,7 +335,7 @@
                                 <RowDefinition Height="30"/>
                             </Grid.RowDefinitions>
 
-                            <Image x:Name="shortcut_add" Margin="15,15,15,0" Cursor="Hand">
+                            <Image x:Name="shortcut_add" Margin="15,15,15,0" Cursor="Hand" MouseLeftButtonUp="add_icon_clicked">
                                 <Image.Style>
                                     <Style TargetType="Image">
 
@@ -321,7 +361,7 @@
                 </Grid>
 
                 <!--Profilewindow-->
-                <Grid x:Name="profile_window" Style="{StaticResource window_style}">
+                <Grid x:Name="profile_window" Style="{StaticResource style_default_window}">
 
                     <!--Rowdefinitions-->
                     <Grid.RowDefinitions>
@@ -337,12 +377,12 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Headline-->
-                    <Border Style="{StaticResource headlineborder_style}" Margin="15,0,15,10" CornerRadius="0, 0, 10, 10" Grid.ColumnSpan="2">
+                    <Border Style="{StaticResource style_default_border}" Grid.ColumnSpan="2">
                         <TextBlock Style="{StaticResource headline1_style}" Text="PROFILE"/>
                     </Border>
 
                     <!--Profile-->
-                    <Border Style="{StaticResource border_style}" Grid.RowSpan="2" Grid.Row="1" Margin="15">
+                    <Border Style="{StaticResource style_default_border}" Grid.RowSpan="2" Grid.Row="1" Margin="15">
                         <Grid>
 
                             <!--Rowdefinitions-->
@@ -359,10 +399,10 @@
                         </Grid>
                     </Border>
                 </Grid>
-                
+
                 <!--Addwindow-->
-                <Grid Style="{StaticResource window_style}">
-                    
+                <Grid Style="{StaticResource style_default_window}" x:Name="add_window" Visibility="Visible">
+
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100"/>
                         <RowDefinition/>
@@ -374,12 +414,44 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <Border Style="{StaticResource headlineborder_style}" Grid.ColumnSpan="3" Margin="15,0,15,10" CornerRadius="0, 0, 10, 10">
+                    <Border Style="{StaticResource style_default_border}" Grid.ColumnSpan="3" >
                         <TextBlock Style="{StaticResource headline1_style}" Text="Note hinzufügen"/>
                     </Border>
-                </Grid>
-            </Grid>
 
+                    <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+                        <StackPanel Style="{StaticResource style_stacklist}">
+                            <ItemsControl>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Style="{StaticResource style_stacklist_border}" MouseLeftButtonUp="subjecttype_selected">
+                                            <TextBlock Style="{StaticResource style_stacklist_text}" Text="{Binding}"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+
+                                <system:String>Deutsch</system:String>
+                                <system:String>Mathematik</system:String>
+                                <system:String>Informatik</system:String>
+                                <system:String>Englisch</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                </Grid>
+
+            </Grid>
         </DockPanel>
     </Grid>
 </Window>
