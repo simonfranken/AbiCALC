@@ -424,7 +424,7 @@
 
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Border Style="{StaticResource style_stacklist_border}">
+                                        <Border Style="{StaticResource style_stacklist_border}" MouseLeftButtonUp="subjecttype_selected">
                                             <TextBlock Style="{StaticResource style_stacklist_text}" Text="{Binding}"/>
                                         </Border>
                                     </DataTemplate>

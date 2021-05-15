@@ -85,5 +85,9 @@ namespace AbiCALC
             add_window.Visibility = Visibility.Visible;
             
         }
+
+        private void subjecttype_selected(object sender, MouseButtonEventArgs e)
+        {
+        }
     }
 }
