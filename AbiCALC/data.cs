@@ -62,7 +62,7 @@ namespace AbiCALC
             //summ up min per subject
             foreach(subjectTypes st in d.Keys) 
             {
-                pointsSumm += summ(max(d[st], m.m[st], used));
+                pointsSumm += summ(max(d[st], m[st], used));
                 count++;
             }
             //remove used
@@ -183,7 +183,7 @@ namespace AbiCALC
                             count++;
                             summ += (int)su.getAverageGrade();
                         }
-                abi.overridePoints = summ / count;
+                abi.overridePoints = count != 0 ? (summ / count) : 15 / 2 * subject.getPredictionFactor(abi);
             }
             else abi.noOverride();
             return abi;

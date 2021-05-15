@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AbiCALC
 {
     [Serializable]
-    class semester
+    public class semester
     {
         public Dictionary<subjectTypes, subject> dict = new Dictionary<subjectTypes, subject>();
     }

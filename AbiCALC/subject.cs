@@ -45,7 +45,10 @@ namespace AbiCALC
 
         public static int getPredictionFactor(subject type)
         {
-            throw new NotImplementedException();
+            if (typeof(normalSubject).IsInstanceOfType(type)) return 1;
+            else if (typeof(seminarSubject).IsInstanceOfType(type)) return 4;
+            else if (typeof(abiexam).IsInstanceOfType(type)) return 4;
+            else return 1;
         }
     }
 }

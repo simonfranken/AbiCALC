@@ -9,9 +9,9 @@ namespace AbiCALC
 {
     class database
     {
-        const string ApplicationName = "";
+        const string ApplicationName = "AbiCalc2";
         static DirectoryInfo dirAppData = new DirectoryInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),ApplicationName));
-        static FileInfo file = new FileInfo("");
+        //static FileInfo file = new FileInfo("");
 
         data d = new data();
 
