@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:AbiCALC"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800"
@@ -60,6 +61,10 @@
         </Style>
 
         <!--Style: Text-->
+        <Style x:Key="style_default_text" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="fonts/#League Spartan"/>
+            <Setter Property="Foreground" Value="#FFCCCCCC"/>
+        </Style>
         <Style x:Key="headline1_style" TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -81,8 +86,18 @@
             <Setter Property="FontFamily" Value="fonts/#League Spartan"/>
         </Style>
 
+        <Style x:Key="style_stacklist_text" TargetType="TextBlock" BasedOn="{StaticResource style_default_text}">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        
         <!--Style: Border-->
         <Style x:Key="style_default_border" TargetType="Border">
+            <Setter Property="Background" Value="#1a1a1a"/>
+            <Setter Property="Margin" Value="7.5"/>
+            <Setter Property="CornerRadius" Value="5"/>
+        </Style>
+        <Style x:Key="style_animated_border" TargetType="Border">
             <Setter Property="Background" Value="#1a1a1a"/>
             <Setter Property="Margin" Value="7.5"/>
             <Setter Property="CornerRadius" Value="5"/>
@@ -124,50 +139,15 @@
             <Setter Property="CornerRadius" Value="5"/>
             <Setter Property="Margin" Value="7.5, 10.5, 0, 10.5"/>
         </Style>
-        <Style x:Key="style_listbox_border" TargetType="Border">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="CornerRadius" Value="5"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Trigger.EnterActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <ColorAnimation
-                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                    Duration="0:0:0.15"
-                                    To="#ff7f00">
-                                    <ColorAnimation.EasingFunction>
-                                        <ExponentialEase EasingMode="EaseInOut"/>
-                                    </ColorAnimation.EasingFunction>
-                                </ColorAnimation>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.EnterActions>
-                    <Trigger.ExitActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <ColorAnimation
-                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                    Duration="0:0:0.15"
-                                    To="Transparent">
-                                    <ColorAnimation.EasingFunction>
-                                        <ExponentialEase EasingMode="EaseInOut"/>
-                                    </ColorAnimation.EasingFunction>
-                                </ColorAnimation>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.ExitActions>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="False">
-                    <Setter Property="Background" Value="Transparent"/>
-                </Trigger>
-            </Style.Triggers>
+        <Style x:Key="style_stacklist_border" TargetType="Border" BasedOn="{StaticResource style_default_border}">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="5"/>
         </Style>
 
-        <!--Style: Listbox-->
-        <Style x:Key="style_default_listbox" TargetType="ListView">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
+        <!--Style: Stackpanel-->
+        <Style x:Key="style_stacklist" TargetType="StackPanel">
+            <Setter Property="Margin" Value="2.5"/>
         </Style>
 
     </Window.Resources>
@@ -438,16 +418,36 @@
                         <TextBlock Style="{StaticResource headline1_style}" Text="Note hinzufügen"/>
                     </Border>
 
-                    <Border Style="{StaticResource style_default_border}" Grid.Row="1">
-                        <ListView Style="{StaticResource style_default_listbox}" Grid.Row="1" HorizontalContentAlignment="Stretch">
-                            <ListViewItem Padding="5" Height="40">
-                                <Border Style="{StaticResource style_listbox_border}">
-                                    <TextBlock Padding="6" Style="{StaticResource normalText_style}" Text="Deutsch" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ListViewItem>
+                    <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+                        <StackPanel Style="{StaticResource style_stacklist}">
+                            <ItemsControl>
 
-                        </ListView>
-                    </Border>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Style="{StaticResource style_stacklist_border}">
+                                            <TextBlock Style="{StaticResource style_stacklist_text}" Text="{Binding}"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+
+                                <system:String>Deutsch</system:String>
+                                <system:String>Mathematik</system:String>
+                                <system:String>Informatik</system:String>
+                                <system:String>Englisch</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                                <system:String>TEST</system:String>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ScrollViewer>
 
                 </Grid>
 
