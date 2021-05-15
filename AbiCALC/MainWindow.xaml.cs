@@ -86,8 +86,23 @@ namespace AbiCALC
             
         }
 
+
+        Border _selectedSubject = null;
+
+        Border selectedSubject
+        {
+            get => _selectedSubject;
+            set
+            {
+                if (selectedSubject != null) selectedSubject.Background = new SolidColorBrush(new Color { R = 26, G = 26, B = 26, A = 255 });
+                _selectedSubject = value;
+                selectedSubject.Background = new SolidColorBrush(new Color { R = 255, G = 127, B = 0, A = 255 });
+            }
+        }
+
         private void subjecttype_selected(object sender, MouseButtonEventArgs e)
         {
+            selectedSubject = (Border)sender;
         }
     }
 }
