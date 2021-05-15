@@ -160,7 +160,6 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-
         <!--Windowchrome-->
         <Grid Background="#1a1a1a">
             <Grid WindowChrome.IsHitTestVisibleInChrome="True">
@@ -210,7 +209,6 @@
                 </Border>
             </Grid>
         </Grid>
-
         <Grid Background="#ff7f00" Grid.Row="1">
 
         </Grid>
@@ -361,7 +359,7 @@
                 </Grid>
 
                 <!--Profilewindow-->
-                <Grid x:Name="profile_window" Style="{StaticResource style_default_window}">
+                <Grid x:Name="profile_window" Style="{StaticResource style_default_window}" >
 
                     <!--Rowdefinitions-->
                     <Grid.RowDefinitions>
@@ -420,32 +418,14 @@
 
                     <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                         <StackPanel Style="{StaticResource style_stacklist}">
-                            <ItemsControl>
-
+                            <ItemsControl x:Name="icontrol_subjects">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <Border Style="{StaticResource style_stacklist_border}" MouseLeftButtonUp="subjecttype_selected">
                                             <TextBlock Style="{StaticResource style_stacklist_text}" Text="{Binding}"/>
-                                            
                                         </Border>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
-
-                                <system:String>Deutsch</system:String>
-                                <system:String>Mathematik</system:String>
-                                <system:String>Informatik</system:String>
-                                <system:String>Englisch</system:String>
-                                <system:String>TEST</system:String>
-                                <system:String>TEST</system:String>
-                                <system:String>TEST</system:String>
-                                <system:String>TEST</system:String>
-                                <system:String>TEST</system:String>
-                                <system:String>TEST</system:String>
-                                <system:String>TEST</system:String>
-                                <system:String>TEST</system:String>
-                                <system:String>TEST</system:String>
-                                <system:String>TEST</system:String>
-                                <system:String>TEST</system:String>
                             </ItemsControl>
                         </StackPanel>
                     </ScrollViewer>

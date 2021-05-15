@@ -16,33 +16,34 @@ using System.Windows.Controls.Primitives;
 
 namespace AbiCALC
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         //Attributes
         List<Grid> windows = new List<Grid>();
-        Border _selectedSubject = null;
-        Border selectedSubject
+        Dictionary<subjectTypes, Brush> colorDict = new Dictionary<subjectTypes, Brush>();
+        List<subjectTypes> subjectList;
+        Border selectedSubjectBorder
         {
-            get => _selectedSubject;
+            get => _selectedSubjectBorder;
             set
             {
-                if (selectedSubject != null) selectedSubject.Background = new SolidColorBrush(new Color { R = 26, G = 26, B = 26, A = 255 });
-                _selectedSubject = value;
-                TextBlock textBlock = (TextBlock)selectedSubject.Child;
-                if (colorDict.ContainsKey(textBlock.Text)) selectedSubject.Background = colorDict[textBlock.Text];
-                else selectedSubject.Background = new SolidColorBrush(new Color { R = 255, G = 127, B = 0, A = 255 });
+                if (_selectedSubjectBorder != null) _selectedSubjectBorder.Background = new SolidColorBrush(new Color { R = 26, G = 26, B = 26 , A = 255});
+                _selectedSubjectBorder = value;
+                TextBlock textBlock = (TextBlock)_selectedSubjectBorder.Child;
+                selectedSubject = (subjectTypes)Enum.Parse(typeof(subjectTypes), textBlock.Text, true);
+                if (colorDict.ContainsKey(selectedSubject)) _selectedSubjectBorder.Background = colorDict[selectedSubject];
+                else _selectedSubjectBorder.Background = new SolidColorBrush(new Color { R = 255, G = 255, B = 255, A = 255 });
             }
         }
-        Dictionary<string, Brush> colorDict = new Dictionary<string, Brush>();
+        Border _selectedSubjectBorder;
+        subjectTypes selectedSubject;
 
         //Main-Method
         public MainWindow()
         {
             InitializeComponent();
             initialize_colorDict();
+            initialize_subjectList();
             windows.Add(home_window);
             windows.Add(profile_window);
             windows.Add(add_window);
@@ -59,9 +60,20 @@ namespace AbiCALC
         }
         private void initialize_colorDict()
         {
-            colorDict.Add("Deutsch", new SolidColorBrush(new Color { R = 0, G = 128, B = 255, A = 255 }));
-            colorDict.Add("Mathematik", new SolidColorBrush(new Color { R = 255, G = 51, B = 51, A = 255 }));
-            colorDict.Add("Înformatik", new SolidColorBrush(new Color { R = 255, G = 255, B = 51, A = 255 }));
+            colorDict.Add(subjectTypes.Deutsch, new SolidColorBrush(new Color { R = 0, G = 128, B = 255, A = 255 }));
+            colorDict.Add(subjectTypes.Informatik, new SolidColorBrush(new Color { R = 255, G = 51, B = 51, A = 255 }));
+            colorDict.Add(subjectTypes.Mathe, new SolidColorBrush(new Color { R = 255, G = 255, B = 51, A = 255 }));
+        }
+        private void initialize_subjectList()
+        {
+            subjectList = new List<subjectTypes>();
+            subjectList.Add(subjectTypes.Deutsch);
+            subjectList.Add(subjectTypes.Mathe);
+            subjectList.Add(subjectTypes.Englisch);
+            subjectList.Add(subjectTypes.Franzoesisch);
+            subjectList.Add(subjectTypes.Informatik);
+
+            icontrol_subjects.ItemsSource = subjectList;
         }
 
 
@@ -98,9 +110,7 @@ namespace AbiCALC
         }
         private void subjecttype_selected(object sender, MouseButtonEventArgs e)
         {
-            selectedSubject = (Border)sender;
+            selectedSubjectBorder = (Border)sender;
         }
-
-
     }
 }
