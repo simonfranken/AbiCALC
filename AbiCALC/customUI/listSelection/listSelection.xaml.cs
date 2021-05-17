@@ -20,10 +20,26 @@ namespace AbiCALC.customUI.ListSelection
     /// </summary>
     public partial class listSelection : UserControl
     {
-        List<string> options;
-        string selectedOption;
+        List<IName> options;
         Color defaultColor;
 
+        public void refresh() 
+        {
+            itemcontrol.ItemsSource = GetPossibilties != null ? GetPossibilties() : new List<IName>();
+        }
+
+        public delegate List<IName> getPossibiltiesDelegate();
+        public delegate Color getColorDelegate(IName o);
+        private getPossibiltiesDelegate getPossibilties = null;
+        public getColorDelegate getColor = null;
+
+        public listSelection()
+        {
+
+            InitializeComponent();
+            defaultColor = new Color { R = 26, G = 26, B = 26, A = 255 };
+            refresh();
+        }
 
         Border selectedBorder
         {
@@ -33,19 +49,23 @@ namespace AbiCALC.customUI.ListSelection
             {
                 if (_selectedBorder != null) _selectedBorder.Background = new SolidColorBrush(defaultColor);
                 _selectedBorder = value;
-                selectedOption = ((TextBlock)_selectedBorder.Child).Text;
-                _selectedBorder.Background = new SolidColorBrush(new Color { R = 255, G = 255, B = 255 });
+                _selectedBorder.Background = new SolidColorBrush(getColor != null ? getColor((IName)((TextBlock)(_selectedBorder.Child)).GetBindingExpression(TextBlock.TextProperty).DataItem) : new Color { R = 255, G = 255, B = 0, A = 255 }) ;
             }
         }
+
+        public getPossibiltiesDelegate GetPossibilties 
+        {
+            get => getPossibilties; 
+            set 
+            {
+                getPossibilties = value;
+                refresh();
+            }
+        }
+
         Border _selectedBorder;
         
 
-        public listSelection()
-        {
-            InitializeComponent();
-            itemcontrol.ItemsSource = options;
-            defaultColor = new Color { R = 26, G = 26, B = 26, A = 255 };
-        }
 
         private void borderClicked(object sender, MouseButtonEventArgs e)
         {

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
-using AbiCALC.customUI;
+using AbiCALC.customUI.ListSelection;
 
 namespace AbiCALC
 {
@@ -47,6 +47,9 @@ namespace AbiCALC
             initialize_colorDict();
             initialize_subjectList();
             initialize_windows();
+
+            subjectListXaml.getColor = (IName o) => { return new Color { R = 0, G = 100, B = 100, A = 255 }; };
+            subjectListXaml.GetPossibilties = () => { return new List<IName> {new testclass("a"), new testclass("b"), new testclass("c") }; };
         }
 
         //Methods

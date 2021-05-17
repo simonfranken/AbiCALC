@@ -32,11 +32,10 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Border Style="{StaticResource border}" MouseLeftButtonUp="borderClicked">
-                                <TextBlock Text="{Binding}" Style="{StaticResource text}"/>
+                                <TextBlock Text="{Binding Name}" Style="{StaticResource text}"/>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                    <system:String>Test</system:String>
                 </ItemsControl>
             </StackPanel>
         </ScrollViewer>
