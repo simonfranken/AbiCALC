@@ -12,7 +12,7 @@ namespace AbiCALC
         semester[] semesters = new semester[4];
         abiexam[] abiexams = new abiexam[5];
         private string _name = string.Empty;
-        private mins min = new mins();
+        private mins min;
 
 
         public int getPoints() 
@@ -27,6 +27,7 @@ namespace AbiCALC
 
         public data()
         {
+            min = new mins(abiexams, new selection());
             for (int i = 0; i < semesters.Length; i++)
             {
                 semesters[i] = new semester();
