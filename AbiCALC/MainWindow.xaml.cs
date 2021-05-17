@@ -13,11 +13,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
+using AbiCALC.customUI;
 
 namespace AbiCALC
 {
     public partial class MainWindow : Window
     {
+
         //Attributes
         List<Grid> windows = new List<Grid>();
         Dictionary<subjectTypes, Brush> colorDict = new Dictionary<subjectTypes, Brush>();
@@ -44,13 +46,16 @@ namespace AbiCALC
             InitializeComponent();
             initialize_colorDict();
             initialize_subjectList();
+            initialize_windows();
+        }
+
+        //Methods
+        private void initialize_windows()
+        {
             windows.Add(home_window);
             windows.Add(profile_window);
             windows.Add(add_window);
         }
-
-
-        //Methods
         private void hide_all_windows()
         {
             foreach (Grid grid in windows)
@@ -73,7 +78,6 @@ namespace AbiCALC
             subjectList.Add(subjectTypes.Franzoesisch);
             subjectList.Add(subjectTypes.Informatik);
 
-            icontrol_subjects.ItemsSource = subjectList;
         }
 
 

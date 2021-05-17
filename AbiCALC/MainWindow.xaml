@@ -3,8 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:system="clr-namespace:System;assembly=mscorlib"
-        xmlns:local="clr-namespace:AbiCALC"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800"
         WindowStyle="None" ResizeMode="CanResize"
@@ -13,144 +11,12 @@
         MinWidth="800"
         MaxHeight="600"
         MaxWidth="1000"
+        xmlns:control="clr-namespace:AbiCALC.customUI.ListSelection"
         >
 
     <WindowChrome.WindowChrome>
         <WindowChrome/>
     </WindowChrome.WindowChrome>
-
-    <Window.Resources>
-
-        <!--Style: Navigationpanel-Icon-->
-        <Style x:Key="style_icon" TargetType="Image">
-            <Setter Property="Margin" Value="15"/>
-            <Setter Property="MaxWidth" Value="35"/>
-            <Setter Property="Cursor" Value="Hand"/>
-
-            <Style.Triggers>
-                <EventTrigger RoutedEvent="Image.MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ThicknessAnimation
-                                    Storyboard.TargetProperty="Margin"
-                                    To="8"
-                                    Duration="0:0:0.100"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="Image.MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ThicknessAnimation
-                                    Storyboard.TargetProperty="Margin"
-                                    To="10"
-                                    Duration="0:0:0.100"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Style.Triggers>
-
-        </Style>
-
-        <!--Style: Windows-->
-        <Style x:Key="style_default_window" TargetType="Grid">
-            <Setter Property="DockPanel.Dock" Value="Right"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Visibility" Value="Hidden"/>
-            <Setter Property="Margin" Value="7.5, 3, 7.5, 3"/>
-        </Style>
-
-        <!--Style: Text-->
-        <Style x:Key="style_default_text" TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="fonts/#League Spartan"/>
-            <Setter Property="Foreground" Value="#FFCCCCCC"/>
-        </Style>
-        <Style x:Key="headline1_style" TargetType="TextBlock">
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Foreground" Value="#FFCCCCCC"/>
-            <Setter Property="Margin" Value="20,0,0,0"/>
-            <Setter Property="FontFamily" Value="fonts/#League Spartan"/>
-        </Style>
-        <Style x:Key="headline2_style" TargetType="TextBlock">
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Foreground" Value="#FFCCCCCC"/>
-            <Setter Property="Margin" Value="20, 13, 0, 0"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="FontFamily" Value="fonts/#League Spartan"/>
-        </Style>
-        <Style x:Key="normalText_style" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#FFCCCCCC"/>
-            <Setter Property="FontFamily" Value="fonts/#League Spartan"/>
-        </Style>
-
-        <Style x:Key="style_stacklist_text" TargetType="TextBlock" BasedOn="{StaticResource style_default_text}">
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-        
-        <!--Style: Border-->
-        <Style x:Key="style_default_border" TargetType="Border">
-            <Setter Property="Background" Value="#1a1a1a"/>
-            <Setter Property="Margin" Value="7.5"/>
-            <Setter Property="CornerRadius" Value="5"/>
-        </Style>
-        <Style x:Key="style_animated_border" TargetType="Border">
-            <Setter Property="Background" Value="#1a1a1a"/>
-            <Setter Property="Margin" Value="7.5"/>
-            <Setter Property="CornerRadius" Value="5"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Trigger.EnterActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <ThicknessAnimation
-                                    Storyboard.TargetProperty="Margin"
-                                    To="5"
-                                    Duration="0:0:0.200">
-                                    <ThicknessAnimation.EasingFunction>
-                                        <ExponentialEase EasingMode="EaseInOut"/>
-                                    </ThicknessAnimation.EasingFunction>
-                                </ThicknessAnimation>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.EnterActions>
-                    <Trigger.ExitActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <ThicknessAnimation
-                                    Storyboard.TargetProperty="Margin"
-                                    To="7.5"
-                                    Duration="0:0:0.200">
-                                    <ThicknessAnimation.EasingFunction>
-                                        <ExponentialEase EasingMode="EaseInOut"/>
-                                    </ThicknessAnimation.EasingFunction>
-                                </ThicknessAnimation>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.ExitActions>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="style_navigation_border" TargetType="Border">
-            <Setter Property="Background" Value="#1a1a1a"/>
-            <Setter Property="CornerRadius" Value="5"/>
-            <Setter Property="Margin" Value="7.5, 10.5, 0, 10.5"/>
-        </Style>
-        <Style x:Key="style_stacklist_border" TargetType="Border" BasedOn="{StaticResource style_default_border}">
-            <Setter Property="Padding" Value="5"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Margin" Value="5"/>
-        </Style>
-
-        <!--Style: Stackpanel-->
-        <Style x:Key="style_stacklist" TargetType="StackPanel">
-            <Setter Property="Margin" Value="2.5"/>
-        </Style>
-
-    </Window.Resources>
 
     <Grid>
         <!--Rowdefinitions-->
@@ -416,19 +282,9 @@
                         <TextBlock Style="{StaticResource headline1_style}" Text="Note hinzufügen"/>
                     </Border>
 
-                    <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
-                        <StackPanel Style="{StaticResource style_stacklist}">
-                            <ItemsControl x:Name="icontrol_subjects">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border Style="{StaticResource style_stacklist_border}" MouseLeftButtonUp="subjecttype_selected">
-                                            <TextBlock Style="{StaticResource style_stacklist_text}" Text="{Binding}"/>
-                                        </Border>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </StackPanel>
-                    </ScrollViewer>
+                    <control:listSelection>
+                        
+                    </control:listSelection>
 
                 </Grid>
 
