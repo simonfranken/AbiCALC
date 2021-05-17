@@ -130,163 +130,18 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <Image x:Name="home_icon" Style="{ StaticResource style_icon}" Source="/resources/home_logo.png" Grid.Row="2" MouseLeftButtonUp="home_icon_clicked"/>
-                        <Image x:Name="profile_icon" Style="{StaticResource style_icon}" Source="/resources/profile_logo.png" Grid.Row="1" MouseLeftButtonUp="profile_icon_clicked"/>
-                        <Image x:Name="add_icon" Style="{StaticResource style_icon}" Source="/resources/add_logo_nav.png" Grid.Row="3" MouseLeftButtonUp="add_icon_clicked"/>
+                        <Image x:Name="home_icon" Style="{ StaticResource style_icon}" Source="/resources/home_logo.png" Grid.Row="2" MouseLeftButtonUp="home_clicked"/>
+                        <Image x:Name="profile_icon" Style="{StaticResource style_icon}" Source="/resources/profile_logo.png" Grid.Row="1" MouseLeftButtonUp="profile_clicked"/>
+                        <Image x:Name="add_icon" Style="{StaticResource style_icon}" Source="/resources/add_logo_nav.png" Grid.Row="3" MouseLeftButtonUp="add_clicked"/>
 
                     </Grid>
                 </Border>
-
-                <!--Icons-->
-
-
             </Grid>
 
             <!--Windowgrid-->
-            <Grid x:Name="window_grid" DockPanel.Dock="Right">
-
-                <!--Homewindow-->
-                <Grid x:Name="home_window" Style="{ StaticResource style_default_window}" Visibility="Hidden">
-
-                    <!--Rowdefinitions-->
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="100"/>
-                        <RowDefinition Height="200*"/>
-                        <RowDefinition Height="300*"/>
-                    </Grid.RowDefinitions>
-
-                    <!--Columndefinition-->
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="350*"/>
-                        <ColumnDefinition Width="579*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Headline-->
-                    <Border Style="{StaticResource style_default_border}" Grid.ColumnSpan="2">
-                        <TextBlock Style="{ StaticResource headline1_style}" Text="HOME"/>
-                    </Border>
-
-                    <!--Notenprognose-->
-                    <Border Style="{StaticResource style_default_border}" Grid.Row="1">
-                        <Grid>
-
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-
-                            <TextBlock Text="Aktuelle Notenprognose" Style="{StaticResource headline2_style}" VerticalAlignment="Top" />
-                            <TextBlock Text="1.0"
-                           Style="{StaticResource normalText_style}"
-                           Grid.Row="1" FontSize="35"
-                           HorizontalAlignment="Right"
-                           VerticalAlignment="Center"
-                           Margin="0,0,40,0"/>
-                        </Grid>
-                    </Border>
-
-                    <!--Quick-Action-->
-                    <Border Style="{StaticResource style_default_border}" Grid.Row="1" Grid.Column="1">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition Height="30"/>
-                            </Grid.RowDefinitions>
-
-                            <Image x:Name="shortcut_add" Margin="15,15,15,0" Cursor="Hand" MouseLeftButtonUp="add_icon_clicked">
-                                <Image.Style>
-                                    <Style TargetType="Image">
-
-                                        <Setter Property="Source" Value="resources/add_logo.png"/>
-
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Source" Value="resources/add_logo_hover.png"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
-
-                            <TextBlock Style="{StaticResource normalText_style}"
-                                   Grid.Row="1"
-                                   Text="Note hinzufügen"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Grid>
-                    </Border>
-
-                </Grid>
-
-                <!--Profilewindow-->
-                <Grid x:Name="profile_window" Style="{StaticResource style_default_window}" >
-
-                    <!--Rowdefinitions-->
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="100"/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-
-                    <!--Columndefinition-->
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Headline-->
-                    <Border Style="{StaticResource style_default_border}" Grid.ColumnSpan="2">
-                        <TextBlock Style="{StaticResource headline1_style}" Text="PROFILE"/>
-                    </Border>
-
-                    <!--Profile-->
-                    <Border Style="{StaticResource style_default_border}" Grid.RowSpan="2" Grid.Row="1" Margin="15">
-                        <Grid>
-
-                            <!--Rowdefinitions-->
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="75"/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-
-                            <TextBlock Style="{StaticResource normalText_style}" Text="Hallo Simon!"
-                                   FontSize="20"
-                                   Margin="25, 0, 25, 0"
-                                   VerticalAlignment="Center"/>
-
-                        </Grid>
-                    </Border>
-                </Grid>
-
-                <!--Addwindow-->
-                <Grid Style="{StaticResource style_default_window}" x:Name="add_window" Visibility="Visible">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="100"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <Border Style="{StaticResource style_default_border}" Grid.ColumnSpan="3" >
-                        <TextBlock Style="{StaticResource headline1_style}" Text="Note hinzufügen"/>
-                    </Border>
-
-                    <control:listSelection Grid.Row="1" x:Name="subjectListXaml"/>
-
-                </Grid>
-
-            </Grid>
+            <Frame Margin="7.5, 3, 7.5, 3" x:Name="windowFrame" DockPanel.Dock="Right" NavigationUIVisibility="Hidden">
+                
+            </Frame>
         </DockPanel>
     </Grid>
 </Window>

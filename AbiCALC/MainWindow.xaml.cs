@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 using AbiCALC.customUI.ListSelection;
+using AbiCALC.Pages;
 
 namespace AbiCALC
 {
@@ -28,28 +29,7 @@ namespace AbiCALC
         public MainWindow()
         {
             InitializeComponent();
-            initialize_windows();
-
-            subjectColors[new testclass("Deutsch")] = new Color { R = 255, A = 255 };
-            subjectColors[new testclass("Mathe")] = new Color { B = 255, A = 255 };
-
-            subjectListXaml.getColor = (IName o) => { return subjectColors[o]; };
-            subjectListXaml.GetPossibilties = () => { return new List<IName>(subjectColors.Keys); };
-        }
-
-        //Methods
-        private void initialize_windows()
-        {
-            windows.Add(home_window);
-            windows.Add(profile_window);
-            windows.Add(add_window);
-        }
-        private void hide_all_windows()
-        {
-            foreach (Grid grid in windows)
-            {
-                grid.Visibility = Visibility.Hidden;
-            }
+            windowFrame.Content = new page_home(windowFrame);
         }
 
         //Events
@@ -65,23 +45,17 @@ namespace AbiCALC
         {
             this.WindowState = WindowState.Minimized;
         }
-        private void add_icon_clicked(object sender, MouseButtonEventArgs e)
+        private void home_clicked(object sender, MouseButtonEventArgs e)
         {
-            hide_all_windows();
-            add_window.Visibility = Visibility.Visible;
-
+            windowFrame.Content = new page_home(windowFrame);
         }
-        private void home_icon_clicked(object sender, MouseButtonEventArgs e)
+        private void profile_clicked(object sender, MouseButtonEventArgs e)
         {
-            hide_all_windows();
-
-            home_window.Visibility = Visibility.Visible;
+            windowFrame.Content = new page_profile();
         }
-        private void profile_icon_clicked(object sender, MouseButtonEventArgs e)
+        private void add_clicked(object sender, MouseButtonEventArgs e)
         {
-            hide_all_windows();
-
-            profile_window.Visibility = Visibility.Visible;
+            windowFrame.Content = new page_add();
         }
     }
 }

@@ -9,7 +9,6 @@
             <Setter Property="Margin" Value="15"/>
             <Setter Property="MaxWidth" Value="35"/>
             <Setter Property="Cursor" Value="Hand"/>
-
             <Style.Triggers>
                 <EventTrigger RoutedEvent="Image.MouseEnter">
                     <BeginStoryboard>
@@ -32,15 +31,6 @@
                     </BeginStoryboard>
                 </EventTrigger>
             </Style.Triggers>
-
-        </Style>
-
-        <!--Style: Windows-->
-        <Style x:Key="style_default_window" TargetType="Grid">
-            <Setter Property="DockPanel.Dock" Value="Right"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Visibility" Value="Hidden"/>
-            <Setter Property="Margin" Value="7.5, 3, 7.5, 3"/>
         </Style>
 
         <!--Style: Text-->
