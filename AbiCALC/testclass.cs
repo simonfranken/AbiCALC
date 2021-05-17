@@ -8,7 +8,7 @@ namespace AbiCALC
 {
     class testclass : IName
     {
-        private string s = string.Empty;
+        private string s = "";
         public string Name => s;
 
         public testclass(string _s) 

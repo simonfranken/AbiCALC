@@ -20,7 +20,6 @@ namespace AbiCALC.customUI.ListSelection
     /// </summary>
     public partial class listSelection : UserControl
     {
-        List<IName> options;
         Color defaultColor;
 
         public void refresh() 

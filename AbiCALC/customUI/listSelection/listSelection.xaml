@@ -10,7 +10,7 @@
     
     <UserControl.Resources>
         <Style x:Key="text" TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="../fonts/#League Spartan"/>
+            <Setter Property="FontFamily" Value="../../fonts/#League Spartan"/>
             <Setter Property="Foreground" Value="#FFCCCCCC"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>

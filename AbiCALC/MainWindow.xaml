@@ -282,9 +282,7 @@
                         <TextBlock Style="{StaticResource headline1_style}" Text="Note hinzufügen"/>
                     </Border>
 
-                    <control:listSelection Grid.Row="1" x:Name="subjectListXaml">
-                        
-                    </control:listSelection>
+                    <control:listSelection Grid.Row="1" x:Name="subjectListXaml"/>
 
                 </Grid>
 
