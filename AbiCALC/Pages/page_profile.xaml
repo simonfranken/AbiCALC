@@ -38,7 +38,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Style="{StaticResource normalText_style}" Text="Hallo Simon!" FontSize="20" Margin="25, 0, 25, 0" VerticalAlignment="Center"/>
+                <TextBlock Style="{StaticResource style_default_text}" Text="Hallo Simon!" FontSize="20" Margin="25, 0, 25, 0" VerticalAlignment="Center"/>
 
             </Grid>
         </Border>

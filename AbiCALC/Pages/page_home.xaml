@@ -38,7 +38,7 @@
 
                 <TextBlock Text="Aktuelle Notenprognose" Style="{StaticResource headline2_style}" VerticalAlignment="Top" />
                 <TextBlock Text="1.0"
-                           Style="{StaticResource normalText_style}"
+                           Style="{StaticResource style_default_text}"
                            Grid.Row="1" FontSize="35"
                            HorizontalAlignment="Right"
                            VerticalAlignment="Center"
@@ -74,7 +74,7 @@
                         </Style>
                     </Image.Style>
                 </Image>
-                <TextBlock Style="{StaticResource normalText_style}" Grid.Row="1" Text="Note hinzufügen" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Style="{StaticResource style_default_text}" Grid.Row="1" Text="Note hinzufügen" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
         </Border>
     </Grid>

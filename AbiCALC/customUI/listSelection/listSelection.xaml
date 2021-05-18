@@ -11,7 +11,7 @@
     <UserControl.Resources>
         <Style x:Key="text" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="../../fonts/#League Spartan"/>
-            <Setter Property="Foreground" Value="#FFCCCCCC"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
         <Style x:Key="border" TargetType="Border">

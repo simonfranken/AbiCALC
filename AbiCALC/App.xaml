@@ -44,17 +44,11 @@
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Margin" Value="20,0,0,0"/>
         </Style>
-        <Style x:Key="headline2_style" TargetType="TextBlock">
+        <Style x:Key="headline2_style" TargetType="TextBlock" BasedOn="{StaticResource style_default_text}">
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Foreground" Value="#FFCCCCCC"/>
             <Setter Property="Margin" Value="20, 13, 0, 0"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="FontFamily" Value="fonts/#League Spartan"/>
-        </Style>
-        <Style x:Key="normalText_style" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#FFCCCCCC"/>
-            <Setter Property="FontFamily" Value="fonts/#League Spartan"/>
         </Style>
         <Style x:Key="style_stacklist_text" TargetType="TextBlock" BasedOn="{StaticResource style_default_text}">
             <Setter Property="HorizontalAlignment" Value="Center"/>
