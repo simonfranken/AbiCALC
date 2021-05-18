@@ -36,15 +36,13 @@
         <!--Style: Text-->
         <Style x:Key="style_default_text" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="fonts/#League Spartan"/>
-            <Setter Property="Foreground" Value="#FFCCCCCC"/>
+            <Setter Property="Foreground" Value="#ffffff"/>
         </Style>
-        <Style x:Key="headline1_style" TargetType="TextBlock">
+        <Style x:Key="style_headline_text" TargetType="TextBlock" BasedOn="{StaticResource style_default_text}">
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Foreground" Value="#FFCCCCCC"/>
             <Setter Property="Margin" Value="20,0,0,0"/>
-            <Setter Property="FontFamily" Value="fonts/#League Spartan"/>
         </Style>
         <Style x:Key="headline2_style" TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -58,7 +56,6 @@
             <Setter Property="Foreground" Value="#FFCCCCCC"/>
             <Setter Property="FontFamily" Value="fonts/#League Spartan"/>
         </Style>
-
         <Style x:Key="style_stacklist_text" TargetType="TextBlock" BasedOn="{StaticResource style_default_text}">
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -122,5 +119,19 @@
         <Style x:Key="style_stacklist" TargetType="StackPanel">
             <Setter Property="Margin" Value="2.5"/>
         </Style>
+        
+        
+        <!--Colorbrushs-->
+        <SolidColorBrush x:Key="color_red">#ff6666</SolidColorBrush>
+        <SolidColorBrush x:Key="color_orange">#ffb266</SolidColorBrush>
+        <SolidColorBrush x:Key="color_yellow">#ffff66</SolidColorBrush>
+        <SolidColorBrush x:Key="color_green">#66ff66</SolidColorBrush>
+        <SolidColorBrush x:Key="color_blue">#66b3ff</SolidColorBrush>
+        <SolidColorBrush x:Key="color_violet">#b366ff</SolidColorBrush>
+
+        <SolidColorBrush x:Key="color_darkgrey">#1a1a1a</SolidColorBrush>
+        <SolidColorBrush x:Key="color_lightgrey">#333333</SolidColorBrush>
+        <SolidColorBrush x:Key="color_white">#ffffff</SolidColorBrush>
+
     </Application.Resources>
 </Application>

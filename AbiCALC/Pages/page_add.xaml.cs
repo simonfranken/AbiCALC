@@ -22,18 +22,34 @@ namespace AbiCALC.Pages
     {
         //Attribute
         Dictionary<IName, Color> subjectColors = new Dictionary<IName, Color>();
+        Dictionary<IName, Color> semesterColors = new Dictionary<IName, Color>();
 
 
         public page_add()
         {
             InitializeComponent();
+            initSubjectSelection();
+            initSemesterSelection();
+        }
 
-            subjectColors[new testclass("Deutsch")] = new Color { R = 255, A = 255 };
-            subjectColors[new testclass("Mathe")] = new Color { B = 255, A = 255 };
+        private void initSubjectSelection()
+        {
+            subjectColors[new testclass("Deutsch")] = ((SolidColorBrush)FindResource("color_red")).Color;
+            subjectColors[new testclass("Mathe")] = ((SolidColorBrush)FindResource("color_blue")).Color;
 
-            subjectListXaml.getColor = (IName o) => { return subjectColors[o]; };
-            subjectListXaml.GetPossibilties = () => { return new List<IName>(subjectColors.Keys); };
+            subjectSelection.getColor = (IName o) => { return subjectColors[o]; };
+            subjectSelection.GetPossibilties = () => { return new List<IName>(subjectColors.Keys); };
+        }
 
+        private void initSemesterSelection()
+        {
+            semesterColors[new testclass("11/1")] = ((SolidColorBrush)FindResource("color_violet")).Color;
+            semesterColors[new testclass("11/2")] = ((SolidColorBrush)FindResource("color_violet")).Color;
+            semesterColors[new testclass("12/1")] = ((SolidColorBrush)FindResource("color_violet")).Color;
+            semesterColors[new testclass("12/2")] = ((SolidColorBrush)FindResource("color_violet")).Color;
+
+            semesterSelection.getColor = (IName o) => { return semesterColors[o]; };
+            semesterSelection.GetPossibilties = () => { return new List<IName>(semesterColors.Keys); };
         }
     }
 }

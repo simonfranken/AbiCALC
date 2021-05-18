@@ -24,7 +24,7 @@
 
         <!--Headline-->
         <Border Style="{StaticResource style_default_border}" Grid.ColumnSpan="2">
-            <TextBlock Style="{ StaticResource headline1_style}" Text="HOME"/>
+            <TextBlock Style="{ StaticResource style_headline_text}" Text="HOME"/>
         </Border>
 
         <!--Notenprognose-->
