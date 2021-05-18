@@ -70,5 +70,15 @@ namespace AbiCALC.customUI.ListSelection
         {
             selectedBorder = (Border)sender;
         }
+
+        private void mouseOver(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            Border border = (Border)sender;
+
+            if (border.IsMouseOver && border != selectedBorder) border.Background = (SolidColorBrush)FindResource("color_midgrey");
+
+            if (!border.IsMouseOver && border != selectedBorder) border.Background = (SolidColorBrush)FindResource("color_darkgrey");
+
+        }
     }
 }

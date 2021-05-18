@@ -21,6 +21,16 @@
             <Setter Property="Padding" Value="5"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Margin" Value="5"/>
+
+            <!--<Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#262626"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Background" Value="#1a1a1a"/>
+                </Trigger>
+            </Style.Triggers>-->
+            
         </Style>
     </UserControl.Resources>
     
@@ -31,7 +41,7 @@
                 <ItemsControl x:Name="itemcontrol">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Style="{StaticResource border}" MouseLeftButtonUp="borderClicked">
+                            <Border Style="{StaticResource border}" MouseLeftButtonUp="borderClicked" IsMouseDirectlyOverChanged="mouseOver">
                                 <TextBlock Text="{Binding Name}" Style="{StaticResource text}"/>
                             </Border>
                         </DataTemplate>

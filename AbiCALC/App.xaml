@@ -130,6 +130,7 @@
         <SolidColorBrush x:Key="color_violet">#b366ff</SolidColorBrush>
 
         <SolidColorBrush x:Key="color_darkgrey">#1a1a1a</SolidColorBrush>
+        <SolidColorBrush x:Key="color_midgrey">#262626</SolidColorBrush>
         <SolidColorBrush x:Key="color_lightgrey">#333333</SolidColorBrush>
         <SolidColorBrush x:Key="color_white">#ffffff</SolidColorBrush>
 
