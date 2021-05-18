@@ -14,6 +14,43 @@
             <Setter Property="Minimum" Value="0"/>
             <Setter Property="Margin" Value="10"/>
         </Style>
+        <Style x:Key="tb" TargetType="TextBox">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontFamily" Value="../fonts/#League Spartan"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Foreground" Value="#FFCCCCCC"/>
+            <Setter Property="CaretBrush" Value="#FFCCCCCC"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+        <Style x:Key="buttonStyle2" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="#FFCCCCCC" BorderThickness="1" Padding="5" Margin="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Button.IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation To="#ff7f00" Duration="0:0:0:0.1" FillBehavior="HoldEnd" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation To="Black" Duration="0:0:0:0.1" FillBehavior="HoldEnd" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     <WindowChrome.WindowChrome>
         <WindowChrome/>
@@ -96,10 +133,15 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0" Margin="10" x:Name="rT" KeyUp="textUpdated" LostKeyboardFocus="textFinished"/>
-                    <TextBox Grid.Column="1" Margin="10" x:Name="gT" KeyUp="textUpdated" LostKeyboardFocus="textFinished"/>
-                    <TextBox Grid.Column="2" Margin="10" x:Name="bT" KeyUp="textUpdated" LostKeyboardFocus="textFinished"/>
+                    <TextBox Style="{StaticResource tb}" Grid.Column="0" x:Name="rT" KeyUp="textUpdated" LostKeyboardFocus="textFinished" Text="0"/>
+                    <TextBox Style="{StaticResource tb}" Grid.Column="1" x:Name="gT" KeyUp="textUpdated" LostKeyboardFocus="textFinished"/>
+                    <TextBox Style="{StaticResource tb}" Grid.Column="2" x:Name="bT" KeyUp="textUpdated" LostKeyboardFocus="textFinished"/>
                 </Grid>
+                <Border Style="{StaticResource style_default_border}">
+                    <Button HorizontalAlignment="Center" Style="{StaticResource buttonStyle2}" Background="Black" Foreground="White" Click="Button_Click">
+                        Fertig
+                    </Button>
+                </Border>
             </StackPanel>
         </Grid>
     </Grid>
