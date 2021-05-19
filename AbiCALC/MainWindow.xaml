@@ -9,78 +9,12 @@
         AllowsTransparency="True"
         MinHeight="500"
         MinWidth="800"
-        MaxHeight="600"
-        MaxWidth="1000"
         xmlns:control="clr-namespace:AbiCALC.customUI.ListSelection"
+        Style="{StaticResource windowMain}"
         >
-
-    <WindowChrome.WindowChrome>
-        <WindowChrome/>
-    </WindowChrome.WindowChrome>
-
-    <Grid>
-        <!--Rowdefinitions-->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="18"/>
-            <RowDefinition Height="2"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-
-        <!--Windowchrome-->
-        <Grid Background="{DynamicResource color_darkgrey}">
-            <Grid WindowChrome.IsHitTestVisibleInChrome="True">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="25"/>
-                    <ColumnDefinition Width="25"/>
-                    <ColumnDefinition Width="25"/>
-                </Grid.ColumnDefinitions>
-
-                <Border Grid.Column="3" Cursor="Hand">
-                    <Image x:Name="close_button" HorizontalAlignment="Right" Source="resources/close_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="close_clicked"/>
-                    <Border.Style>
-                        <Style TargetType="Border">
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#ff7f00"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                </Border>
-                <Border Grid.Column="2" Cursor="Hand">
-                    <Image x:Name="max_button" HorizontalAlignment="Right" Source="resources/max_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="max_clicked"/>
-                    <Border.Style>
-                        <Style TargetType="Border">
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#ff7f00"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                </Border>
-                <Border Grid.Column="1" Cursor="Hand">
-                    <Image x:Name="min_button" HorizontalAlignment="Right" Source="resources/min_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="min_clicked"/>
-                    <Border.Style>
-                        <Style TargetType="Border">
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#ff7f00"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                </Border>
-            </Grid>
-        </Grid>
-        <Grid Background="{DynamicResource color_orange}" Grid.Row="1">
-
-        </Grid>
-
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <!--Window-->
-        <DockPanel Background="{DynamicResource color_lightgrey}" Grid.Row="2">
+        <DockPanel Background="{DynamicResource color_lightgrey}">
 
             <!--Naviagtionpanel-->
             <Grid x:Name="nav_pnl"  DockPanel.Dock="Left" Width="70" Background="Transparent" HorizontalAlignment="Left">

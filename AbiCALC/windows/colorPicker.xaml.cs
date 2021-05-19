@@ -18,7 +18,7 @@ namespace AbiCALC.windows
     /// <summary>
     /// Interaction logic for colorPicker.xaml
     /// </summary>
-    public partial class colorPicker : Window
+    public partial class colorPicker : Window, IWindow
     {
         Dictionary<Slider, TextBox> dict = new Dictionary<Slider, TextBox>();
         Dictionary<TextBox, Slider> dict2 = new Dictionary<TextBox, Slider>();
@@ -83,16 +83,16 @@ namespace AbiCALC.windows
         {
             return i < 0 ? 0 : (i > 255 ? 255 : i);
         }
-        private void close_clicked(object sender, MouseButtonEventArgs e)
+        public void close_clicked(object sender, MouseButtonEventArgs e)
         {
             App.selected = ((SolidColorBrush)preview.Background).Color;
             this.Close();
         }
-        private void max_clicked(object sender, MouseButtonEventArgs e)
+        public void max_clicked(object sender, MouseButtonEventArgs e)
         {
             this.WindowState = WindowState.Maximized;
         }
-        private void min_clicked(object sender, MouseButtonEventArgs e)
+        public void min_clicked(object sender, MouseButtonEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
         }

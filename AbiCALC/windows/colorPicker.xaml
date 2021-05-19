@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         WindowStyle="None" ResizeMode="CanResize"
         AllowsTransparency="True"
-        Title="Wähle eine Farbe aus!" Height="450" Width="800">
+        Title="Wähle eine Farbe aus!" Height="450" Width="800"
+        MinHeight="230"
+        MinWidth="430"
+        Style="{StaticResource windowMain}"
+        >
     <Window.Resources>
         <Style x:Key="slider" TargetType="Slider">
             <Setter Property="Maximum" Value="255"/>
@@ -36,101 +40,43 @@
     <WindowChrome.WindowChrome>
         <WindowChrome/>
     </WindowChrome.WindowChrome>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="18"/>
-            <RowDefinition Height="2"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid Background="#1a1a1a">
-            <Grid WindowChrome.IsHitTestVisibleInChrome="True">
+    <Grid Grid.Row="2" Background="#333333">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
+        <Grid>
+            <Border Background="Black" CornerRadius="40" Margin="20" x:Name="preview">
+
+            </Border>
+        </Grid>
+        <StackPanel Grid.Column="1">
+            <Slider Style="{StaticResource slider}" x:Name="rS" Thumb.DragDelta="sliderUpdated"/>
+            <Slider Style="{StaticResource slider}" x:Name="gS" Thumb.DragDelta="sliderUpdated"/>
+            <Slider Style="{StaticResource slider}" x:Name="bS" Thumb.DragDelta="sliderUpdated"/>
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="25"/>
-                    <ColumnDefinition Width="25"/>
-                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-
-                <Border Grid.Column="3" Cursor="Hand">
-                    <Image x:Name="close_button" HorizontalAlignment="Right" Source="../resources/close_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="close_clicked"/>
-                    <Border.Style>
-                        <Style TargetType="Border">
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#ff7f00"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                </Border>
-                <Border Grid.Column="2" Cursor="Hand">
-                    <Image x:Name="max_button" HorizontalAlignment="Right" Source="../resources/max_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="max_clicked"/>
-                    <Border.Style>
-                        <Style TargetType="Border">
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#ff7f00"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                </Border>
-                <Border Grid.Column="1" Cursor="Hand">
-                    <Image x:Name="min_button" HorizontalAlignment="Right" Source="../resources/min_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="min_clicked"/>
-                    <Border.Style>
-                        <Style TargetType="Border">
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#ff7f00"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                </Border>
+                <TextBox Style="{StaticResource tb}" Grid.Column="0" x:Name="rT" KeyUp="textUpdated" LostKeyboardFocus="textFinished" Text="0"/>
+                <TextBox Style="{StaticResource tb}" Grid.Column="1" x:Name="gT" KeyUp="textUpdated" LostKeyboardFocus="textFinished"/>
+                <TextBox Style="{StaticResource tb}" Grid.Column="2" x:Name="bT" KeyUp="textUpdated" LostKeyboardFocus="textFinished"/>
             </Grid>
-        </Grid>
-        <Grid Background="#ff7f00" Grid.Row="1">
-
-        </Grid>
-        <Grid Grid.Row="2" Background="#333333">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
-            <Grid>
-                <Border Background="Black" CornerRadius="40" Margin="20" x:Name="preview">
-
-                </Border>
-            </Grid>
-            <StackPanel Grid.Column="1">
-                <Slider Style="{StaticResource slider}" x:Name="rS" Thumb.DragDelta="sliderUpdated"/>
-                <Slider Style="{StaticResource slider}" x:Name="gS" Thumb.DragDelta="sliderUpdated"/>
-                <Slider Style="{StaticResource slider}" x:Name="bS" Thumb.DragDelta="sliderUpdated"/>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox Style="{StaticResource tb}" Grid.Column="0" x:Name="rT" KeyUp="textUpdated" LostKeyboardFocus="textFinished" Text="0"/>
-                    <TextBox Style="{StaticResource tb}" Grid.Column="1" x:Name="gT" KeyUp="textUpdated" LostKeyboardFocus="textFinished"/>
-                    <TextBox Style="{StaticResource tb}" Grid.Column="2" x:Name="bT" KeyUp="textUpdated" LostKeyboardFocus="textFinished"/>
-                </Grid>
-                <Border HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Padding="6" Cursor="Hand" MouseLeftButtonUp="Button_Click">
-                    <TextBlock Style="{StaticResource style_default_text}">Fertig</TextBlock>
-                    <Border.Style>
-                        <Style TargetType="Border" BasedOn="{StaticResource style_default_border}">
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#262626"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                </Border>
-            </StackPanel>
-        </Grid>
+            <Border HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Padding="6" Cursor="Hand" MouseLeftButtonUp="Button_Click">
+                <TextBlock Style="{StaticResource style_default_text}">Fertig</TextBlock>
+                <Border.Style>
+                    <Style TargetType="Border" BasedOn="{StaticResource style_default_border}">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#262626"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+            </Border>
+        </StackPanel>
     </Grid>
 </Window>

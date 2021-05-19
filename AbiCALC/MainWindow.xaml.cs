@@ -18,7 +18,7 @@ using AbiCALC.Pages;
 
 namespace AbiCALC
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IWindow
     {
 
         //Attributes
@@ -33,15 +33,16 @@ namespace AbiCALC
         }
 
         //Events
-        private void close_clicked(object sender, MouseButtonEventArgs e)
+        public void close_clicked(object sender, MouseButtonEventArgs e)
         {
             Close();
+            ((App)App.Current).close();
         }
-        private void max_clicked(object sender, MouseButtonEventArgs e)
+        public void max_clicked(object sender, MouseButtonEventArgs e)
         {
             this.WindowState = WindowState.Maximized;
         }
-        private void min_clicked(object sender, MouseButtonEventArgs e)
+        public void min_clicked(object sender, MouseButtonEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
         }

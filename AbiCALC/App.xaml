@@ -4,6 +4,80 @@
              xmlns:local="clr-namespace:AbiCALC"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <Style TargetType="Window" x:Key="windowMain">
+            <Setter Property="WindowChrome.WindowChrome">
+                <Setter.Value>
+                    <WindowChrome CaptionHeight="16" ResizeBorderThickness="2"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="MaxHeight" Value="600"/>
+            <Setter Property="MaxWidth" Value="1000"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Window">
+                        <Grid Background="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="18"/>
+                                <RowDefinition Height="2"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Background="{DynamicResource color_darkgrey}">
+                                <Grid WindowChrome.IsHitTestVisibleInChrome="True">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="25"/>
+                                        <ColumnDefinition Width="25"/>
+                                        <ColumnDefinition Width="25"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="3" Cursor="Hand">
+                                        <Image x:Name="close_button" HorizontalAlignment="Right" Source="resources/close_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="close_clicked"/>
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Background" Value="#ff7f00"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                    <Border Grid.Column="2" Cursor="Hand">
+                                        <Image x:Name="max_button" HorizontalAlignment="Right" Source="resources/max_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="max_clicked"/>
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Background" Value="#ff7f00"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                    <Border Grid.Column="1" Cursor="Hand">
+                                        <Image x:Name="min_button" HorizontalAlignment="Right" Source="resources/min_logo.png" Margin="7,0,7,0" MouseLeftButtonUp="min_clicked"/>
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Background" Value="#ff7f00"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                </Grid>
+                            </Grid>
+                            <Grid Background="{DynamicResource color_orange}" Grid.Row="1"/>
+                            <Grid Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <ContentPresenter/>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <!--Style: Navigationpanel-Icon-->
         <Style x:Key="style_icon" TargetType="Image">
             <Setter Property="Margin" Value="15"/>
@@ -110,8 +184,8 @@
         <Style x:Key="style_stacklist" TargetType="StackPanel">
             <Setter Property="Margin" Value="2.5"/>
         </Style>
-        
-        
+
+
         <!--Colorbrushs-->
         <SolidColorBrush x:Key="color_red">#ff6666</SolidColorBrush>
         <SolidColorBrush x:Key="color_orange">#ffb266</SolidColorBrush>
