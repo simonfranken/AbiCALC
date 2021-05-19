@@ -97,6 +97,6 @@ namespace AbiCALC.windows
             this.WindowState = WindowState.Minimized;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) => close_clicked(null, null);
+        private void Button_Click(object sender, MouseButtonEventArgs e) => close_clicked(sender, e);
     }
 }

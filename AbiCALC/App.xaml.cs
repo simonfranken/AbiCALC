@@ -18,6 +18,7 @@ namespace AbiCALC
         public App() 
         {
             InitializeComponent();
+            (new windows.colorPicker()).ShowDialog();
         }
     }
 }
