@@ -36,7 +36,7 @@
         <!--Style: Text-->
         <Style x:Key="style_default_text" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="fonts/#League Spartan"/>
-            <Setter Property="Foreground" Value="#ffffff"/>
+            <Setter Property="Foreground" Value="{DynamicResource color_white}"/>
         </Style>
         <Style x:Key="style_headline_text" TargetType="TextBlock" BasedOn="{StaticResource style_default_text}">
             <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -122,7 +122,6 @@
         <SolidColorBrush x:Key="color_green">#66ff66</SolidColorBrush>
         <SolidColorBrush x:Key="color_blue">#66b3ff</SolidColorBrush>
         <SolidColorBrush x:Key="color_violet">#b366ff</SolidColorBrush>
-
         <SolidColorBrush x:Key="color_darkgrey">#1a1a1a</SolidColorBrush>
         <SolidColorBrush x:Key="color_midgrey">#262626</SolidColorBrush>
         <SolidColorBrush x:Key="color_lightgrey">#333333</SolidColorBrush>
