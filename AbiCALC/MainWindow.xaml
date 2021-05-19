@@ -27,7 +27,7 @@
         </Grid.RowDefinitions>
 
         <!--Windowchrome-->
-        <Grid Background="#1a1a1a">
+        <Grid Background="{DynamicResource color_darkgrey}">
             <Grid WindowChrome.IsHitTestVisibleInChrome="True">
 
                 <Grid.ColumnDefinitions>
@@ -75,12 +75,12 @@
                 </Border>
             </Grid>
         </Grid>
-        <Grid Background="#ff7f00" Grid.Row="1">
+        <Grid Background="{DynamicResource color_orange}" Grid.Row="1">
 
         </Grid>
 
         <!--Window-->
-        <DockPanel Background="#333333" Grid.Row="2">
+        <DockPanel Background="{DynamicResource color_lightgrey}" Grid.Row="2">
 
             <!--Naviagtionpanel-->
             <Grid x:Name="nav_pnl"  DockPanel.Dock="Left" Width="70" Background="Transparent" HorizontalAlignment="Left">
@@ -139,9 +139,7 @@
             </Grid>
 
             <!--Windowgrid-->
-            <Frame Margin="7.5, 3, 7.5, 3" x:Name="windowFrame" DockPanel.Dock="Right" NavigationUIVisibility="Hidden">
-                
-            </Frame>
+            <Frame Margin="7.5, 3, 7.5, 3" x:Name="windowFrame" DockPanel.Dock="Right" NavigationUIVisibility="Hidden"/>
         </DockPanel>
     </Grid>
 </Window>

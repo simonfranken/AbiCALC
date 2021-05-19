@@ -119,7 +119,7 @@
                     <TextBox Style="{StaticResource tb}" Grid.Column="2" x:Name="bT" KeyUp="textUpdated" LostKeyboardFocus="textFinished"/>
                 </Grid>
                 <Border HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Padding="6" Cursor="Hand" MouseLeftButtonUp="Button_Click">
-                    <TextBlock Style="{StaticResource normalText_style}">Fertig</TextBlock>
+                    <TextBlock Style="{StaticResource style_default_text}">Fertig</TextBlock>
                     <Border.Style>
                         <Style TargetType="Border" BasedOn="{StaticResource style_default_border}">
                             <Style.Triggers>
