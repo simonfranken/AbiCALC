@@ -33,14 +33,13 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.RowSpan="1" Grid.Row="0">
+                <Border Grid.RowSpan="1" Grid.Row="0" MouseLeftButtonUp="color_change">
 
                     <TextBlock Text="Farben ändern" 
-                               FontFamily="fonts/#League Spartan"
-                               Foreground="{DynamicResource color_white}"
+                               Style="{StaticResource style_default_text}"
                                HorizontalAlignment="Center" 
                                VerticalAlignment="Center" 
-                               FontSize="35">
+                               FontSize="25">
                     </TextBlock>
 
                     <Border.Style>
@@ -55,14 +54,13 @@
                     
                 </Border>
                 
-                <Border Grid.RowSpan="1" Grid.Row="1">
+                <Border Grid.RowSpan="1" Grid.Row="1" MouseLeftButtonUp="name_change">
 
                     <TextBlock Text="Name ändern" 
-                               FontFamily="fonts/#League Spartan"
-                               Foreground="{DynamicResource color_white}"
+                               Style="{StaticResource style_default_text}"
                                HorizontalAlignment="Center" 
                                VerticalAlignment="Center" 
-                               FontSize="35">
+                               FontSize="25">
                     </TextBlock>
 
                     <Border.Style>
@@ -79,6 +77,42 @@
                 
                 
             </Grid>
+        </Border>
+        <Border x:Name="nameField" Style="{StaticResource  style_default_border}" Grid.Row="1" Visibility="Hidden">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Border Style="{StaticResource style_default_border}" Grid.RowSpan="1" Grid.Row="0">
+                    <TextBox x:Name="nameInput" 
+                             Style="{StaticResource style_default_textbox}"
+                             FontSize="20"
+                             TextAlignment="Center"
+                             VerticalContentAlignment="Center">
+                    </TextBox>
+                </Border>
+
+                <Border Grid.RowSpan="1" Grid.Row="1" MouseLeftButtonUp="name_change_ok">
+                    <Border.Style>
+                        <Style TargetType="Border" BasedOn="{StaticResource style_default_border}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#ff7f00"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <TextBlock Text="OK"
+                               Style="{StaticResource style_default_text}"
+                               TextAlignment="Center"
+                               Padding="10">
+                    </TextBlock>
+                </Border>
+            </Grid>
+
+
         </Border>
         
         

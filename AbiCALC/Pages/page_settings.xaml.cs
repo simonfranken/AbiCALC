@@ -24,5 +24,22 @@ namespace AbiCALC.Pages
         {
             InitializeComponent();
         }
+
+        private void color_change (object sender, MouseButtonEventArgs e)
+        {
+            (new windows.colorPicker()).ShowDialog();
+        }
+
+        private void name_change (object sender, MouseButtonEventArgs e)
+        {
+            nameField.Visibility = Visibility.Visible;
+        }
+
+        private void name_change_ok (object sender, MouseButtonEventArgs e)
+        {
+            //ToDo mach mal String hier zu Name in data
+            nameField.Visibility = Visibility.Hidden;
+            nameInput.Text = "";
+        }
     }
 }
