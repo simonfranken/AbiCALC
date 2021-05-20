@@ -6,9 +6,81 @@
       xmlns:local="clr-namespace:AbiCALC.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="page_settings">
+      Title="page_settings"
+      Style="{StaticResource pageMain}">
 
     <Grid>
+
+        <!--Rowdefinitions-->
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--Columndefinition-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border Style="{StaticResource style_default_border}" Grid.RowSpan="1" Grid.Row="0">
+
+            <Grid>
+
+                <!--Rowdefinitions-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="75"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.RowSpan="1" Grid.Row="0">
+
+                    <TextBlock Text="Farben ändern" 
+                               FontFamily="fonts/#League Spartan"
+                               Foreground="{DynamicResource color_white}"
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" 
+                               FontSize="35">
+                    </TextBlock>
+
+                    <Border.Style>
+                        <Style TargetType="Border" BasedOn="{StaticResource style_default_border}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#ff7f00"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    
+                </Border>
+                
+                <Border Grid.RowSpan="1" Grid.Row="1">
+
+                    <TextBlock Text="Name ändern" 
+                               FontFamily="fonts/#League Spartan"
+                               Foreground="{DynamicResource color_white}"
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" 
+                               FontSize="35">
+                    </TextBlock>
+
+                    <Border.Style>
+                        <Style TargetType="Border" BasedOn="{StaticResource style_default_border}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#ff7f00"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    
+                </Border>
+                
+                
+            </Grid>
+        </Border>
+        
         
     </Grid>
 </Page>
