@@ -2,8 +2,10 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AbiCALC"
-             StartupUri="windows/MainWindow.xaml">
+             StartupUri="windows/MainWindow.xaml"
+             >
     <Application.Resources>
+        
         <Style TargetType="Window" x:Key="windowMain">
             <Setter Property="WindowChrome.WindowChrome">
                 <Setter.Value>
@@ -185,7 +187,27 @@
             <Setter Property="Margin" Value="2.5"/>
         </Style>
 
-
+        <Style TargetType="Page" x:Key="pageMain">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Page">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Border Style="{DynamicResource style_default_border}">
+                                <TextBlock Style="{DynamicResource style_headline_text}" Text="{TemplateBinding Title}"/>
+                            </Border>
+                            <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <ContentPresenter/>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
         <!--Colorbrushs-->
         <SolidColorBrush x:Key="color_red">#ff6666</SolidColorBrush>
         <SolidColorBrush x:Key="color_orange">#ffb266</SolidColorBrush>

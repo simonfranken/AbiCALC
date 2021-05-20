@@ -6,15 +6,12 @@
       xmlns:local="clr-namespace:AbiCALC.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="page_add"
-      xmlns:control="clr-namespace:AbiCALC.customUI.ListSelection">
+      Title="Note hinzufügen"
+      xmlns:control="clr-namespace:AbiCALC.customUI.ListSelection"
+      Style="{StaticResource pageMain}">
 
     <Grid>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -22,12 +19,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Border Style="{StaticResource style_default_border}" Grid.ColumnSpan="3" >
-            <TextBlock Style="{StaticResource style_headline_text}" Text="Note hinzufügen"/>
-        </Border>
-
-        <control:listSelection Grid.Row="1" Grid.Column="0"  x:Name="subjectSelection" Margin="2.5"/>
-        <control:listSelection Grid.Row="1" Grid.Column="1" x:Name="semesterSelection" Margin="2.5"/>
+        <control:listSelection Grid.Column="0"  x:Name="subjectSelection" Margin="2.5"/>
+        <control:listSelection Grid.Column="1" x:Name="semesterSelection" Margin="2.5"/>
 
     </Grid>
 </Page>
