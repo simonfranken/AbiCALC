@@ -1,0 +1,26 @@
+﻿<Page x:Class="AbiCALC.Pages.page_add"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AbiCALC.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="NOTE HINZUFÜGEN"
+      xmlns:control="clr-namespace:AbiCALC.customUI.ListSelection"
+      Style="{StaticResource pageMain}">
+
+    <Grid>
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <control:listSelection Grid.Column="0"  x:Name="subjectSelection" Margin="2.5"/>
+        <control:listSelection Grid.Column="1" x:Name="semesterSelection" Margin="2.5"/>
+
+    </Grid>
+</Page>
