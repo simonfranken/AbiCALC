@@ -12,25 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using AbiCALC;
 
 namespace AbiCALC.Pages
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for page_settings.xaml
     /// </summary>
-    public partial class page_home : Page
+    public partial class page_settings : Page
     {
-        Frame frame;
-
-        public page_home()
+        public page_settings()
         {
             InitializeComponent();
-        }
-
-        private void add_clicked(object sender, MouseButtonEventArgs e)
-        {
-            windows.MainWindow.singleton.set(typeof(page_add));
         }
     }
 }

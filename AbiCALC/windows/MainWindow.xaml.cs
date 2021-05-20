@@ -16,7 +16,7 @@ using System.Windows.Controls.Primitives;
 using AbiCALC.customUI.ListSelection;
 using AbiCALC.Pages;
 
-namespace AbiCALC
+namespace AbiCALC.windows
 {
     public partial class MainWindow : Window, IWindow
     {
@@ -51,6 +51,7 @@ namespace AbiCALC
             pagesType[home_icon] = typeof(page_home);
             pagesType[add_icon] = typeof(page_add);
             pagesType[profile_icon] = typeof(page_profile);
+            pagesType[settings_icon] = typeof(page_settings);
 
             foreach (Type i in pagesType.Values) pages[i] = null;
         }

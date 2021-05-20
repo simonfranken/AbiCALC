@@ -1,4 +1,4 @@
-﻿<Window x:Class="AbiCALC.MainWindow"
+﻿<Window x:Class="AbiCALC.windows.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -61,12 +61,14 @@
                             <RowDefinition Height="70"/>
                             <RowDefinition Height="70"/>
                             <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <Image x:Name="home_icon" Style="{ StaticResource style_icon}" Source="/resources/home_logo.png" Grid.Row="2" MouseLeftButtonUp="pageSwitched"/>
-                        <Image x:Name="profile_icon" Style="{StaticResource style_icon}" Source="/resources/profile_logo.png" Grid.Row="1" MouseLeftButtonUp="pageSwitched"/>
-                        <Image x:Name="add_icon" Style="{StaticResource style_icon}" Source="/resources/add_logo_nav.png" Grid.Row="3" MouseLeftButtonUp="pageSwitched"/>
+                        <Image x:Name="home_icon" Style="{ StaticResource style_icon}" Source="../resources/home_logo.png" Grid.Row="2" MouseLeftButtonUp="pageSwitched"/>
+                        <Image x:Name="profile_icon" Style="{StaticResource style_icon}" Source="../resources/profile_logo.png" Grid.Row="1" MouseLeftButtonUp="pageSwitched"/>
+                        <Image x:Name="add_icon" Style="{StaticResource style_icon}" Source="../resources/add_logo_nav.png" Grid.Row="3" MouseLeftButtonUp="pageSwitched"/>
+                        <Image x:Name="settings_icon" Style="{StaticResource style_icon}" Source="../resources/add_logo_nav.png" Grid.Row="4" MouseLeftButtonUp="pageSwitched"/>
 
                     </Grid>
                 </Border>
