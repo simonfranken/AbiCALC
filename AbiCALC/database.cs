@@ -23,9 +23,9 @@ namespace AbiCALC
 
         }
 
-        public static data loadLast()
+        public static data current
         {
-            return singleton.d;
+            get => singleton.d;
         }
     }
 }

@@ -23,6 +23,14 @@ namespace AbiCALC.Pages
         public page_profile()
         {
             InitializeComponent();
+            DataContext = this;
+        }
+        public string getName 
+        {
+            get 
+            {
+                return $"Hallo {database.current.name}!";
+            }
         }
     }
 }
