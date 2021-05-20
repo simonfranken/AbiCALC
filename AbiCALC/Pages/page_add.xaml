@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:AbiCALC.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Note hinzufügen"
+      Title="NOTE HINZUFÜGEN"
       xmlns:control="clr-namespace:AbiCALC.customUI.ListSelection"
       Style="{StaticResource pageMain}">
 

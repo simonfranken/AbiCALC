@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:AbiCALC.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="page_settings"
+      Title="SETTINGS"
       Style="{StaticResource pageMain}">
 
     <Grid>
@@ -29,7 +29,7 @@
 
                 <!--Rowdefinitions-->
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="75"/>
+                    <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
