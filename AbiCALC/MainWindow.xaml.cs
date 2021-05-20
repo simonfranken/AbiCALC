@@ -24,12 +24,35 @@ namespace AbiCALC
         //Attributes
         List<Grid> windows = new List<Grid>();
         Dictionary<IName, Color> subjectColors = new Dictionary<IName, Color>();
+        Dictionary<Image, Type> pagesType = new Dictionary<Image, Type>();
+        Dictionary<Type, Page> pages = new Dictionary<Type, Page>();
+
+        public static MainWindow singleton { get => _singleton; }
+        private static MainWindow _singleton = null;
+
+        private Page this[Type key]
+        {
+            get 
+            {
+                return pages[key] ??= ((Page)Activator.CreateInstance(key));
+            }
+        }
+
+        public void set(Type t) 
+        {
+            windowFrame.Content = this[t];
+        }
 
         //Main-Method
         public MainWindow()
         {
             InitializeComponent();
-            windowFrame.Content = new page_home(windowFrame);
+            _singleton ??= this;
+            pagesType[home_icon] = typeof(page_home);
+            pagesType[add_icon] = typeof(page_add);
+            pagesType[profile_icon] = typeof(page_profile);
+
+            foreach (Type i in pagesType.Values) pages[i] = null;
         }
 
         //Events
@@ -46,17 +69,10 @@ namespace AbiCALC
         {
             this.WindowState = WindowState.Minimized;
         }
-        private void home_clicked(object sender, MouseButtonEventArgs e)
+
+        private void pageSwitched(object sender, MouseButtonEventArgs e)
         {
-            windowFrame.Content = new page_home(windowFrame);
-        }
-        private void profile_clicked(object sender, MouseButtonEventArgs e)
-        {
-            windowFrame.Content = new page_profile();
-        }
-        private void add_clicked(object sender, MouseButtonEventArgs e)
-        {
-            windowFrame.Content = new page_add();
+            set(pagesType[(Image)sender]);
         }
     }
 }

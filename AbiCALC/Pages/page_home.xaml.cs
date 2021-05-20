@@ -23,15 +23,14 @@ namespace AbiCALC.Pages
     {
         Frame frame;
 
-        public page_home(Frame frame)
+        public page_home()
         {
             InitializeComponent();
-            this.frame = frame;
         }
 
         private void add_clicked(object sender, MouseButtonEventArgs e)
         {
-            frame.Content = new page_add();
+            MainWindow.singleton.set(typeof(page_add));
         }
     }
 }
