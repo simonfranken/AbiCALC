@@ -33,7 +33,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Style="{StaticResource style_default_text}" Text="{Binding getName}" FontSize="20" Margin="25, 0, 25, 0" VerticalAlignment="Center"/>
+                <TextBlock Style="{StaticResource style_default_text}" Text="{Binding getName.s}" FontSize="20" Margin="25, 0, 25, 0" VerticalAlignment="Center" x:Name="NameField"/>
 
             </Grid>
         </Border>

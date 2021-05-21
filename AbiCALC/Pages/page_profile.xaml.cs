@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,15 +23,15 @@ namespace AbiCALC.Pages
     {
         public page_profile()
         {
+            database.current.name.format = "Hallo, {0}!";
             InitializeComponent();
             DataContext = this;
         }
-        public string getName 
+        public observableString getName 
         {
-            get 
-            {
-                return $"Hallo {database.current.name}!";
-            }
+            get => database.current.name;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

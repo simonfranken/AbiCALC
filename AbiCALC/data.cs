@@ -1,34 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AbiCALC
 {
     [Serializable()]
-    class data
+    public class data
     {
         semester[] semesters = new semester[4];
         abiexam[] abiexams = new abiexam[5];
-        private string _name = string.Empty;
+        private observableString _name = new observableString();
         private mins min;
-
+        public int id;
 
         public int getPoints() 
         {
             return getMaxPoints(predict(new List<semester>(semesters)), min, predict(new List<abiexam>(abiexams), new List<semester>(semesters)));
         }
 
-        public string name 
+        public observableString name 
         {
             get => _name;
-            set => _name = value;
         }
 
-        public data()
+        public data(selection _selection, int _id)
         {
-            min = new mins(abiexams, new selection());
+            id = _id;
+            min = new mins(abiexams, _selection);
             for (int i = 0; i < semesters.Length; i++)
             {
                 semesters[i] = new semester();

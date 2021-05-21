@@ -21,8 +21,6 @@ namespace AbiCALC.Pages
     /// </summary>
     public partial class page_home : Page
     {
-        Frame frame;
-
         public page_home()
         {
             InitializeComponent();

@@ -30,6 +30,7 @@ namespace AbiCALC.Pages
             InitializeComponent();
             initSubjectSelection();
             initSemesterSelection();
+            //database.current.
         }
 
         private void initSubjectSelection()

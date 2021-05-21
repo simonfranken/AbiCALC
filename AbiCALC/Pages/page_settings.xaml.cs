@@ -37,7 +37,7 @@ namespace AbiCALC.Pages
 
         private void name_change_ok (object sender, MouseButtonEventArgs e)
         {
-            database.current.name = nameInput.Text;
+            database.current.name.s = nameInput.Text;
             nameField.Visibility = Visibility.Hidden;
             nameInput.Text = "";
         }
