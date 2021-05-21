@@ -156,9 +156,8 @@ namespace AbiCALC
                     BinaryFormatter formatter = new BinaryFormatter();
                     formatter.Serialize(fs, t);
                 }
-                catch (SerializationException e)
+                catch
                 {
-                    throw;
                     return false;
                 }
             return true;
@@ -184,7 +183,7 @@ namespace AbiCALC
                     BinaryFormatter formatter = new BinaryFormatter();
                     output = (T)formatter.Deserialize(fs);
                 }
-                catch (SerializationException e)
+                catch
                 {
                     t = null;
                     return false;
