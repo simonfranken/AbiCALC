@@ -106,6 +106,7 @@ namespace AbiCALC
                 dict[d.name.unformatted]++;
                 yield return d.name.unformatted + (dict[d.name.unformatted] <= 1 ? "" : $" [{dict[d.name.unformatted]}]");
             }
+            yield break;
         }
 
         private static Dict2<FileInfo, int> getFilesProfiles() 
