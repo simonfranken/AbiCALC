@@ -8,6 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="NOTE HINZUFÜGEN"
       xmlns:control="clr-namespace:AbiCALC.customUI.ListSelection"
+      xmlns:control2="clr-namespace:AbiCALC.customUI.textBoxWithBackground"
       Style="{StaticResource pageMain}">
 
     <Grid>
@@ -22,5 +23,18 @@
         <control:listSelection Grid.Column="0"  x:Name="subjectSelection" Margin="2.5"/>
         <control:listSelection Grid.Column="1" x:Name="semesterSelection" Margin="2.5"/>
 
+        <control2:textBoxWithBackground Grid.Column="2">
+            <control2:textBoxWithBackground.Style>
+                <Style TargetType="control2:textBoxWithBackground">
+                    <Setter Property="backgroundContent">
+                        <Setter.Value>
+                            <TextBox Style="{DynamicResource style_default_textbox}" BorderThickness="0">
+                                DER HINTERGRUND
+                            </TextBox>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </control2:textBoxWithBackground.Style>
+        </control2:textBoxWithBackground>
     </Grid>
 </Page>
