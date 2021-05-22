@@ -11,25 +11,23 @@ namespace AbiCALC
     [Serializable()]
     public class data
     {
-        semester[] semesters = new semester[4];
-        abiexam[] abiexams = new abiexam[5];
-        private observableString _name = new observableString();
+        private semester[] semesters = new semester[4];
+        private abiexam[] abiexams = new abiexam[5];
+        private observableItem<string> _name = new observableItem<string>();
         private mins min;
-        public int id;
 
         public int getPoints() 
         {
             return getMaxPoints(predict(new List<semester>(semesters)), min, predict(new List<abiexam>(abiexams), new List<semester>(semesters)));
         }
 
-        public observableString name 
+        public observableItem<string> name 
         {
             get => _name;
         }
 
-        public data(selection _selection, int _id)
+        public data(selection _selection)
         {
-            id = _id;
             min = new mins(abiexams, _selection);
             for (int i = 0; i < semesters.Length; i++)
             {

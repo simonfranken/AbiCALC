@@ -23,15 +23,13 @@ namespace AbiCALC.Pages
     {
         public page_profile()
         {
-            database.current.name.format = "Hallo, {0}!";
+            //serialization.database.currentData.name.format = "Hallo, {0}!";
             InitializeComponent();
             DataContext = this;
         }
-        public observableString getName 
+        public observableItem<string> getName 
         {
-            get => database.current.name;
+            get => serialization.database.currentData.name;
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

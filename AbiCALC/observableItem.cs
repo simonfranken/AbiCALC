@@ -9,28 +9,22 @@ using System.Threading.Tasks;
 namespace AbiCALC
 {
     [Serializable]
-    public class observableString : INotifyPropertyChanged
+    public class observableItem<T> : INotifyPropertyChanged
     {
-        private string _s = string.Empty;
+        private T _itemValue = default;
         [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
-        [NonSerialized]
-        public string format = string.Empty;
-        public string s 
+        public T itemValue
         {
-            get => string.Format(format, _s);
+            get => _itemValue;
             set 
             {
-                if(value != _s) 
+                if(_itemValue == null || !_itemValue.Equals(value)) 
                 {
-                    _s = value;
+                    _itemValue = value;
                     OnPropertyChanged();
                 }
             }
-        }
-        public string unformatted 
-        {
-            get => _s;
         }
         protected void OnPropertyChanged([CallerMemberName] string new_Value = null)
         {

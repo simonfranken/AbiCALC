@@ -37,17 +37,17 @@ namespace AbiCALC
         public void close() 
         {
             foreach (Window x in Windows) x.Close();
-            database.close();
+            serialization.database.close();
             Shutdown();
         }
         public ObservableCollection<subjectTypes> subjects;
 
         public ObservableCollection<semester> semesters;
 
-        public data promptNewAccount(int i) 
+        public data promptNewAccount() 
         {
-            return new data(new selection(), i);
-            //throw new NotImplementedException();
+            return new data(new selection());
+            //TODO
         }
     }
 }
