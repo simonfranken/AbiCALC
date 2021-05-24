@@ -34,23 +34,23 @@ namespace AbiCALC.Pages
         }
 
         private void initSubjectSelection()
-        {
-            subjectColors[new testclass("Deutsch")] = ((SolidColorBrush)FindResource("color_red")).Color;
-            subjectColors[new testclass("Mathe")] = ((SolidColorBrush)FindResource("color_blue")).Color;
+        {   
+            //subjectColors[new testclass("Deutsch")] = ((SolidColorBrush)FindResource("color_red")).Color;
+            //subjectColors[new testclass("Mathe")] = ((SolidColorBrush)FindResource("color_blue")).Color;
 
-            subjectSelection.getColor = (IName o) => { return subjectColors[o]; };
-            subjectSelection.GetPossibilties = () => { return new List<IName>(subjectColors.Keys); };
+            //subjectSelection.getColor = (IName o) => { return subjectColors[o]; };
+            //subjectSelection.GetPossibilties = () => { return new List<IName>(subjectColors.Keys); };
         }
 
         private void initSemesterSelection()
         {
-            semesterColors[new testclass("11/1")] = ((SolidColorBrush)FindResource("color_violet")).Color;
-            semesterColors[new testclass("11/2")] = ((SolidColorBrush)FindResource("color_violet")).Color;
-            semesterColors[new testclass("12/1")] = ((SolidColorBrush)FindResource("color_violet")).Color;
-            semesterColors[new testclass("12/2")] = ((SolidColorBrush)FindResource("color_violet")).Color;
+            //semesterColors[new testclass("11/1")] = ((SolidColorBrush)FindResource("color_violet")).Color;
+            //semesterColors[new testclass("11/2")] = ((SolidColorBrush)FindResource("color_violet")).Color;
+            //semesterColors[new testclass("12/1")] = ((SolidColorBrush)FindResource("color_violet")).Color;
+            //semesterColors[new testclass("12/2")] = ((SolidColorBrush)FindResource("color_violet")).Color;
 
-            semesterSelection.getColor = (IName o) => { return semesterColors[o]; };
-            semesterSelection.GetPossibilties = () => { return new List<IName>(semesterColors.Keys); };
+            //semesterSelection.getColor = (IName o) => { return semesterColors[o]; };
+            //semesterSelection.GetPossibilties = () => { return new List<IName>(semesterColors.Keys); };
         }
     }
 }

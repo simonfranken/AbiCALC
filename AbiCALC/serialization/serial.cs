@@ -24,7 +24,7 @@ namespace AbiCALC.serialization
                     BinaryFormatter formatter = new BinaryFormatter();
                     output = (T)formatter.Deserialize(fs);
                 }
-                catch(Exception ex)
+                catch
                 {
                     throw;
                 }
@@ -41,7 +41,7 @@ namespace AbiCALC.serialization
                     BinaryFormatter formatter = new BinaryFormatter();
                     formatter.Serialize(fs, t);
                 }
-                catch(Exception ex)
+                catch
                 {
                     throw;
                 }

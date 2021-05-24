@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,26 +21,20 @@ namespace AbiCALC.customUI.ListSelection
     /// </summary>
     public partial class listSelection : UserControl
     {
-        Color defaultColor;
+        Color defaultColor= new Color { R = 26, G = 26, B = 26, A = 255 };
 
-        public void refresh() 
-        {
-            itemcontrol.ItemsSource = GetPossibilties != null ? GetPossibilties() : new List<IName>();
-        }
-
-        public delegate List<IName> getPossibiltiesDelegate();
         public delegate Color getColorDelegate(IName o);
-        private getPossibiltiesDelegate getPossibilties = null;
         public getColorDelegate getColor = null;
+
+        public void setCollection(ObservableCollection<IName> newCollectionInput) => itemcontrol.ItemsSource = newCollectionInput != null ? newCollectionInput : new List<IName>();
 
         public listSelection()
         {
 
             InitializeComponent();
-            defaultColor = new Color { R = 26, G = 26, B = 26, A = 255 };
-            refresh();
         }
 
+        Border _selectedBorder;
         Border selectedBorder
         {
             get => _selectedBorder;
@@ -51,18 +46,6 @@ namespace AbiCALC.customUI.ListSelection
                 _selectedBorder.Background = new SolidColorBrush(getColor != null ? getColor((IName)((TextBlock)(_selectedBorder.Child)).GetBindingExpression(TextBlock.TextProperty).DataItem) : new Color { R = 255, G = 255, B = 0, A = 255 }) ;
             }
         }
-
-        public getPossibiltiesDelegate GetPossibilties 
-        {
-            get => getPossibilties; 
-            set 
-            {
-                getPossibilties = value;
-                refresh();
-            }
-        }
-
-        Border _selectedBorder;
         
 
 
