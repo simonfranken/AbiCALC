@@ -16,6 +16,7 @@ namespace AbiCALC.serialization
     {
         //event handler
         public event PropertyChangedEventHandler PropertyChanged;
+        public static event PropertyChangedEventHandler PropertyChangedStatic;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -56,6 +57,7 @@ namespace AbiCALC.serialization
             setFileAndDirectoryInfos();
             settings = serial.Deserialize<databaseInfo>(configFile, out databaseInfo x) ? x : new databaseInfo();
             updateProfiles();
+            PropertyChanged += (object? sender, PropertyChangedEventArgs e) => { PropertyChangedStatic?.Invoke(sender, e); };
             bool b = false;
             if (settings.isSet())
             {

@@ -26,10 +26,12 @@ namespace AbiCALC.Pages
             //serialization.database.currentData.name.format = "Hallo, {0}!";
             InitializeComponent();
             DataContext = this;
+            serialization.database.PropertyChangedStatic += (object? sender, PropertyChangedEventArgs e) => { NameField.GetBindingExpression(TextBlock.TextProperty).UpdateSource(); };
         }
         public observableItem<string> getName 
         {
             get => serialization.database.currentData.name;
         }
+
     }
 }
