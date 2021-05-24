@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +17,12 @@ namespace AbiCALC
         private observableItem<string> _name = new observableItem<string>();
         private mins min;
 
+        [OnDeserialized]
+        private void deserialized(StreamingContext context)
+        {
+            name.func = (string s) => { return $"Hallo, {s}!"; };
+        }
+
         public int getPoints() 
         {
             return getMaxPoints(predict(new List<semester>(semesters)), min, predict(new List<abiexam>(abiexams), new List<semester>(semesters)));
@@ -28,6 +35,7 @@ namespace AbiCALC
 
         public data(selection _selection)
         {
+            deserialized(default);
             min = new mins(abiexams, _selection);
             for (int i = 0; i < semesters.Length; i++)
             {

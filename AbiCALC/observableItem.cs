@@ -14,6 +14,27 @@ namespace AbiCALC
         private T _itemValue = default;
         [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
+        public delegate T del(T input);
+        [NonSerialized]
+        private del _func = null;
+        public del func 
+        {
+            get => _func;
+            set 
+            {
+                _func = value;
+                OnPropertyChanged("modified");
+                OnPropertyChanged();
+            }
+        }
+
+        public T modified 
+        {
+            get 
+            {
+                return func != null ? func(itemValue) : itemValue;
+            }
+        }
         public T itemValue
         {
             get => _itemValue;
@@ -22,6 +43,7 @@ namespace AbiCALC
                 if(_itemValue == null || !_itemValue.Equals(value)) 
                 {
                     _itemValue = value;
+                    OnPropertyChanged("modified");
                     OnPropertyChanged();
                 }
             }
