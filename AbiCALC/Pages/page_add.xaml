@@ -24,17 +24,11 @@
         <control:listSelection Grid.Column="1" x:Name="semesterSelection" Margin="2.5"/>
 
         <control2:textBoxWithBackground Grid.Column="2">
-            <control2:textBoxWithBackground.Style>
-                <Style TargetType="control2:textBoxWithBackground">
-                    <Setter Property="backgroundContent">
-                        <Setter.Value>
-                            <TextBox Style="{DynamicResource style_default_textbox}" BorderThickness="0">
-                                DER HINTERGRUND
-                            </TextBox>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </control2:textBoxWithBackground.Style>
+            <control2:textBoxWithBackground.backgroundContent>
+                <TextBox Style="{DynamicResource style_default_textbox}" BorderThickness="0">
+                    DER HINTERGRUND
+                </TextBox>
+            </control2:textBoxWithBackground.backgroundContent>
         </control2:textBoxWithBackground>
     </Grid>
 </Page>

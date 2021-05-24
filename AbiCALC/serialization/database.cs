@@ -11,7 +11,7 @@ using System.Runtime.CompilerServices;
 
 namespace AbiCALC.serialization
 {
-    class database : INotifyPropertyChanged
+    partial class database : INotifyPropertyChanged
     {
         //event handler
         public event PropertyChangedEventHandler PropertyChanged;
@@ -19,18 +19,7 @@ namespace AbiCALC.serialization
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        //singleton
-        static database singleton { get { return (_singleton ??= new database()); } }
-        static database _singleton;
-
-        //consts
-        //APP
-        const string ApplicationName = "AbiCalc2";
-        //Extensions
-        const string DirectoryExtensionProfiles = "profiles";
-        const string DirectoryExtensionConfig = "config";
-        const string DirectoryExtensionFile = "bin";
-        const string DirectoryExtensionConfigFile = "settings";
+        
 
         //dirs & files
         //Main Dir
