@@ -8,6 +8,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
 
 namespace AbiCALC.serialization
 {
@@ -19,36 +20,34 @@ namespace AbiCALC.serialization
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        
 
-        //dirs & files
-        //Main Dir
-        static DirectoryInfo2 dirAppData = (DirectoryInfo2)(new DirectoryInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationName)));
-        //Sub dirs
-        static DirectoryInfo2 profilesDir;
-        static DirectoryInfo2 configDir;
         //files
         static FileInfo configFile;
         databaseInfo settings;
 
+        FileInfo _loadedFile;
         FileInfo loadedFile
         {
-            get => _file;
+            get => _loadedFile;
             set
             {
                 settings.lastSelected = value;
-                _file = value;
+                _loadedFile = value;
             }
         }
-        FileInfo _file;
-        data loadedData;
-
-        //random
-        private static Random random
+        data _loadedData;
+        data loadedData
         {
-            get => _random ??= new Random((int)(System.DateTime.Now - new DateTime((long)0)).TotalMilliseconds);
+            get => _loadedData;
+            set
+            {
+                if (loadedData != value)
+                {
+                    _loadedData = value;
+                    NotifyPropertyChanged("currentData");
+                }
+            }
         }
-        private static Random _random = null;
 
         //constructor
         public database()
@@ -56,6 +55,7 @@ namespace AbiCALC.serialization
             _singleton = this;
             setFileAndDirectoryInfos();
             settings = serial.Deserialize<databaseInfo>(configFile, out databaseInfo x) ? x : new databaseInfo();
+            updateProfiles();
             bool b = false;
             if (settings.isSet())
             {
@@ -63,27 +63,20 @@ namespace AbiCALC.serialization
             }
             if (!b)
             {
-                addNew(((App)(App.Current)).promptNewAccount(), getNewId());
+                addNew(((App)(App.Current)).promptNewAccount());
             }
         }
-        //init
-        private static void setFileAndDirectoryInfos()
-        {
-            profilesDir = new DirectoryInfo2(Path.Combine(dirAppData.dir.FullName, DirectoryExtensionProfiles));
-            configDir = new DirectoryInfo2(Path.Combine(dirAppData.dir.FullName, DirectoryExtensionConfig));
-            configFile = new FileInfo(Path.Combine(dirAppData.dir.FullName, DirectoryExtensionConfig, $"{DirectoryExtensionConfigFile}.{DirectoryExtensionFile}"));
-        }
-        
+
         //close
-        public static void close() => singleton.closePr();
-        private void closePr()
+        public static void close() => singleton.closeInstance();
+        private void closeInstance()
         {
-            if (loadedData != null) saveCurrent();
+            saveCurrent();
             serial.Serialize<databaseInfo>(configFile, settings);
         }
-        
+
         //IDS
-        private int getNewId()
+        private static int getNewId()
         {
             int i;
             List<int> l = new List<int>(getUsedIds());
@@ -109,43 +102,47 @@ namespace AbiCALC.serialization
         //save
         private static void saveCurrent()
         {
-            save(singleton.loadedFile, singleton.loadedData);
+            if (singleton.loadedData != null) save(singleton.loadedFile, singleton.loadedData);
         }
-        public static bool save(FileInfo file, data _d)
+        private static bool save(FileInfo file, data _d)
         {
             if (serial.Serialize<data>(file, _d))
             {
                 singleton.loadedFile = file;
+                singleton.updateProfiles();
                 return true;
             }
             return false;
         }
 
         //add
-        public static void addNew(data d, int i)
+        private static void addNew(data d, int i)
         {
             FileInfo f = new FileInfo(getFileNameFromId(i));
             save(f, d);
             load(f);
         }
 
+        public static void addNew(data d)
+        {
+            addNew(d, getNewId());
+        }
+
         //info
-        public static string getFileNameFromId(int id) => Path.Combine(profilesDir.dir.FullName, $"{id}.{DirectoryExtensionFile}");
+        private static string getFileNameFromId(int id) => Path.Combine(profilesDir.dir.FullName, $"{id}.{DirectoryExtensionFile}");
         public static data currentData
         {
             get => singleton.loadedData;
         }
-        public static IEnumerable<string> getProfiles()
+        public List<data> _profiles;
+        public List<data> profiles
         {
-            Dictionary<string, int> dict = new Dictionary<string, int>();
-            foreach (data d in getDatas())
+            get => _profiles;
+            set
             {
-                string s = d.name.itemValue;
-                if (!dict.ContainsKey(s)) dict[s] = 0;
-                dict[s]++;
-                yield return s + (dict[s] <= 1 ? "" : $" [{dict[s]}]");
+                _profiles = value;
+                NotifyPropertyChanged();
             }
-            yield break;
         }
         private static IEnumerable<data> getDatas()
         {
@@ -159,8 +156,13 @@ namespace AbiCALC.serialization
             yield break;
         }
         
+        private void updateProfiles() 
+        {
+            profiles = new List<data>(getDatas());
+        }
+
         //load
-        public static bool load(FileInfo fileInfo)
+        private static bool load(FileInfo fileInfo)
         {
             if (fileInfo != null && serial.Deserialize<data>(fileInfo, out var x))
             {
