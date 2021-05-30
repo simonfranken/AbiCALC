@@ -6,42 +6,42 @@ using System.Threading.Tasks;
 
 namespace AbiCALC
 {
-    public enum subjectTypes
+    [Serializable]
+    public class subjectTypes
     {
-        //Pflicht
-        Deutsch,
-        Mathe,
-        Religion,
-        Geschichte,
-        Sozialkunde,
-        Sport,
+        public subjectTypes(type _t) : this(_t, _t.ToString()) { }
 
-        //Fremdsprachen
-        Englisch,
-        Franzoesisch,
-        Latein,
-        Spanisch,
-        Tuerkisch,
-        Russisch,
-        Altgriechisch,
+        public subjectTypes(type _t, string s)
+        {
+            t = _t;
+            name = s;
+        }
 
 
-        //Naturwissenschaften
-        Physik,
-        Chemie,
-        Biologie,
-        Biophysik,
-        Astrophysik,
+        public string name;
+        public type t;
+        public enum type 
+        {
+            Naturwissenschaft, Fremdsprache, Deutsch, Mathe, KunstMusik, GeoWirtschaft, Profil, WSem, PSem, Reli, GeschichteSozi, Sport, Geschichte, Sozi, Informatik
+        }
+        public static readonly subjectTypes Deutsch = new subjectTypes(type.Deutsch);
+        public static readonly subjectTypes Mathe = new subjectTypes(type.Mathe);
+        public static readonly subjectTypes Sport = new subjectTypes(type.Sport);
+        public static readonly subjectTypes Reli = new subjectTypes(type.Reli);
+        public static readonly subjectTypes KunstOderMusik = new subjectTypes(type.KunstMusik);
+        public static readonly subjectTypes GeoOderWirtschaft = new subjectTypes(type.GeoWirtschaft);
+        public static readonly subjectTypes WS = new subjectTypes(type.WSem);
+        public static readonly subjectTypes PS = new subjectTypes(type.PSem);
+       
 
-        //Die Sendung mit Herr Kraus
-        Informatik,
+        ////Fremdsprachen
 
-        //Pflichtwhlfächer
-        Geographie,
-        Wirtschaft,
-        Wirtschaftsinformatik,
-        Musik,
-        Kunst
 
+
+        ////Naturwissenschaften
+
+
+        ////Die Sendung mit Herr Kraus
+        //Informatik,
     }
 }

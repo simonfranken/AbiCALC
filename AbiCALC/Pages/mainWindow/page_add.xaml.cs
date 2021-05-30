@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AbiCALC.Pages
+namespace AbiCALC.Pages.mainWindow
 {
     /// <summary>
     /// Interaction logic for page_add.xaml

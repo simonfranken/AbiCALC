@@ -13,7 +13,7 @@ namespace AbiCALC
     public class data
     {
         private semester[] semesters = new semester[4];
-        private abiexam[] abiexams = new abiexam[5];
+        private List<abiexam> abiexams = new List<abiexam>();
         private observableItem<string> _name = new observableItem<string>();
         private mins min;
 
@@ -40,10 +40,6 @@ namespace AbiCALC
             for (int i = 0; i < semesters.Length; i++)
             {
                 semesters[i] = new semester();
-            }
-            for (int i = 0; i < abiexams.Length; i++)
-            {
-                abiexams[i] = new abiexam();
             }
         }
 

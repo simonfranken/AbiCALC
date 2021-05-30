@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AbiCALC;
 
-namespace AbiCALC.Pages
+namespace AbiCALC.Pages.mainWindow
 {
     /// <summary>
     /// Interaction logic for Page1.xaml

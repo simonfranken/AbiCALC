@@ -21,6 +21,7 @@ namespace AbiCALC
         public App() 
         {
             InitializeComponent();
+            (new windows.newAccount()).Show();
         }
         private void close_clicked(object sender, MouseButtonEventArgs e)
         {

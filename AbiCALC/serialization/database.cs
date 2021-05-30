@@ -70,7 +70,7 @@ namespace AbiCALC.serialization
         }
 
         //close
-        public static void close() => singleton.closeInstance();
+        public static void close() { if (_singleton != null) singleton.closeInstance(); }
         private void closeInstance()
         {
             saveCurrent();
