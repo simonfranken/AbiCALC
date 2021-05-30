@@ -19,10 +19,19 @@ namespace AbiCALC.windows
     /// </summary>
     public partial class newAccount : Window, IWindow
     {
+        Pages.newAccount.IWizard x;
         public newAccount()
         {
             InitializeComponent();
-            windowFrame.Content = new Pages.newAccount.Page1();
+            x = new Pages.newAccount.Page1();
+            windowFrame.Content = x;
+            x.update += update;
+            update();
+        }
+
+        private void update()
+        {
+            errorText.Text = x.getError();
         }
 
         public void close_clicked(object sender, MouseButtonEventArgs e)

@@ -13,7 +13,7 @@ namespace AbiCALC
             SG, NTG, NUG, WSG
         }
 
-        public GymType g;
+        public GymType? g = null;
         public string lan1 = null, lan2 = null, lan3 = null, lanLate = null, lanW = null;
         public bool? useLanLate = null;
         public bool? replaceLan1 = null;
@@ -72,6 +72,11 @@ namespace AbiCALC
 
         public bool isValid(ref string error) 
         {
+            if(g == null) 
+            {
+                error = "Der Gymnasiumtyp darf nicht leer sein.";
+                return false;
+            }
             if (string.IsNullOrEmpty(lan1)) 
             {
                 error = "Die erste Fremdsprache darf nicht leer sein.";
@@ -84,7 +89,7 @@ namespace AbiCALC
             }
             if(g == GymType.SG) 
             {
-                if(string.IsNullOrEmpty(lan2)) 
+                if(string.IsNullOrEmpty(lan3)) 
                 {
                     error = "Die dritte Fremdsprache darf nicht leer sein.";
                     return false;
@@ -92,7 +97,7 @@ namespace AbiCALC
             }
             else 
             {
-                if (!string.IsNullOrEmpty(lan2))
+                if (!string.IsNullOrEmpty(lan3))
                 {
                     error = "Die dritte Fremdsprache darf nur in SG genutzt werden.";
                     return false;

@@ -32,10 +32,8 @@
                 </Style>
             </Border.Style>
         </Border>
-        <Border Grid.Column="0" Grid.Row="1" Style="{DynamicResource style_default_border}" x:Name="errorText">
-            <TextBlock Style="{DynamicResource style_default_text}" Margin="7">
-                ERROR
-            </TextBlock>
+        <Border Grid.Column="0" Grid.Row="1" Style="{DynamicResource style_default_border}">
+            <TextBlock Style="{DynamicResource style_default_text}" Margin="7" x:Name="errorText"/>
         </Border>
     </Grid>
 </Window>

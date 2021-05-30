@@ -17,6 +17,21 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+
+                <Border Style="{DynamicResource style_default_border}">
+                    <TextBlock Style="{DynamicResource style_default_text}" VerticalAlignment="Center" Margin="5">
+                        Zweig
+                    </TextBlock>
+                </Border>
+                <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
+                    <ComboBox x:Name="zweigeCombo" Margin="5"/>
+                </Border>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
                 
                 <Border Style="{DynamicResource style_default_border}">
                     <TextBlock Style="{DynamicResource style_default_text}" VerticalAlignment="Center" Margin="5">
@@ -24,7 +39,7 @@
                     </TextBlock>
                 </Border>
                 <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}"/>
+                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}" x:Name="l1"/>
                 </Border>
             </Grid>
             <Grid>
@@ -38,7 +53,7 @@
                     </TextBlock>
                 </Border>
                 <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}"/>
+                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}" x:Name="l2"/>
                 </Border>
             </Grid>
             <Grid>
@@ -52,7 +67,7 @@
                     </TextBlock>
                 </Border>
                 <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}"/>
+                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}" x:Name="l3"/>
                 </Border>
             </Grid>
             <Grid>
@@ -66,9 +81,7 @@
                     </TextBlock>
                 </Border>
                 <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <control2:textBoxWithBackground>
-                        <control:textBox2 Style="{DynamicResource Style_TextBox2_main}"/>
-                    </control2:textBoxWithBackground>
+                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}"  x:Name="ls"/>
                 </Border>
             </Grid>
             <Grid>
@@ -82,7 +95,7 @@
                     </TextBlock>
                 </Border>
                 <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}"/>
+                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}" x:Name="lw"/>
                 </Border>
             </Grid>
         </StackPanel>
