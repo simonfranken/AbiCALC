@@ -1,4 +1,4 @@
-﻿<Page x:Class="AbiCALC.Pages.newAccount.Page1"
+﻿<Page x:Class="AbiCALC.Pages.newAccount.Page3"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,9 +6,7 @@
       xmlns:local="clr-namespace:AbiCALC.Pages.newAccount"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      xmlns:control2="clr-namespace:AbiCALC.customUI.textBoxWithBackground"
-      xmlns:control="clr-namespace:AbiCALC.customUI.textBox2"
-      Title="Page1">
+      Title="Page3">
 
     <Grid>
         <StackPanel>
@@ -20,40 +18,11 @@
 
                 <Border Style="{DynamicResource style_default_border}">
                     <TextBlock Style="{DynamicResource style_default_text}" VerticalAlignment="Center" Margin="5">
-                        Zweig
+                        1. Abiturfach
                     </TextBlock>
                 </Border>
                 <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <ComboBox x:Name="zweigeCombo" Margin="5"/>
-                </Border>
-            </Grid>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                
-                <Border Style="{DynamicResource style_default_border}">
-                    <TextBlock Style="{DynamicResource style_default_text}" VerticalAlignment="Center" Margin="5">
-                        1. Fremdsprache
-                    </TextBlock>
-                </Border>
-                <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}" x:Name="l1"/>
-                </Border>
-            </Grid>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Border Style="{DynamicResource style_default_border}">
-                    <TextBlock Style="{DynamicResource style_default_text}" VerticalAlignment="Center" Margin="5">
-                        2. Fremdsprache
-                    </TextBlock>
-                </Border>
-                <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}" x:Name="l2"/>
+                    <ComboBox x:Name="c1" Margin="5"/>
                 </Border>
             </Grid>
             <Grid>
@@ -64,11 +33,11 @@
 
                 <Border Style="{DynamicResource style_default_border}">
                     <TextBlock Style="{DynamicResource style_default_text}" VerticalAlignment="Center" Margin="5">
-                        Fremdsprache abwählen?
+                        2. Abiturfach
                     </TextBlock>
                 </Border>
                 <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <ComboBox x:Name="abwCombo" Margin="5"/>
+                    <ComboBox x:Name="c2" Margin="5"/>
                 </Border>
             </Grid>
             <Grid>
@@ -79,11 +48,11 @@
 
                 <Border Style="{DynamicResource style_default_border}">
                     <TextBlock Style="{DynamicResource style_default_text}" VerticalAlignment="Center" Margin="5">
-                        Fremdsprache 1 oder 2 abwählen?
+                        3. Abiturfach
                     </TextBlock>
                 </Border>
                 <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <ComboBox x:Name="abw2Combo" Margin="5"/>
+                    <ComboBox x:Name="c3" Margin="5"/>
                 </Border>
             </Grid>
             <Grid>
@@ -91,13 +60,14 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+
                 <Border Style="{DynamicResource style_default_border}">
                     <TextBlock Style="{DynamicResource style_default_text}" VerticalAlignment="Center" Margin="5">
-                        3. Fremdsprache
+                        4. Abiturfach
                     </TextBlock>
                 </Border>
                 <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}" x:Name="l3"/>
+                    <ComboBox x:Name="c4" Margin="5"/>
                 </Border>
             </Grid>
             <Grid>
@@ -105,27 +75,14 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+
                 <Border Style="{DynamicResource style_default_border}">
                     <TextBlock Style="{DynamicResource style_default_text}" VerticalAlignment="Center" Margin="5">
-                        spätbeginnende Fremdsprache
+                       5. Abiturfach
                     </TextBlock>
                 </Border>
                 <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}"  x:Name="ls"/>
-                </Border>
-            </Grid>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Border Style="{DynamicResource style_default_border}">
-                    <TextBlock Style="{DynamicResource style_default_text}" VerticalAlignment="Center" Margin="5">
-                        Fremdsprache als Wahlfach
-                    </TextBlock>
-                </Border>
-                <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}" x:Name="lw"/>
+                    <ComboBox x:Name="c5" Margin="5"/>
                 </Border>
             </Grid>
         </StackPanel>

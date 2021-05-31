@@ -32,16 +32,11 @@ namespace AbiCALC
         public static readonly subjectTypes GeoOderWirtschaft = new subjectTypes(type.GeoWirtschaft);
         public static readonly subjectTypes WS = new subjectTypes(type.WSem);
         public static readonly subjectTypes PS = new subjectTypes(type.PSem);
-       
-
-        ////Fremdsprachen
 
 
-
-        ////Naturwissenschaften
-
-
-        ////Die Sendung mit Herr Kraus
-        //Informatik,
+        public override string ToString()
+        {
+            return name;
+        }
     }
 }

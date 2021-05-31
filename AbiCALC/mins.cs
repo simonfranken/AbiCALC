@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AbiCALC.selections;
 
 namespace AbiCALC
 {
@@ -15,10 +16,9 @@ namespace AbiCALC
         public subjectTypes special1, special2;
         public int specialMin = 1, specialMax = 3;
 
-        public mins(List<abiexam> abi, selection s)
+        public mins(selection s)
         {
-            abis = abi;
-            s.ssic.update(abi);
+            abis = s.abis;
             setDefaults();
             sel(s);
             setSpecial(s);
@@ -33,7 +33,7 @@ namespace AbiCALC
 
                 if (subject.t == subjectTypes.type.WSem || subject.t == subjectTypes.type.PSem) x = 3;
                 if (subject.t == subjectTypes.type.Profil) x = s.dp.profil[subject.name] ? 4 : 2;
-                if (subject.t == subjectTypes.type.GeoWirtschaft) x = s.gw12 ? 4 : 2;
+                if (subject.t == subjectTypes.type.GeoWirtschaft) x = (bool)s.GeoWirtschaft12 ? 4 : 2;
 
                 if (s.ssic.isDefined)
                     if (!s.ssic.data1.continueExtra12)
@@ -64,7 +64,7 @@ namespace AbiCALC
             {
                 m[x] = 3;
             }
-            if (s.SoziGeschichteZsm)
+            if ((bool)s.SoziGeschichteZsm)
             {
                 m.Add(subjectTypes.GeoOderWirtschaft, 3);
             }
@@ -90,14 +90,14 @@ namespace AbiCALC
         {
             if(s.ssic.isDefined) 
             {
-                selection.specialSubjectInfoContainer.sepecialSubjectInfoDefinedOrder x = s.ssic.data1;
+                specialSubjectInfoContainer.sepecialSubjectInfoDefinedOrder x = s.ssic.data1;
                 m[x.language1] = 4;
                 m[x.science1] = x.extra.t == subjectTypes.type.Naturwissenschaft ? 3 : 4;
                 m[x.extra] = 1;
             }
             else 
             {
-                selection.specialSubjectInfoContainer.specialSubjectInfoUndefinedOrder x = s.ssic.data2;
+                specialSubjectInfoContainer.specialSubjectInfoUndefinedOrder x = s.ssic.data2;
                 m[x.defined] = 4;
                 special1 = x.notDefined1;
                 special2 = x.notDefined2;

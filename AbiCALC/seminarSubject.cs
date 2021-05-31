@@ -13,5 +13,6 @@ namespace AbiCALC
         {
             throw new NotImplementedException();
         }
+        public seminarSubject(bool isW) : base(isW ? subjectTypes.WS : subjectTypes.PS) { }
     }
 }

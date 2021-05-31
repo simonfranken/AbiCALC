@@ -33,10 +33,11 @@ namespace AbiCALC
             get => _name;
         }
 
-        public data(selection _selection)
+        public data(selections.selection _selection)
         {
             deserialized(default);
-            min = new mins(abiexams, _selection);
+            abiexams = _selection.abis;
+            min = new mins(_selection);
             for (int i = 0; i < semesters.Length; i++)
             {
                 semesters[i] = new semester();

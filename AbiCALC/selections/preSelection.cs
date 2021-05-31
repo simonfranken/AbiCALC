@@ -57,7 +57,7 @@ namespace AbiCALC
                     r.Add(lan1);
                     r.Add(lan2);
                     if (g == GymType.SG) r.Add(lan3);
-                    if (lanW != null) r.Add(lanW);
+                    if (!string.IsNullOrEmpty(lanW)) r.Add(lanW);
                 }
 
                 return r;
@@ -108,16 +108,36 @@ namespace AbiCALC
                 error = "Die Auswahl \"Fremdsprache abwählen?\" darf nicht leer sein.";
                 return false;
             }
-            if((bool)useLanLate && replaceLan1 == null) 
+            else 
             {
-                error = "Die Auswahl \"Fremdsprache 1 oder 2 abwählen?\" darf nicht leer sein.";
-                return false;
+                if((bool)useLanLate) 
+                {
+                    if (replaceLan1 == null)
+                    {
+                        error = "Die Auswahl \"Fremdsprache 1 oder 2 abwählen?\" darf nicht leer sein.";
+                        return false;
+                    }
+                    if (string.IsNullOrEmpty(lanLate))
+                    {
+                        error = "Die spätbeginnende Fremdsprache darf nicht leer sein.";
+                        return false;
+                    }
+                }
+                else 
+                {
+                    if (replaceLan1 != null)
+                    {
+                        error = "Die Auswahl \"Fremdsprache 1 oder 2 abwählen?\" darf nur benutzt werden, wenn eine Fremdsprache abgelegt wird.";
+                        return false;
+                    }
+                    if (!string.IsNullOrEmpty(lanLate))
+                    {
+                        error = "Die spätbeginnende Fremdsprache darf nicht nicht benutzt werden, wenn keine Fremdsprache abgelegt wird.";
+                        return false;
+                    }
+                }
             }
-            if((bool)useLanLate && string.IsNullOrEmpty(lanLate)) 
-            {
-                error = "Die spätbeginnende Fremdsprache darf nicht leer sein.";
-                return false;
-            }
+            
             return true;
         }
     }

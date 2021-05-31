@@ -11,6 +11,10 @@ namespace AbiCALC
     {
         public subjectTypes type;
 
+        public subject(subjectTypes s) 
+        {
+            type = s;
+        }
 
         [NonSerialized]
         private bool isOverride = false;

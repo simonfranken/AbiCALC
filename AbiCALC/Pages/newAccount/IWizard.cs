@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace AbiCALC.Pages.newAccount
 {
@@ -12,5 +13,6 @@ namespace AbiCALC.Pages.newAccount
         public bool getIsValid();
         public delegate void updateDel();
         public event updateDel update;
+        public IWizard getNext();
     }
 }

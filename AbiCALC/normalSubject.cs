@@ -9,6 +9,8 @@ namespace AbiCALC
     [Serializable]
     public class normalSubject : subject
     {
+        public normalSubject(subjectTypes s) : base(s) { }
+        
         List<exam> examsSmall = new List<exam>();
         exam klausur = null;
 

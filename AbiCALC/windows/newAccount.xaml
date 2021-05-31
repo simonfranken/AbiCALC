@@ -26,14 +26,14 @@
                 <Style TargetType="Border" BasedOn="{StaticResource style_default_border}">
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#ff7f00"/>
+                            <Setter Property="Background" Value="{Binding hoverColor.itemValue}"/>
                         </Trigger>
                     </Style.Triggers>
                 </Style>
             </Border.Style>
         </Border>
         <Border Grid.Column="0" Grid.Row="1" Style="{DynamicResource style_default_border}">
-            <TextBlock Style="{DynamicResource style_default_text}" Margin="7" x:Name="errorText"/>
+            <TextBlock Style="{DynamicResource style_default_text}" Margin="7" x:Name="errorText" TextWrapping="Wrap"/>
         </Border>
     </Grid>
 </Window>

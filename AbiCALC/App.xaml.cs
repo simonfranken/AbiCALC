@@ -47,7 +47,7 @@ namespace AbiCALC
 
         public data promptNewAccount() 
         {
-            return new data(new selection());
+            return new data(new selections.selection(new preSelection()));
             //TODO
         }
     }
