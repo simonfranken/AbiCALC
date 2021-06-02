@@ -45,13 +45,6 @@ namespace AbiCALC
 
         private void sel(selection s)
         {
-            //set zweifachauswahl
-            subjectTypes.Reli.name = s.dp.rt.ToString();
-            subjectTypes.KunstOderMusik.name = s.dp.km.ToString();
-            subjectTypes.GeoOderWirtschaft.name = s.dp.gw.ToString();
-            //set name
-            subjectTypes.WS.name = s.dp.WSemName;
-            subjectTypes.PS.name = s.dp.PSemName;
             //profil
             foreach (string st in s.dp.profil.Keys)
             {

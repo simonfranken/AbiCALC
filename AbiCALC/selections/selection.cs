@@ -205,6 +205,13 @@ namespace AbiCALC.selections
         public void setSSIC() 
         {
             ssic = new specialSubjectInfoContainer(this);
+            //set zweifachauswahl
+            subjectTypes.Reli.name = dp.rt.ToString();
+            subjectTypes.KunstOderMusik.name = dp.km.ToString();
+            subjectTypes.GeoOderWirtschaft.name = dp.gw.ToString();
+            //set name
+            subjectTypes.WS.name = dp.WSemName;
+            subjectTypes.PS.name = dp.PSemName;
         }
 
         public enum ReliType 
