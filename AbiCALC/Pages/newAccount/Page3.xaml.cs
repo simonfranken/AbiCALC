@@ -77,6 +77,8 @@ namespace AbiCALC.Pages.newAccount
         public IWizard getNext()
         {
             s.ssic.update(createAbis(get()));
+            App.newSelection = s;
+            App.newAccountFinished = true;
             return null;
         }
 

@@ -85,7 +85,7 @@ namespace AbiCALC.windows
         }
         public void close_clicked(object sender, MouseButtonEventArgs e)
         {
-            App.selected = ((SolidColorBrush)preview.Background).Color;
+            App.selectedColor = ((SolidColorBrush)preview.Background).Color;
             this.Close();
         }
         public void max_clicked(object sender, MouseButtonEventArgs e)

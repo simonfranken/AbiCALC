@@ -17,11 +17,12 @@ namespace AbiCALC
     /// </summary>
     public partial class App : Application
     {
-        public static Color selected;
+        public static Color selectedColor;
+        public static selections.selection newSelection;
+        public static bool newAccountFinished = false;
         public App() 
         {
             InitializeComponent();
-            (new windows.newAccount()).Show();
         }
         private void close_clicked(object sender, MouseButtonEventArgs e)
         {
@@ -47,8 +48,10 @@ namespace AbiCALC
 
         public data promptNewAccount() 
         {
-            return new data(new selections.selection(new preSelection()));
-            //TODO
+            while(!newAccountFinished)
+            (new windows.newAccount()).ShowDialog();
+            newAccountFinished = false;
+            return new data(newSelection);
         }
     }
 }

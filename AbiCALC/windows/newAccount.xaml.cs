@@ -42,10 +42,7 @@ namespace AbiCALC.windows
             updateLoc();
         }
 
-        private void finish() 
-        {
-            throw new NotImplementedException();
-        }
+        private void finish() => close_clicked(null, null);
 
         private void updateLoc()
         {
