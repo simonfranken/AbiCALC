@@ -26,12 +26,22 @@ namespace AbiCALC.Pages.mainWindow
             //serialization.database.currentData.name.format = "Hallo, {0}!";
             InitializeComponent();
             DataContext = this;
-            serialization.database.PropertyChangedStatic += (object? sender, PropertyChangedEventArgs e) => { NameField.GetBindingExpression(TextBlock.TextProperty).UpdateSource(); };
+            serialization.database.PropertyChangedStatic += test;
         }
         public observableItem<string> getName 
         {
             get => serialization.database.currentData.name;
         }
 
+        private void changeAcc(object sender, MouseButtonEventArgs e)
+        {
+            (new windows.changeAccount()).ShowDialog();
+        }
+        void test(object? sender, PropertyChangedEventArgs e)
+        {
+            NameField.GetBindingExpression(TextBlock.TextProperty).UpdateSource();
+            NameField.GetBindingExpression(TextBlock.TextProperty).UpdateTarget();
+        }
     }
 }
+

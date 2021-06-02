@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace AbiCALC
 {
     [Serializable()]
-    public class data
+    public class data : IName
     {
         private semester[] semesters = new semester[4];
         private List<abiexam> abiexams = new List<abiexam>();
@@ -21,6 +21,7 @@ namespace AbiCALC
         private void deserialized(StreamingContext context)
         {
             name.func = (string s) => { return $"Hallo, {s}!"; };
+            name.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => { serialization.database.saveCurrent(); };
         }
 
         public int getPoints() 
@@ -32,6 +33,8 @@ namespace AbiCALC
         {
             get => _name;
         }
+
+        public string Name => name.itemValue;
 
         public data(selections.selection _selection)
         {

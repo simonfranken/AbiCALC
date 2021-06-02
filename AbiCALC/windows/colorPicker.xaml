@@ -17,20 +17,7 @@
             <Setter Property="Minimum" Value="0"/>
             <Setter Property="Margin" Value="10"/>
         </Style>
-        <Style x:Key="button" TargetType="Button">
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="Orange"/>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="False">
-                    <Setter Property="Background" Value="Black"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
     </Window.Resources>
-    <WindowChrome.WindowChrome>
-        <WindowChrome/>
-    </WindowChrome.WindowChrome>
     <Grid Grid.Row="2" Background="#333333">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -43,18 +30,18 @@
             </Border>
         </Grid>
         <StackPanel Grid.Column="1">
-            <Slider Style="{StaticResource slider}" x:Name="rS" Thumb.DragDelta="sliderUpdated"/>
-            <Slider Style="{StaticResource slider}" x:Name="gS" Thumb.DragDelta="sliderUpdated"/>
-            <Slider Style="{StaticResource slider}" x:Name="bS" Thumb.DragDelta="sliderUpdated"/>
+            <Slider Style="{DynamicResource slider}" x:Name="rS" Thumb.DragDelta="sliderUpdated"/>
+            <Slider Style="{DynamicResource slider}" x:Name="gS" Thumb.DragDelta="sliderUpdated"/>
+            <Slider Style="{DynamicResource slider}" x:Name="bS" Thumb.DragDelta="sliderUpdated"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBox Style="{StaticResource style_default_textbox}" Grid.Column="0" x:Name="rT" KeyUp="textUpdated" LostKeyboardFocus="textFinished" Text="0"/>
-                <TextBox Style="{StaticResource style_default_textbox}" Grid.Column="1" x:Name="gT" KeyUp="textUpdated" LostKeyboardFocus="textFinished"/>
-                <TextBox Style="{StaticResource style_default_textbox}" Grid.Column="2" x:Name="bT" KeyUp="textUpdated" LostKeyboardFocus="textFinished"/>
+                <TextBox Style="{DynamicResource style_default_textbox}" Grid.Column="0" x:Name="rT" KeyUp="textUpdated" LostKeyboardFocus="textFinished" Text="0"/>
+                <TextBox Style="{DynamicResource style_default_textbox}" Grid.Column="1" x:Name="gT" KeyUp="textUpdated" LostKeyboardFocus="textFinished"/>
+                <TextBox Style="{DynamicResource style_default_textbox}" Grid.Column="2" x:Name="bT" KeyUp="textUpdated" LostKeyboardFocus="textFinished"/>
             </Grid>
 
             <control:listSelection x:Name="subjectSelection"/>

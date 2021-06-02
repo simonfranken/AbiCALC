@@ -10,7 +10,7 @@ namespace AbiCALC.serialization
     partial class database
     {
         //singleton
-        static database singleton { get { return (_singleton ??= new database()); } }
+        public static database singleton { get { return (_singleton ??= new database()); } }
         static database _singleton;
 
 

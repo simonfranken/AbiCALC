@@ -26,6 +26,9 @@ namespace AbiCALC.customUI.ListSelection
         public delegate Color getColorDelegate(IName o);
         public getColorDelegate getColor = null;
 
+        public delegate void selectionChangedEventHandler();
+        public event selectionChangedEventHandler selectionChanged;
+
         public void setCollection(ObservableCollection<IName> newCollectionInput) => itemcontrol.ItemsSource = newCollectionInput != null ? newCollectionInput : new List<IName>();
 
         public listSelection()
@@ -43,10 +46,15 @@ namespace AbiCALC.customUI.ListSelection
             {
                 if (_selectedBorder != null) _selectedBorder.Background = new SolidColorBrush(defaultColor);
                 _selectedBorder = value;
-                _selectedBorder.Background = new SolidColorBrush(getColor != null ? getColor((IName)((TextBlock)(_selectedBorder.Child)).GetBindingExpression(TextBlock.TextProperty).DataItem) : new Color { R = 255, G = 255, B = 0, A = 255 }) ;
+                _selectedBorder.Background = new SolidColorBrush(getColor != null ? getColor(getSelected()) : new Color { R = 255, G = 255, B = 0, A = 255 }) ;
+                selectionChanged?.Invoke();
             }
         }
         
+        public IName getSelected() 
+        {
+            return selectedBorder != null ? (IName)((TextBlock)(_selectedBorder.Child)).GetBindingExpression(TextBlock.TextProperty).DataItem : null;
+        }
 
 
         private void borderClicked(object sender, MouseButtonEventArgs e)

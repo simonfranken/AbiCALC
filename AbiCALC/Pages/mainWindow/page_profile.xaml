@@ -37,5 +37,8 @@
 
             </Grid>
         </Border>
+        <Border MouseLeftButtonUp="changeAcc" Grid.Column="1" Style="{DynamicResource style_default_border}">
+            <TextBlock Text="Account wechseln" Style="{DynamicResource style_default_text}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
     </Grid>
 </Page>

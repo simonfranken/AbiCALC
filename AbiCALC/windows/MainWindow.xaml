@@ -63,8 +63,8 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <Image x:Name="home_icon" Style="{ StaticResource style_icon}" Source="../resources/home_logo.png" Grid.Row="2" MouseLeftButtonUp="pageSwitched"/>
-                        <Image x:Name="profile_icon" Style="{StaticResource style_icon}" Source="../resources/profile_logo.png" Grid.Row="1" MouseLeftButtonUp="pageSwitched"/>
+                        <Image x:Name="home_icon" Style="{ StaticResource style_icon}" Source="../resources/home_logo.png" Grid.Row="1" MouseLeftButtonUp="pageSwitched"/>
+                        <Image x:Name="profile_icon" Style="{StaticResource style_icon}" Source="../resources/profile_logo.png" Grid.Row="2" MouseLeftButtonUp="pageSwitched"/>
                         <Image x:Name="add_icon" Style="{StaticResource style_icon}" Source="../resources/add_logo_nav.png" Grid.Row="3" MouseLeftButtonUp="pageSwitched"/>
                         <Image x:Name="settings_icon" Style="{StaticResource style_icon}" Source="../resources/add_logo_nav.png" Grid.Row="4" MouseLeftButtonUp="pageSwitched"/>
 

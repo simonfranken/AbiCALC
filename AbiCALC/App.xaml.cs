@@ -53,5 +53,10 @@ namespace AbiCALC
             newAccountFinished = false;
             return new data(newSelection);
         }
+
+        public void createNewAccount() 
+        {
+            serialization.database.addNew(promptNewAccount());
+        }
     }
 }

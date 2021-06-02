@@ -65,7 +65,7 @@ namespace AbiCALC.serialization
             }
             if (!b)
             {
-                addNew(((App)(App.Current)).promptNewAccount());
+                ((App)(App.Current)).createNewAccount();
             }
         }
 
@@ -102,7 +102,7 @@ namespace AbiCALC.serialization
         }
 
         //save
-        private static void saveCurrent()
+        public static void saveCurrent()
         {
             if (singleton.loadedData != null) save(singleton.loadedFile, singleton.loadedData);
         }
@@ -120,6 +120,7 @@ namespace AbiCALC.serialization
         //add
         private static void addNew(data d, int i)
         {
+            saveCurrent();
             FileInfo f = new FileInfo(getFileNameFromId(i));
             save(f, d);
             load(f);
@@ -136,7 +137,8 @@ namespace AbiCALC.serialization
         {
             get => singleton.loadedData;
         }
-        public List<data> _profiles;
+        private List<data> _profiles;
+        private List<(data,FileInfo)> _profiles2;
         public List<data> profiles
         {
             get => _profiles;
@@ -157,14 +159,28 @@ namespace AbiCALC.serialization
             }
             yield break;
         }
-        
+        private static IEnumerable<(data, FileInfo)> getDatas2()
+        {
+            foreach (FileInfo f in profilesDir.dir.EnumerateFiles())
+            {
+                if (serial.Deserialize<data>(f, out var v))
+                {
+                    yield return (v,f);
+                }
+            }
+            yield break;
+        }
+
         private void updateProfiles() 
         {
-            profiles = new List<data>(getDatas());
+            _profiles2 = new List<(data,FileInfo)>(getDatas2());
+            List<data> ret = new List<data>();
+            foreach ((data x, FileInfo) i in _profiles2) ret.Add(i.x);
+            profiles = ret;
         }
 
         //load
-        private static bool load(FileInfo fileInfo)
+        public static bool load(FileInfo fileInfo)
         {
             if (fileInfo != null && serial.Deserialize<data>(fileInfo, out var x))
             {
@@ -173,6 +189,14 @@ namespace AbiCALC.serialization
                 return true;
             }
             return false;
-        }       
+        }
+        public static FileInfo getInfo(data d) 
+        {
+            foreach ((data x, FileInfo y) item in singleton._profiles2)
+            {
+                if (d==item.x) return item.y;
+            }
+            throw new Exception("404 - File not found.");
+        }
     }
 }
