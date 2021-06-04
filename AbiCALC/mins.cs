@@ -65,6 +65,8 @@ namespace AbiCALC
             {
                 m.Add(subjectTypes.GeoOderWirtschaft, 1);
             }
+            m.Add(subjectTypes.WS, 4);
+            m.Add(subjectTypes.PS, 2);
         }
 
 

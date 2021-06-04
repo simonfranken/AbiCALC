@@ -49,6 +49,7 @@ namespace AbiCALC
         public data(selections.selection _selection)
         {
             deserialized(default);
+            Name.itemValue = selections.selection.name;
             abiexams = _selection.abis;
             min = new mins(_selection);
             for (int i = 0; i < semesters.Length; i++)

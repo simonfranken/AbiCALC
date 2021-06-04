@@ -25,7 +25,7 @@ namespace AbiCALC.windows
             InitializeComponent();
             DataContext = this;
             _hc.itemValue = new SolidColorBrush( new Color {R = 255, G = 127, B = 0, A = 255});
-            next(new Pages.newAccount.Page1());
+            next(new Pages.newAccount.Page0());
         }
 
         public void next(Pages.newAccount.IWizard n) 
@@ -42,7 +42,11 @@ namespace AbiCALC.windows
             updateLoc();
         }
 
-        private void finish() => close_clicked(null, null);
+        private void finish()
+        {
+            App.newSelection.name = Pages.newAccount.Page0.name;
+            close_clicked(null, null);
+        }
 
         private void updateLoc()
         {

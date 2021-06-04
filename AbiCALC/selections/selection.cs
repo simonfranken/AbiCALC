@@ -16,6 +16,8 @@ namespace AbiCALC.selections
         {
             get => ssic.abis;
         }
+
+        public string name = "";
         public preSelection ps;
         public defaultProperties dp = new defaultProperties();
 

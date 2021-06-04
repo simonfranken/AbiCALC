@@ -27,6 +27,12 @@ namespace AbiCALC.Pages.newAccount
         {
             InitializeComponent();
             s = new selection(ps);
+            setItemsSources(ps);
+            createCallBacks();
+        }
+
+        private void setItemsSources(preSelection ps)
+        {
             gwCombo.ItemsSource = Enum.GetValues(typeof(selection.GeoOrWrType));
             kmCombo.ItemsSource = Enum.GetValues(typeof(selection.KunstOrMusikType));
             reliCombo.ItemsSource = Enum.GetValues(typeof(selection.ReliType));
@@ -36,9 +42,12 @@ namespace AbiCALC.Pages.newAccount
             extCombo.ItemsSource = s.getExtras().Keys;
             e12Combo.ItemsSource = d.Keys;
             gsCombo.ItemsSource = d.Keys;
+        }
+
+        private void createCallBacks()
+        {
             wst.textChangedEv += textChangedEv;
             pst.textChangedEv += textChangedEv;
-
             gwCombo.SelectionChanged += Combo_SelectionChanged;
             kmCombo.SelectionChanged += Combo_SelectionChanged;
             reliCombo.SelectionChanged += Combo_SelectionChanged;
