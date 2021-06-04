@@ -10,7 +10,7 @@ namespace AbiCALC
     {
         public enum GymType 
         {
-            SG, NTG, NUG, WSG
+            SG, NTG, MUG, WSG
         }
 
         public GymType? g = null;

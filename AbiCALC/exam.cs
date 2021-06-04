@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbiCALC
 {
+    [Serializable]
     public class exam
     {
         public bool isBig;

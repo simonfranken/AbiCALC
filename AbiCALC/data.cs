@@ -20,8 +20,21 @@ namespace AbiCALC
         [OnDeserialized]
         private void deserialized(StreamingContext context)
         {
-            name.func = (string s) => { return $"Hallo, {s}!"; };
-            name.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => { serialization.database.saveCurrent(); };
+            _name.func = (string s) => { return $"Hallo, {s}!"; };
+            _name.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => { serialization.database.saveCurrent(); };
+        }
+
+        internal IEnumerable<subjectTypes> getSubjectTypes()
+        {
+            List<subjectTypes> ret = new List<subjectTypes>();
+            foreach (semester item in semesters)
+            {
+                foreach (subjectTypes item2 in item.dict.Keys)
+                {
+                    if (!ret.Contains(item2)) ret.Add(item2);
+                }
+            }
+            return ret;
         }
 
         public int getPoints() 
@@ -29,13 +42,10 @@ namespace AbiCALC
             return getMaxPoints(predict(new List<semester>(semesters)), min, predict(new List<abiexam>(abiexams), new List<semester>(semesters)));
         }
 
-        public observableItem<string> name 
+        public observableItem<string> Name 
         {
             get => _name;
         }
-
-        public string Name => name.itemValue;
-
         public data(selections.selection _selection)
         {
             deserialized(default);
@@ -44,6 +54,13 @@ namespace AbiCALC
             for (int i = 0; i < semesters.Length; i++)
             {
                 semesters[i] = new semester();
+            }
+            foreach (subjectTypes item in min.belegt.Keys)
+            {
+                for (int i = 0; i < min.belegt[item] - 1; i++)
+                {
+                    semesters[i].dict[item] = subject.constructor(item);
+                }
             }
         }
 

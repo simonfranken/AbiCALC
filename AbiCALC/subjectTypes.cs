@@ -3,22 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using AbiCALC.serialization;
 
 namespace AbiCALC
 {
     [Serializable]
-    public class subjectTypes
+    public class subjectTypes : IName
     {
+        
         public subjectTypes(type _t) : this(_t, _t.ToString()) { }
 
         public subjectTypes(type _t, string s)
         {
             t = _t;
-            name = s;
+            name.itemValue = s;
         }
+        public color2 c = new Color {R = 127, A = 255, G = 127 };
 
 
-        public string name;
+        private observableItem<string> name = new observableItem<string>();
         public type t;
         public enum type 
         {
@@ -33,10 +37,11 @@ namespace AbiCALC
         public static readonly subjectTypes WS = new subjectTypes(type.WSem);
         public static readonly subjectTypes PS = new subjectTypes(type.PSem);
 
+        public observableItem<string> Name => name;
 
         public override string ToString()
         {
-            return name;
+            return name.itemValue;
         }
     }
 }

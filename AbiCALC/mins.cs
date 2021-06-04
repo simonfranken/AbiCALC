@@ -32,7 +32,7 @@ namespace AbiCALC
                 int x = 4;
 
                 if (subject.t == subjectTypes.type.WSem || subject.t == subjectTypes.type.PSem) x = 3;
-                if (subject.t == subjectTypes.type.Profil) x = s.dp.profil[subject.name] ? 4 : 2;
+                if (subject.t == subjectTypes.type.Profil) x = s.dp.profil[subject.Name.itemValue] ? 4 : 2;
                 if (subject.t == subjectTypes.type.GeoWirtschaft) x = (bool)s.GeoWirtschaft12 ? 4 : 2;
 
                 if (s.ssic.isDefined)

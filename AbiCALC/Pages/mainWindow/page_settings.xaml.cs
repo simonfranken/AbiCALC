@@ -27,7 +27,7 @@ namespace AbiCALC.Pages.mainWindow
 
         private void color_change (object sender, MouseButtonEventArgs e)
         {
-            (new windows.colorPicker()).ShowDialog();
+            (new windows.editSubjectType()).ShowDialog();
         }
 
         private void name_change (object sender, MouseButtonEventArgs e)
@@ -37,7 +37,7 @@ namespace AbiCALC.Pages.mainWindow
 
         private void name_change_ok (object sender, MouseButtonEventArgs e)
         {
-            serialization.database.currentData.name.itemValue = nameInput.Text;
+            serialization.database.currentData.Name.itemValue = nameInput.Text;
             nameField.Visibility = Visibility.Hidden;
             nameInput.Text = "";
         }

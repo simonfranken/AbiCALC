@@ -46,21 +46,30 @@ namespace AbiCALC.customUI.ListSelection
             {
                 if (_selectedBorder != null) _selectedBorder.Background = new SolidColorBrush(defaultColor);
                 _selectedBorder = value;
-                _selectedBorder.Background = new SolidColorBrush(getColor != null ? getColor(getSelected()) : new Color { R = 255, G = 255, B = 0, A = 255 }) ;
+                if(_selectedBorder != null) _selectedBorder.Background = new SolidColorBrush(getColor != null ? getColor(getSelected()) : new Color { R = 255, G = 255, B = 0, A = 255 }) ;
                 selectionChanged?.Invoke();
             }
         }
         
         public IName getSelected() 
         {
-            return selectedBorder != null ? (IName)((TextBlock)(_selectedBorder.Child)).GetBindingExpression(TextBlock.TextProperty).DataItem : null;
+            return selectedBorder != null ? getSource(selectedBorder) : null;
         }
 
-
-        private void borderClicked(object sender, MouseButtonEventArgs e)
+        private IName getSource(Border b) 
         {
-            selectedBorder = (Border)sender;
+            return (IName)((TextBlock)(b.Child)).GetBindingExpression(TextBlock.TextProperty).DataItem;
         }
+
+        private Border getBorder(IName n) 
+        {
+            itemcontrol.UpdateLayout();
+            var x  = itemcontrol.ItemContainerGenerator.ContainerFromItem(n) as Border;
+            return x;
+        }
+
+
+        private void borderClicked(object sender, MouseButtonEventArgs e) => selectedBorder = (Border)sender;
 
         private void mouseOver(object sender, DependencyPropertyChangedEventArgs e)
         {
@@ -71,5 +80,7 @@ namespace AbiCALC.customUI.ListSelection
             if (!border.IsMouseOver && border != selectedBorder) border.Background = (SolidColorBrush)FindResource("color_darkgrey");
 
         }
+
+        public void updateColor() => selectedBorder = selectedBorder;
     }
 }

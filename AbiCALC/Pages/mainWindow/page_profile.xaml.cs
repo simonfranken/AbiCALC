@@ -30,7 +30,7 @@ namespace AbiCALC.Pages.mainWindow
         }
         public observableItem<string> getName 
         {
-            get => serialization.database.currentData.name;
+            get => serialization.database.currentData != null ? serialization.database.currentData.Name : new observableItem<string>();
         }
 
         private void changeAcc(object sender, MouseButtonEventArgs e)

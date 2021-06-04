@@ -17,7 +17,7 @@ namespace AbiCALC
     /// </summary>
     public partial class App : Application
     {
-        public static Color selectedColor;
+        public static Color? selectedColor = null;
         public static selections.selection newSelection;
         public static bool newAccountFinished = false;
         public App() 

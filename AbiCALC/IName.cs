@@ -8,7 +8,7 @@ namespace AbiCALC
 {
     public interface IName
     {
-        string Name
+        observableItem<string> Name
         {
             get;
         }

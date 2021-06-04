@@ -36,6 +36,13 @@ namespace AbiCALC.windows
                 dict2[dict[s]] = s;
             }
         }
+        public colorPicker(Color c) : this() 
+        {
+            rT.Text = c.R + "";
+            gT.Text = c.G + "";
+            bT.Text = c.B + "";
+            foreach (TextBox item in dict2.Keys) textUpdated(item, null);
+        }
 
         private void sliderUpdated(object sender, DragDeltaEventArgs e)
         {

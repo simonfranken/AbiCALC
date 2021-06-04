@@ -9,6 +9,20 @@ namespace AbiCALC
     [Serializable]
     public abstract class subject
     {
+        public static subject constructor(subjectTypes t) 
+        {
+            switch(t.t) 
+            {
+                case subjectTypes.type.WSem:
+                    return new seminarSubject(true);
+                case subjectTypes.type.PSem:
+                    return new seminarSubject(false);
+                default:
+                    return new normalSubject(t);
+
+            }
+        }
+        
         public subjectTypes type;
 
         public subject(subjectTypes s) 

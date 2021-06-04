@@ -35,7 +35,7 @@
 
                 <Border Grid.RowSpan="1" Grid.Row="0" MouseLeftButtonUp="color_change">
 
-                    <TextBlock Text="Farben ändern" 
+                    <TextBlock Text="Fächer bearbeiten" 
                                Style="{StaticResource style_default_text}"
                                HorizontalAlignment="Center" 
                                VerticalAlignment="Center" 

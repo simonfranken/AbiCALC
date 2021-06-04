@@ -38,11 +38,11 @@
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
             <StackPanel>
-                <ItemsControl x:Name="itemcontrol">
+                <ItemsControl x:Name="itemcontrol" VirtualizingStackPanel.IsVirtualizing="False">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Border Style="{StaticResource border}" MouseLeftButtonUp="borderClicked" IsMouseDirectlyOverChanged="mouseOver">
-                                <TextBlock Text="{Binding Name}" Style="{StaticResource text}"/>
+                                <TextBlock Text="{Binding Name.itemValue}" Style="{StaticResource text}"/>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
