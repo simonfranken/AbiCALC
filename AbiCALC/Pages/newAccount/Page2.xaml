@@ -156,6 +156,21 @@
 
                     <Border Style="{DynamicResource style_default_border}">
                         <TextBlock Style="{DynamicResource style_default_text}" VerticalAlignment="Center" Margin="5">
+                        Geschichte oder Sozialkunde 2 stündig?
+                        </TextBlock>
+                    </Border>
+                    <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
+                        <ComboBox x:Name="gs2Combo" Margin="5"/>
+                    </Border>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Style="{DynamicResource style_default_border}">
+                        <TextBlock Style="{DynamicResource style_default_text}" VerticalAlignment="Center" Margin="5">
                         W-Seminar Name
                         </TextBlock>
                     </Border>

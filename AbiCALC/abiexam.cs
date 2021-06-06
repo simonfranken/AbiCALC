@@ -10,11 +10,12 @@ namespace AbiCALC
     public class abiexam : subject
     {
         int? grade = null;
-        protected override int? getAverageGradeFromExams()
+        public abiexam(subjectTypes s) : base(s, false) { }
+
+        internal int? getGrade()
         {
             if (grade != null) return 4 * grade;
             else return null;
         }
-        public abiexam(subjectTypes s) : base(s) { }
     }
 }

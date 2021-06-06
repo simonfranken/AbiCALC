@@ -30,5 +30,10 @@ namespace AbiCALC.Pages.mainWindow
         {
             windows.MainWindow.singleton.set(typeof(page_add));
         }
+
+        private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            windows.MainWindow.singleton.set(typeof(page_table));
+        }
     }
 }

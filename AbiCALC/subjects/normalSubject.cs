@@ -16,7 +16,7 @@ namespace AbiCALC
 
         //public void add(exam e) => examsSmall.Add(e);
 
-        protected override int? getAverageGradeFromExams()
+        public int? getGrade()
         {
             //init
             int smallSumm = 0;

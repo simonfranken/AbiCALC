@@ -82,11 +82,6 @@ namespace AbiCALC
 
         public static fraction operator ++(fraction a) => a += (fraction)1;
 
-        //operators comparison
-        public static bool operator ==(fraction a, fraction b) => a.Equals(b);
-
-        public static bool operator !=(fraction a, fraction b) => !(a == b);
-
 
 
         //operators cast

@@ -23,6 +23,7 @@ namespace AbiCALC.Pages.newAccount
     {
         selection s;
         Dictionary<string, bool?> d = new Dictionary<string, bool?> { { "", null }, { "Ja", true }, { "Nein", false } };
+        Dictionary<string, bool?> d2 = new Dictionary<string, bool?> { { "", null }, { "Geschichte", true }, { "Sozialkunde", false } };
         public Page2(preSelection ps)
         {
             InitializeComponent();
@@ -42,6 +43,7 @@ namespace AbiCALC.Pages.newAccount
             extCombo.ItemsSource = s.getExtras().Keys;
             e12Combo.ItemsSource = d.Keys;
             gsCombo.ItemsSource = d.Keys;
+            gs2Combo.ItemsSource = d2.Keys;
         }
 
         private void createCallBacks()
@@ -57,6 +59,7 @@ namespace AbiCALC.Pages.newAccount
             extCombo.SelectionChanged += Combo_SelectionChanged;
             e12Combo.SelectionChanged += Combo_SelectionChanged;
             gsCombo.SelectionChanged += Combo_SelectionChanged;
+            gs2Combo.SelectionChanged += Combo_SelectionChanged;
         }
 
         private void textChangedEv(string newText) => set();
@@ -74,6 +77,7 @@ namespace AbiCALC.Pages.newAccount
             if (extCombo.SelectedItem != null) s.Index2 = (string)extCombo.SelectedItem;
             if (e12Combo.SelectedItem != null) s.Extra12 = d[(string)e12Combo.SelectedItem];
             if (gsCombo.SelectedItem != null) s.SoziGeschichteZsm = d[(string)gsCombo.SelectedItem];
+            if (gs2Combo.SelectedItem != null) s.ges2soz1 = d2[(string)gs2Combo.SelectedItem];
             s.dp.PSemName = pst.Text;
             s.dp.WSemName = wst.Text;
 

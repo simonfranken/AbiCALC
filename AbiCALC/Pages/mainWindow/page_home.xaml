@@ -23,7 +23,7 @@
         </Grid.ColumnDefinitions>
 
         <!--Notenprognose-->
-        <Border Style="{StaticResource style_default_border}" Grid.Row="0">
+        <Border Style="{StaticResource style_default_border}" Grid.Row="0" MouseLeftButtonUp="Border_MouseLeftButtonUp">
             <Grid>
 
                 <Grid.RowDefinitions>

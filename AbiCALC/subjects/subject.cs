@@ -14,9 +14,9 @@ namespace AbiCALC
             switch(t.t) 
             {
                 case subjectTypes.type.WSem:
-                    return new seminarSubject(true);
+                    return new subjects.wSemSubject();
                 case subjectTypes.type.PSem:
-                    return new seminarSubject(false);
+                    return new subjects.pSemSubject();
                 default:
                     return new normalSubject(t);
 
@@ -25,48 +25,14 @@ namespace AbiCALC
         
         public subjectTypes type;
 
-        public subject(subjectTypes s) 
+        public subject(subjectTypes s, bool isNoAbi = true) 
         {
             type = s;
-        }
-
-        [NonSerialized]
-        private bool isOverride = false;
-        [NonSerialized]
-        private int _overridePoints;
-
-        public bool examsValid() => getAverageGradeFromExams() != null;
-        public int? getAverageGrade()
-        {
-            return isOverride ? overridePoints : getAverageGradeFromExams();
-        }
-
-        protected abstract int? getAverageGradeFromExams();
-
-        public int overridePoints
-        {
-            get => _overridePoints;
-            set
+            if(isNoAbi) s.instances.Add(this);
+            else 
             {
-                _overridePoints = value;
-                isOverride = true;
+                s.a = this as abiexam;
             }
-        }
-
-
-        public void noOverride()
-        {
-            isOverride = false;
-        }
-
-
-
-        public static int getPredictionFactor(subject type)
-        {
-            if (typeof(normalSubject).IsInstanceOfType(type)) return 1;
-            else if (typeof(seminarSubject).IsInstanceOfType(type)) return 4;
-            else if (typeof(abiexam).IsInstanceOfType(type)) return 4;
-            else return 1;
         }
     }
 }

@@ -27,32 +27,14 @@ namespace AbiCALC.selections
 
         public List<subjectTypes> gesSoz = new List<subjectTypes>();
 
-        public bool? SoziGeschichteZsm 
-        {
-            get => _SoziGeschichteZsm;
-            set 
-            {
-                _SoziGeschichteZsm = value;
-                gesSoz.Clear();
-                if (SoziGeschichteZsm == null) return;
-                if((bool)SoziGeschichteZsm) 
-                {
-                    gesSoz.Add(new subjectTypes(subjectTypes.type.GeschichteSozi));
-                }
-                else 
-                {
-                    gesSoz.Add(new subjectTypes(subjectTypes.type.Geschichte));
-                    gesSoz.Add(new subjectTypes(subjectTypes.type.Sozi));
-                }
-            }
-        }
-        private bool? _SoziGeschichteZsm;
+        public bool? SoziGeschichteZsm;
 
         public bool? GeoWirtschaft12 = null;
         public bool? Extra12 = null;
 
         public specialSubjectInfoContainer ssic;
 
+        public bool? ges2soz1 = null;
 
         public List<List<subjectTypes>> getAbiPos() 
         {
@@ -197,6 +179,27 @@ namespace AbiCALC.selections
                 error = "Die spätbeginnende Fremdsprache muss in Q12 belegt werden.";
                 return false;
             }
+            if(ges2soz1 == null) 
+            {
+                if((bool)SoziGeschichteZsm) 
+                {
+                    error = "Entweder Geschichte oder Sozialkunde muss 2 stündig belegt werden.";
+                    return false;
+                }
+            }
+            else
+            {
+                if(!(bool)SoziGeschichteZsm) 
+                {
+                    error = "Wenn Geschichte und Sozialkunde zusammen sind, sind beide automatisch 2 stündig.";
+                    return false;
+                }
+                if(!(bool)ges2soz1 && !(ps.g == preSelection.GymType.WSG )) 
+                {
+                    error = "Sozialkunde kann nur in WSG 2 stündig belegt werden.";
+                    return false;
+                }
+            }
             if (!dp.isValid(ref error)) 
             {
                 return false;
@@ -214,6 +217,24 @@ namespace AbiCALC.selections
             //set name
             subjectTypes.WS.Name.itemValue = dp.WSemName;
             subjectTypes.PS.Name.itemValue = dp.PSemName;
+            test();
+        }
+
+        private void test() 
+        {
+            if ((bool)SoziGeschichteZsm)
+            {
+                var x = new subjectTypes(subjectTypes.type.Geschichte);
+                var y = new subjectTypes(subjectTypes.type.Sozi);
+                gesSoz.Add(x);
+                gesSoz.Add(y);
+                x.setConnected(y, (bool)ges2soz1 ? 2 : 1, (bool)ges2soz1 ? 1 : 2);
+            }
+            else
+            {
+                gesSoz.Add(new subjectTypes(subjectTypes.type.Geschichte));
+                gesSoz.Add(new subjectTypes(subjectTypes.type.Sozi));
+            }
         }
 
         public enum ReliType 

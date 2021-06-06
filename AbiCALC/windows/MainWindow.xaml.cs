@@ -55,6 +55,7 @@ namespace AbiCALC.windows
             pagesType[settings_icon] = typeof(page_settings);
 
             foreach (Type i in pagesType.Values) pages[i] = null;
+            pages[typeof(page_table)] = null;
             set(typeof(page_home));
         }
 
