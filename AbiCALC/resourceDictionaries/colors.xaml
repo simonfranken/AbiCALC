@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    
+    <SolidColorBrush x:Key="window_chrome">#ff7f00</SolidColorBrush>
+        
+    <SolidColorBrush x:Key="color_red">#ff6666</SolidColorBrush>
+    <SolidColorBrush x:Key="color_orange">#ffb266</SolidColorBrush>
+    <SolidColorBrush x:Key="color_yellow">#ffff66</SolidColorBrush>
+    <SolidColorBrush x:Key="color_green">#66ff66</SolidColorBrush>
+    <SolidColorBrush x:Key="color_blue">#66b3ff</SolidColorBrush>
+    <SolidColorBrush x:Key="color_violet">#b366ff</SolidColorBrush>
+    <SolidColorBrush x:Key="color_darkgrey">#1a1a1a</SolidColorBrush>
+    <SolidColorBrush x:Key="color_midgrey">#262626</SolidColorBrush>
+    <SolidColorBrush x:Key="color_lightgrey">#333333</SolidColorBrush>
+    <SolidColorBrush x:Key="color_white">#ffffff</SolidColorBrush>
+    
+</ResourceDictionary>

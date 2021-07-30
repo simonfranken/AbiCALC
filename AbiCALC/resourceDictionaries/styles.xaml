@@ -37,7 +37,7 @@
     
                                         <Border Grid.Column="3" Cursor="Hand">
                                             <Image x:Name="close_button" HorizontalAlignment="Right"
-                                                   Source="resources/close_logo.png" Margin="7,0,7,0"
+                                                   Source="../resources/close_logo.png" Margin="7,0,7,0"
                                                    MouseLeftButtonUp="close_clicked" />
                                             <Border.Style>
                                                 <Style TargetType="Border">
@@ -65,7 +65,7 @@
                                         </Border>
                                         <Border Grid.Column="1" Cursor="Hand">
                                             <Image x:Name="min_button" HorizontalAlignment="Right"
-                                                   Source="resources/min_logo.png" Margin="7,0,7,0"
+                                                   Source="../resources/min_logo.png" Margin="7,0,7,0"
                                                    MouseLeftButtonUp="min_clicked" />
                                             <Border.Style>
                                                 <Style TargetType="Border">
@@ -119,7 +119,7 @@
     
             <!--Style: Text-->
             <Style x:Key="style_default_text" TargetType="TextBlock">
-                <Setter Property="FontFamily" Value="fonts/#League Spartan"/>
+                <Setter Property="FontFamily" Value="{DynamicResource FontFamily}"/>
                 <Setter Property="Foreground" Value="{DynamicResource color_white}"/>
             </Style>
             <Style x:Key="style_headline_text" TargetType="TextBlock" BasedOn="{StaticResource style_default_text}">
