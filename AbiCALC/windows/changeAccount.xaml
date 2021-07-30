@@ -6,8 +6,10 @@
         xmlns:local="clr-namespace:AbiCALC.windows"
         mc:Ignorable="d"
         Title="changeAccount" Height="450" Width="800"
-        xmlns:control="clr-namespace:AbiCALC.customUI.ListSelection"
+        xmlns:lib.AListSelection="clr-namespace:lib.AListSelection;assembly=lib"
         Style="{DynamicResource windowMain}">
+    
+    
     <Grid Background="{DynamicResource color_lightgrey}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -45,6 +47,6 @@
                 Neuer Account
             </TextBlock>
         </Border>
-        <control:listSelection Grid.ColumnSpan="2" x:Name="accountList"/>
+        <lib.AListSelection:AListSelection Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" x:Name="accountList"/>
     </Grid>
 </Window>

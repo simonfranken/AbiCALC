@@ -65,7 +65,7 @@ namespace AbiCALC.serialization
             }
             if (!b)
             {
-                ((App)(App.Current)).createNewAccount();
+                App.createNewAccount();
             }
         }
 

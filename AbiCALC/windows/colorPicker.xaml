@@ -9,7 +9,7 @@
         MinHeight="230"
         MinWidth="430"
         Style="{StaticResource windowMain}"
-        xmlns:control="clr-namespace:AbiCALC.customUI.ListSelection"
+        xmlns:lib.AListSelection="clr-namespace:lib.AListSelection;assembly=lib"
         >
     <Window.Resources>
         <Style x:Key="slider" TargetType="Slider">
@@ -44,7 +44,7 @@
                 <TextBox Style="{DynamicResource style_default_textbox}" Grid.Column="2" x:Name="bT" KeyUp="textUpdated" LostKeyboardFocus="textFinished"/>
             </Grid>
 
-            <control:listSelection x:Name="subjectSelection"/>
+            <lib.AListSelection:AListSelection x:Name="subjectSelection"/>
             <Border HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Padding="6" Cursor="Hand" MouseLeftButtonUp="Button_Click">
                 <TextBlock Style="{StaticResource style_default_text}">Fertig</TextBlock>
                 <Border.Style>

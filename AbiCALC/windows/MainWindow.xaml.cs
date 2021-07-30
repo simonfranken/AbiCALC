@@ -13,9 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
-using AbiCALC.customUI.ListSelection;
 using AbiCALC.Pages;
 using AbiCALC.Pages.mainWindow;
+using lib.interfaces;
 
 namespace AbiCALC.windows
 {
@@ -63,7 +63,7 @@ namespace AbiCALC.windows
         public void close_clicked(object sender, MouseButtonEventArgs e)
         {
             Close();
-            ((App)App.Current).close();
+            ((App)App.Current).Close();
         }
         public void max_clicked(object sender, MouseButtonEventArgs e)
         {

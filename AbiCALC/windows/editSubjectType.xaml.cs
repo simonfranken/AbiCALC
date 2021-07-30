@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using lib.interfaces;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -22,10 +23,10 @@ namespace AbiCALC.windows
         public editSubjectType()
         {
             InitializeComponent();
-            listSubjects.setCollection(new System.Collections.ObjectModel.ObservableCollection<IName>(serialization.database.currentData.getSubjectTypes()));
+            listSubjects.SetCollection(new System.Collections.ObjectModel.ObservableCollection<IName>(serialization.database.currentData.getSubjectTypes()));
             listSubjects.getColor += test;
             nameTextBox.TextChanged += NameTextBox_TextChanged;
-            listSubjects.selectionChanged += ListSubjects_selectionChanged;
+            listSubjects.SelectionChanged += ListSubjects_selectionChanged;
         }
 
         public Color test(IName i) 
@@ -35,14 +36,14 @@ namespace AbiCALC.windows
 
         private void ListSubjects_selectionChanged()
         {
-            subjectTypes x = ((subjectTypes)listSubjects.getSelected());
+            subjectTypes x = ((subjectTypes)listSubjects.GetSelected());
             if(x != null) nameTextBox.Text = x.Name.itemValue;
         }
 
         private void NameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            var x = ((subjectTypes)listSubjects.getSelected());
+            var x = ((subjectTypes)listSubjects.GetSelected());
             if(x != null) x.Name.itemValue = nameTextBox.Text;
         }
 
@@ -63,10 +64,10 @@ namespace AbiCALC.windows
 
         private void changeColor(object sender, MouseButtonEventArgs e)
         {
-            new colorPicker(((subjectTypes)listSubjects.getSelected()).c.color).ShowDialog();
+            new colorPicker(((subjectTypes)listSubjects.GetSelected()).c.color).ShowDialog();
             if(App.selectedColor != null) 
             {
-                ((subjectTypes)listSubjects.getSelected()).c.color = (Color)App.selectedColor;
+                ((subjectTypes)listSubjects.GetSelected()).c.color = (Color)App.selectedColor;
                 App.selectedColor = null;
                 listSubjects.updateColor();
             }

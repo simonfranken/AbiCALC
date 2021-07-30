@@ -21,7 +21,7 @@ namespace lib.AListSelection
         public delegate void SelectionChangedEventHandler();
         public event SelectionChangedEventHandler SelectionChanged;
 
-        public void setCollection(ObservableCollection<IName> newCollectionInput) => itemcontrol.ItemsSource = newCollectionInput != null ? newCollectionInput : new List<IName>();
+        public void SetCollection(ObservableCollection<IName> newCollectionInput) => itemcontrol.ItemsSource = newCollectionInput != null ? newCollectionInput : new List<IName>();
 
         public AListSelection()
         {
@@ -29,8 +29,9 @@ namespace lib.AListSelection
             InitializeComponent();
         }
 
-        Border _selectedBorder;
-        Border selectedBorder
+        private Border _selectedBorder;
+
+        private Border SelectedBorder
         {
             get => _selectedBorder;
 
@@ -38,22 +39,22 @@ namespace lib.AListSelection
             {
                 if (_selectedBorder != null) _selectedBorder.Background = new SolidColorBrush(defaultColor);
                 _selectedBorder = value;
-                if(_selectedBorder != null) _selectedBorder.Background = new SolidColorBrush(getColor != null ? getColor(getSelected()) : new Color { R = 255, G = 255, B = 0, A = 255 }) ;
+                if(_selectedBorder != null) _selectedBorder.Background = new SolidColorBrush(getColor != null ? getColor(GetSelected()) : new Color { R = 255, G = 255, B = 0, A = 255 }) ;
                 SelectionChanged?.Invoke();
             }
         }
-        
-        public IName getSelected() 
+
+        public IName GetSelected() 
         {
-            return selectedBorder != null ? getSource(selectedBorder) : null;
+            return SelectedBorder != null ? GetSource(SelectedBorder) : null;
         }
 
-        private IName getSource(Border b) 
+        private static IName GetSource(Border b) 
         {
-            return (IName)((TextBlock)(b.Child)).GetBindingExpression(TextBlock.TextProperty).DataItem;
+            return (IName)((TextBlock)(b.Child)).GetBindingExpression(TextBlock.TextProperty)?.DataItem;
         }
 
-        private Border getBorder(IName n) 
+        private Border GetBorder(IName n) 
         {
             itemcontrol.UpdateLayout();
             var x  = itemcontrol.ItemContainerGenerator.ContainerFromItem(n) as Border;
@@ -61,18 +62,21 @@ namespace lib.AListSelection
         }
 
 
-        private void borderClicked(object sender, MouseButtonEventArgs e) => selectedBorder = (Border)sender;
+        private void BorderClicked(object sender, MouseButtonEventArgs e) => SelectedBorder = (Border)sender;
 
-        private void mouseOver(object sender, DependencyPropertyChangedEventArgs e)
+        private void MouseOver(object sender, DependencyPropertyChangedEventArgs e)
         {
-            Border border = (Border)sender;
+            var border = (Border)sender;
 
-            if (border.IsMouseOver && border != selectedBorder) border.Background = (SolidColorBrush)FindResource("color_midgrey");
-
-            if (!border.IsMouseOver && border != selectedBorder) border.Background = (SolidColorBrush)FindResource("color_darkgrey");
-
+            border.Background = border.IsMouseOver switch
+            {
+                true when border != SelectedBorder => (SolidColorBrush) FindResource("color_midgrey"),
+                false when border != SelectedBorder => (SolidColorBrush) FindResource("color_darkgrey"),
+                _ => border.Background
+            };
         }
-
-        public void updateColor() => selectedBorder = selectedBorder;
+        
+        public void updateColor() => SelectedBorder = SelectedBorder;
+        
     }
 }

@@ -40,7 +40,7 @@
                 <ItemsControl x:Name="itemcontrol" VirtualizingStackPanel.IsVirtualizing="False">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Style="{StaticResource border}" MouseLeftButtonUp="borderClicked" IsMouseDirectlyOverChanged="mouseOver">
+                            <Border Style="{StaticResource border}" MouseLeftButtonUp="BorderClicked" IsMouseDirectlyOverChanged="MouseOver">
                                 <TextBlock Text="{Binding Name.itemValue}" Style="{StaticResource text}"/>
                             </Border>
                         </DataTemplate>

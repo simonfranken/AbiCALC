@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using lib.interfaces;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -34,9 +29,9 @@ namespace AbiCALC
         }
         private void min_clicked(object sender, MouseButtonEventArgs e)
         {
-            ((IWindow)Window.GetWindow((Image)sender)).min_clicked(sender, e);
+            ((IWindow) Window.GetWindow((Image)sender)).min_clicked(sender, e);
         }
-        public void close() 
+        public void Close() 
         {
             foreach (Window x in Windows) x.Close();
             serialization.database.close();
@@ -46,15 +41,15 @@ namespace AbiCALC
 
         public ObservableCollection<semester> semesters;
 
-        public data promptNewAccount() 
+        private static data promptNewAccount() 
         {
             while(!newAccountFinished)
-            (new windows.newAccount()).ShowDialog();
+                (new windows.newAccount()).ShowDialog();
             newAccountFinished = false;
             return new data(newSelection);
         }
 
-        public void createNewAccount() 
+        public static void createNewAccount() 
         {
             serialization.database.addNew(promptNewAccount());
         }

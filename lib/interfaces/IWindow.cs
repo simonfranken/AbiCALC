@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace lib.interfaces
 {
-    interface IWindow
+    public interface IWindow
     {
         void close_clicked(object sender, MouseButtonEventArgs e);
         void max_clicked(object sender, MouseButtonEventArgs e);
