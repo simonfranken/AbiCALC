@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AbiCALC.Pages.newAccount"
-      xmlns:control="clr-namespace:AbiCALC.customUI.textBox2"
+      xmlns:lib.ATextBox="clr-namespace:lib.ATextBox;assembly=lib"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page0">
@@ -12,7 +12,7 @@
     <Grid>
         <StackPanel>
             <Border Style="{DynamicResource style_default_border}">
-                <control:textBox2 Style="{DynamicResource Style_TextBox2_main}" HelpText="Name" x:Name="tb"/>
+                <lib.ATextBox:ATextBox Style="{DynamicResource Style_TextBox2_main}" HelpText="Name" x:Name="tb"/>
             </Border>
         </StackPanel>
     </Grid>

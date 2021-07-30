@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using lib.interfaces;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -23,17 +24,17 @@ namespace AbiCALC.windows
         {
             InitializeComponent();
             accountList.getColor = (IName) => { return new Color { A = 255, R = 255 }; };
-            accountList.setCollection(new System.Collections.ObjectModel.ObservableCollection<IName>(serialization.database.singleton.profiles));
+            accountList.SetCollection(new System.Collections.ObjectModel.ObservableCollection<IName>(serialization.database.singleton.profiles));
         }
 
         private void newAcc(object sender, MouseButtonEventArgs e)
         {
-            ((App)App.Current).createNewAccount();
+            App.createNewAccount();
             close_clicked(null, null);
         }
         private void okC(object sender, MouseButtonEventArgs e)
         {
-            IName x = accountList.getSelected();
+            IName x = accountList.GetSelected();
             if(x != null) 
             {
                 serialization.database.load(serialization.database.getInfo((data)x));

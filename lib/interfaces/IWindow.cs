@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace AbiCALC
+namespace lib.interfaces
 {
-    interface IWindow
+    public interface IWindow
     {
         void close_clicked(object sender, MouseButtonEventArgs e);
         void max_clicked(object sender, MouseButtonEventArgs e);

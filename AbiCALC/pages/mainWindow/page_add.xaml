@@ -7,8 +7,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="NOTE HINZUFÜGEN"
-      xmlns:control="clr-namespace:AbiCALC.customUI.ListSelection"
-      xmlns:control2="clr-namespace:AbiCALC.customUI.textBoxWithBackground"
+      xmlns:lib.AListSelection="clr-namespace:lib.AListSelection;assembly=lib"
+      xmlns:lib.ATextBox="clr-namespace:lib.ATextBox;assembly=lib"
       Style="{StaticResource pageMain}">
 
     <Grid>
@@ -20,15 +20,9 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <control:listSelection Grid.Column="0"  x:Name="subjectSelection" Margin="2.5"/>
-        <control:listSelection Grid.Column="1" x:Name="semesterSelection" Margin="2.5"/>
+        <lib.AListSelection:AListSelection Grid.Column="0"  x:Name="subjectSelection" Margin="2.5"/>
+        <lib.AListSelection:AListSelection Grid.Column="1" x:Name="semesterSelection" Margin="2.5"/>
 
-        <control2:textBoxWithBackground Grid.Column="2">
-            <control2:textBoxWithBackground.backgroundContent>
-                <TextBox Style="{DynamicResource style_default_textbox}" BorderThickness="0">
-                    DER HINTERGRUND
-                </TextBox>
-            </control2:textBoxWithBackground.backgroundContent>
-        </control2:textBoxWithBackground>
+        <lib.ATextBox:ATextBox Grid.Column="2"></lib.ATextBox:ATextBox>
     </Grid>
 </Page>

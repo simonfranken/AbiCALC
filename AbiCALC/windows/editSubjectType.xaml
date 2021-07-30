@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AbiCALC.windows"
         mc:Ignorable="d"
         Style="{DynamicResource windowMain}"
-        xmlns:control="clr-namespace:AbiCALC.customUI.ListSelection"
+        xmlns:lib.AListSelection="clr-namespace:lib.AListSelection;assembly=lib"
         Title="editSubjectType" Height="450" Width="800">
     <Grid Background="{DynamicResource color_lightgrey}">
         <Grid.ColumnDefinitions>
@@ -18,7 +18,7 @@
             <RowDefinition/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <control:listSelection Grid.RowSpan="3" x:Name="listSubjects"/>
+        <lib.AListSelection:AListSelection Grid.RowSpan="3" x:Name="listSubjects"/>
         <Border Grid.Column="1" MouseLeftButtonUp="changeColor">
             <Border.Style>
                 <Style TargetType="Border" BasedOn="{StaticResource style_default_border}">

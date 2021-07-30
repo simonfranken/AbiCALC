@@ -1,9 +1,8 @@
-﻿<UserControl x:Class="AbiCALC.customUI.ListSelection.listSelection"
+﻿<UserControl x:Class="lib.AListSelection.AListSelection"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:AbiCALC.customUI.ListSelection"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -41,7 +40,7 @@
                 <ItemsControl x:Name="itemcontrol" VirtualizingStackPanel.IsVirtualizing="False">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Style="{StaticResource border}" MouseLeftButtonUp="borderClicked" IsMouseDirectlyOverChanged="mouseOver">
+                            <Border Style="{StaticResource border}" MouseLeftButtonUp="BorderClicked" IsMouseDirectlyOverChanged="MouseOver">
                                 <TextBlock Text="{Binding Name.itemValue}" Style="{StaticResource text}"/>
                             </Border>
                         </DataTemplate>
