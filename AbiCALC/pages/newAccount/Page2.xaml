@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page2"
-      xmlns:control="clr-namespace:AbiCALC.customUI.textBox2"
+      xmlns:lib.ATextBox="clr-namespace:lib.ATextBox;assembly=lib"
       >
 
     <Grid>
@@ -175,7 +175,7 @@
                         </TextBlock>
                     </Border>
                     <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                        <control:textBox2 x:Name="wst" Style="{DynamicResource Style_TextBox2_main}"/>
+                        <lib.ATextBox:ATextBox x:Name="wst" Style="{DynamicResource Style_TextBox2_main}"/>
                     </Border>
                 </Grid>
                 <Grid>
@@ -190,7 +190,7 @@
                         </TextBlock>
                     </Border>
                     <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                        <control:textBox2 x:Name="pst" Style="{DynamicResource Style_TextBox2_main}"/>
+                        <lib.ATextBox:ATextBox x:Name="pst" Style="{DynamicResource Style_TextBox2_main}"/>
                     </Border>
                 </Grid>
             </StackPanel>

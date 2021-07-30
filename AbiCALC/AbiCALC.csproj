@@ -33,4 +33,8 @@
     <Resource Include="resources\profile_logo.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\lib\lib.csproj" />
+  </ItemGroup>
+
 </Project>

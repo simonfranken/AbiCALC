@@ -6,8 +6,7 @@
       xmlns:local="clr-namespace:AbiCALC.Pages.newAccount"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      xmlns:control2="clr-namespace:AbiCALC.customUI.textBoxWithBackground"
-      xmlns:control="clr-namespace:AbiCALC.customUI.textBox2"
+      xmlns:lib.ATextBox="clr-namespace:lib.ATextBox;assembly=lib"
       Title="Page1">
 
     <Grid>
@@ -39,7 +38,7 @@
                     </TextBlock>
                 </Border>
                 <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}" x:Name="l1"/>
+                    <lib.ATextBox:ATextBox Style="{DynamicResource Style_TextBox2_main}" x:Name="l1"/>
                 </Border>
             </Grid>
             <Grid>
@@ -53,7 +52,7 @@
                     </TextBlock>
                 </Border>
                 <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}" x:Name="l2"/>
+                    <lib.ATextBox:ATextBox Style="{DynamicResource Style_TextBox2_main}" x:Name="l2"/>
                 </Border>
             </Grid>
             <Grid>
@@ -97,7 +96,7 @@
                     </TextBlock>
                 </Border>
                 <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}" x:Name="l3"/>
+                    <lib.ATextBox:ATextBox Style="{DynamicResource Style_TextBox2_main}" x:Name="l3"/>
                 </Border>
             </Grid>
             <Grid>
@@ -111,7 +110,7 @@
                     </TextBlock>
                 </Border>
                 <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}"  x:Name="ls"/>
+                    <lib.ATextBox:ATextBox Style="{DynamicResource Style_TextBox2_main}"  x:Name="ls"/>
                 </Border>
             </Grid>
             <Grid>
@@ -125,7 +124,7 @@
                     </TextBlock>
                 </Border>
                 <Border Style="{DynamicResource style_default_border}" Grid.Column="1">
-                    <control:textBox2 Style="{DynamicResource Style_TextBox2_main}" x:Name="lw"/>
+                    <lib.ATextBox:ATextBox Style="{DynamicResource Style_TextBox2_main}" x:Name="lw"/>
                 </Border>
             </Grid>
         </StackPanel>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AbiCALC"
              StartupUri="windows/MainWindow.xaml"
-             xmlns:control="clr-namespace:AbiCALC.customUI.textBox2"
+             xmlns:lib="clr-namespace:lib.ATextBox;assembly=lib"
              >
     <Application.Resources>
 
@@ -224,7 +224,7 @@
             </Setter>
         </Style>
 
-        <Style TargetType="control:textBox2" x:Key="Style_TextBox2_main">
+        <Style TargetType="lib:ATextBox" x:Key="Style_TextBox2_main">
             <Setter Property="HelpText" Value="Bitte eingeben!"/>
             <Setter Property="defaultStyle" Value="{StaticResource style_default_textbox}"/>
             <Setter Property="hintStyle">
