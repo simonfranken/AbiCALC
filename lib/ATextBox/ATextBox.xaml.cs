@@ -13,16 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AbiCALC.customUI.textBox2
+namespace lib.ATextBox
 {
     /// <summary>
     /// Interaction logic for textBox2.xaml
     /// </summary>
-    public partial class textBox2 : UserControl
+    public partial class ATextBox : UserControl
     {
         public delegate void textChangedDelegate(string newText);
         public event textChangedDelegate textChangedEv;
-        public textBox2()
+        public ATextBox()
         {
             InitializeComponent();
             GotFocus += TextBox2_GotFocus;
@@ -112,34 +112,34 @@ namespace AbiCALC.customUI.textBox2
 
 
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(textBox2), new PropertyMetadata(null, new PropertyChangedCallback(textChanged)));
+            DependencyProperty.Register("Text", typeof(string), typeof(ATextBox), new PropertyMetadata(null, new PropertyChangedCallback(textChanged)));
 
         private static void textChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((textBox2)d).Text = (string)e.NewValue;
+            ((ATextBox)d).Text = (string)e.NewValue;
         }
 
         public static readonly DependencyProperty HelpTextProperty =
-            DependencyProperty.Register("HelpText", typeof(string), typeof(textBox2), new PropertyMetadata(null, new PropertyChangedCallback(helpTextChanged)));
+            DependencyProperty.Register("HelpText", typeof(string), typeof(ATextBox), new PropertyMetadata(null, new PropertyChangedCallback(helpTextChanged)));
 
         private static void helpTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((textBox2)d).HelpText = (string)e.NewValue;
+            ((ATextBox)d).HelpText = (string)e.NewValue;
         }
 
         public static readonly DependencyProperty Style1Property =
-           DependencyProperty.Register("defaultStyle", typeof(Style), typeof(textBox2), new PropertyMetadata(null, new PropertyChangedCallback(s1c)));
+           DependencyProperty.Register("defaultStyle", typeof(Style), typeof(ATextBox), new PropertyMetadata(null, new PropertyChangedCallback(s1c)));
 
         public static readonly DependencyProperty Style2Property =
-           DependencyProperty.Register("hintStyle", typeof(Style), typeof(textBox2), new PropertyMetadata(null, new PropertyChangedCallback(s2c)));
+           DependencyProperty.Register("hintStyle", typeof(Style), typeof(ATextBox), new PropertyMetadata(null, new PropertyChangedCallback(s2c)));
 
         private static void s1c(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((textBox2)d).defaultStyle = (Style)e.NewValue;
+            ((ATextBox)d).defaultStyle = (Style)e.NewValue;
         }
         private static void s2c(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((textBox2)d).hintStyle = (Style)e.NewValue;
+            ((ATextBox)d).hintStyle = (Style)e.NewValue;
         }
     }
 }
