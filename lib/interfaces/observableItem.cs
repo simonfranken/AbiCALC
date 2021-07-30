@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbiCALC
+namespace lib.interfaces
 {
     [Serializable]
     public class observableItem<T> : INotifyPropertyChanged

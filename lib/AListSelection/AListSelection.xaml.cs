@@ -1,37 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using lib.interfaces;
 
-namespace AbiCALC.customUI.ListSelection
+namespace lib.AListSelection
 {
     /// <summary>
     /// Interaction logic for listSelection.xaml
     /// </summary>
-    public partial class listSelection : UserControl
+    public partial class AListSelection : UserControl
     {
         Color defaultColor= new Color { R = 26, G = 26, B = 26, A = 255 };
 
-        public delegate Color getColorDelegate(IName o);
-        public getColorDelegate getColor = null;
+        public delegate Color GetColorDelegate(IName o);
+        public GetColorDelegate getColor = null;
 
-        public delegate void selectionChangedEventHandler();
-        public event selectionChangedEventHandler selectionChanged;
+        public delegate void SelectionChangedEventHandler();
+        public event SelectionChangedEventHandler SelectionChanged;
 
         public void setCollection(ObservableCollection<IName> newCollectionInput) => itemcontrol.ItemsSource = newCollectionInput != null ? newCollectionInput : new List<IName>();
 
-        public listSelection()
+        public AListSelection()
         {
 
             InitializeComponent();
@@ -47,7 +39,7 @@ namespace AbiCALC.customUI.ListSelection
                 if (_selectedBorder != null) _selectedBorder.Background = new SolidColorBrush(defaultColor);
                 _selectedBorder = value;
                 if(_selectedBorder != null) _selectedBorder.Background = new SolidColorBrush(getColor != null ? getColor(getSelected()) : new Color { R = 255, G = 255, B = 0, A = 255 }) ;
-                selectionChanged?.Invoke();
+                SelectionChanged?.Invoke();
             }
         }
         
